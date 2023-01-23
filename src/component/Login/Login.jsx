@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import { useDispatch } from 'react-redux';
-import { login, logout } from '../../actions/user';
+import { LOGIN,   LOGOUT } from '../../actions/user';
 import { useNavigate } from 'react-router-dom';
 
 function Login() {
@@ -15,7 +15,7 @@ function Login() {
     // Création d' un email et d'un password de test
 
     if (email === 'test@example.com' && password === 'password') {
-      dispatch(login(email, 'token'))
+      dispatch(LOGIN(email, 'token'))
       navigate('/home')
     /*   Si l'email et le mot de passe sont correct on envoie l'action "login", l'email et le password */
     } else {

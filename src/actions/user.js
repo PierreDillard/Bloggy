@@ -1,4 +1,4 @@
-export const login = (email, token) => {
+export const LOGIN = (email, token) => {
     return {
       type: LOGIN,
       payload: {
@@ -8,7 +8,7 @@ export const login = (email, token) => {
     }
   }
   
-  export const logout = () => {
+  export const LOGOUT = () => {
     return {
       type: LOGOUT
     }
