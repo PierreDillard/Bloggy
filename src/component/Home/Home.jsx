@@ -1,18 +1,18 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
+import './Home.css';
 
  function Home() {
   return (
-    <div>
-    <h1>
+    <div className='Home-container'>
+      <h1 className='Home-title'>
         BloGGy
-    </h1>
-    <Link to='/login'>
-    <button>
-        Connexion
-    </button>
-    </Link>
-      
+      </h1>
+      <Link to='/login'>
+        <button className='Home-button-connexion'>
+          Connexion
+        </button>
+      </Link>
     </div>
   )
 }
