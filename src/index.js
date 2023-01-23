@@ -3,13 +3,16 @@ import ReactDOM from 'react-dom/client';
 import { createRoot } from 'react-dom/client';
 import { Provider } from 'react-redux';
 import { BrowserRouter } from 'react-router-dom';
-import './index.css';
+import store from '../src/store/index'
+
 import App from '../src/component/App/App';
 import reportWebVitals from './reportWebVitals';
+import './index.css';
+
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
-  <Provider>
+  <Provider store={store}>
   <BrowserRouter>
   <React.StrictMode>
     <App />
