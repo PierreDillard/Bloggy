@@ -1,6 +1,3 @@
-<<<<<<< HEAD
-hello comment vas
-=======
 hello la team 
 
 1 dossier app :    - dossier contollers :
@@ -76,4 +73,3 @@ hello la team
 .gitignore
 index.js
 routes.http               
->>>>>>> james
