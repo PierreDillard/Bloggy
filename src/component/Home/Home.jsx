@@ -16,6 +16,7 @@ import './Home.css';
           </button>
         </Link>
       </div>
+  {/*     Si l'utilisateur est connecté, on affiche le message, s'il n'est pas connecté on affiche rien */}
       {isLoggedIn ? <p> Connecté</p> : null}
       <p className='Home__slogan'>Le blog fait pour toi</p>
     </div>
