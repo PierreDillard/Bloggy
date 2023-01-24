@@ -12,17 +12,14 @@ import Internship from '../Internship/Internship';
 function App() {
   return (
       <div>
-    <Routes>
-      <Route path='/' element={(<Home />)} />
-      <Route path='/login' element={(<Login />)} />
-
-
-        <Route path='/news' element={(<News />)} />
-        <Route path='/art-galery' element={(<ArtGallery />)} />
-        <Route path='/internship' element={(<Internship />)} />
-        <Route path='/video' element={(<Videos />)} />
-    
-    </Routes>
+        <Routes>
+          <Route path='/' element={(<Home />)} />
+          <Route path='/login' element={(<Login />)} />
+          <Route path='/news' element={(<News />)} />
+          <Route path='/video' element={(<Videos />)} />
+          <Route path='/art-galery' element={(<ArtGallery />)} />
+          <Route path='/internship' element={(<Internship />)} />
+        </Routes>
       </div>
   )
 }

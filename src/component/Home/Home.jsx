@@ -1,22 +1,23 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
+import imgLogo from "../../assets/logo_BloGGy_white.svg"
 import './Home.css';
 
- function Home() {
+export default function Home() {
   return (
-    <div className='Home__container'>
-      <div className='Home__banner'>
-        <h1 className='Home__title'>BloGGy</h1>
+    <div className='home__container'>
+      <div className='home__banner'>
+        <img className='home__logo' src={imgLogo} alt='Logo de BloGGy' />
         <Link to='/login'>
-          <button className='Home__button'>
-          <span className='Home__button-content'>Connexion</span>
+          <button className='home__button home__button--connexion'>
+          <span className='home__button-content'>Connexion</span>
           </button>
         </Link>
       </div>
-      <p className='Home__slogan'>Le blog fait pour toi</p>
+      <p className='home__slogan'>Le blog fait pour toi</p>
+
     </div>
   )
 }
 
 
-export default Home;

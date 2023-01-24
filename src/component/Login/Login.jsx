@@ -3,6 +3,7 @@ import { Link } from 'react-router-dom';
 import { useDispatch } from 'react-redux';
 import { LOGIN,   LOGOUT } from '../../actions/user';
 import { useNavigate } from 'react-router-dom';
+import imgLogo from "../../assets/logo_BloGGy_white.svg"
 import './Login.css';
 
 function Login() {
@@ -14,12 +15,12 @@ function Login() {
 
   const handleSubmit = event => {
     event.preventDefault()
-    // Création d' un email et d'un password de test
+    // Création d'un email et d'un password de test
 
     if (email === 'test@example.com' && password === 'password') {
       dispatch(LOGIN(email, 'token'))
-      navigate('/home')
-    /*   Si l'email et le mot de passe sont correct on envoie l'action "login", l'email et le password */
+      navigate('/')
+    /*   Si l'email et le mot de passe sont corrects on envoie l'action "login", l'email et le password */
     } else {
       console.log("erreur de connexion!")
     }
@@ -28,9 +29,7 @@ function Login() {
   return (
     <div className='login__container'>
       <div className='login__banner'>
-        <h1 className='login__title'>
-          BloGGy
-        </h1>
+      <img className='home__logo' src={imgLogo} alt='Logo de BloGGy' />
         <Link to='/'>
             <button className='login__button login__button--welcome'>
               <span className='login__button-content'>Accueil</span>
