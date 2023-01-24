@@ -72,4 +72,12 @@ align-items: end;
     margin: 1rem;
     width: 20rem;
 }
-
+.error {
+    color:red;
+}
+.hidden {
+    display: none;
+}
+.error-image{
+    color:red;
+}
