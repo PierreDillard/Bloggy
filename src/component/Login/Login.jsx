@@ -1,7 +1,9 @@
 import React, { useState } from 'react';
+import { Link } from 'react-router-dom';
 import { useDispatch } from 'react-redux';
 import { LOGIN,   LOGOUT } from '../../actions/user';
 import { useNavigate } from 'react-router-dom';
+import './Login.css';
 
 function Login() {
   const [email, setEmail] = useState('');
@@ -24,27 +26,40 @@ function Login() {
   }
 
   return (
-    <form onSubmit={handleSubmit}>
-      <label>
-        Email:
-        <input
-          type="email"
-          value={email}
-          onChange={event => setEmail(event.target.value)}
-        />
-      </label>
-      <br />
-      <label>
-        Password:
-        <input
-          type="password"
-          value={password}
-          onChange={event => setPassword(event.target.value)}
-        />
-      </label>
-      <br />
-      <button type="submit">Log in</button>
-    </form>
+    <div className='login__container'>
+      <div className='login__banner'>
+        <h1 className='login__title'>
+          BloGGy
+        </h1>
+        <Link to='/'>
+            <button className='login__button login__button--welcome'>
+              <span className='login__button-content'>Accueil</span>
+            </button>
+        </Link>
+      </div>
+      <form onSubmit={handleSubmit} className='form'>
+        <div className='form__informations'>
+          <legend className='form__title'>Se connecter</legend>
+          <label>
+            <input className='form__input'
+              type="email"
+              value={email}
+              placeholder='Email'
+              onChange={event => setEmail(event.target.value)}
+            />
+          </label>
+          <label>
+            <input className='form__input'
+              type="password"
+              value={password}
+              placeholder='Mot de passe'
+              onChange={event => setPassword(event.target.value)}
+            />
+          </label>
+        </div>
+        <button type="submit" className='login__button login__button--connexion'>Connexion</button>
+      </form>
+    </div>
   )
 }
 

@@ -1,0 +1,44 @@
+.Home__container {
+    display: flex;
+    flex-direction: column;
+    background-image: url(../../assets/girl-blond-pink.jpg);
+    background-size: cover;
+    height: 100vh;
+}
+
+.Home__banner {
+    display: flex;
+    flex-direction: row;
+    justify-content: end;
+}
+
+.Home__title {
+    font-size: 10rem;
+    margin: 2rem 13rem 0 0;
+    font-size: 6rem;
+    color: white;
+}
+
+.Home__button {
+    font-weight: bold;
+    border-radius: 2rem;
+    padding: 0.5rem;
+    margin: 1rem 1rem 0 0;
+    background: #84D0E1;
+    border-color: #84D0E1;
+}
+
+.Home__button-content {
+    font-size: 1.3rem;
+    color: white;
+}
+
+.Home__slogan {
+    display: flex;
+    flex-direction: row;
+    justify-content: left;
+    margin: 20rem 0 0 5rem;
+    color: white;
+    font-weight: bold;
+    font-size: 2rem;
+}
