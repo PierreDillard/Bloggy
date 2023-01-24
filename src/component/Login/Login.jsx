@@ -26,14 +26,14 @@ function Login() {
   }
 
   return (
-    <div className='Home__container'>
-      <div className='Home__banner'>
-        <h1 className='Home__title'>
+    <div className='login__container'>
+      <div className='login__banner'>
+        <h1 className='login__title'>
           BloGGy
         </h1>
         <Link to='/'>
-            <button className='Home__button Home__button--welcome'>
-              <span className='Home__button-content'>Accueil</span>
+            <button className='login__button login__button--welcome'>
+              <span className='login__button-content'>Accueil</span>
             </button>
         </Link>
       </div>
@@ -57,7 +57,7 @@ function Login() {
             />
           </label>
         </div>
-        <button type="submit" className='Home__button Home__button--connexion'>Connexion</button>
+        <button type="submit" className='login__button login__button--connexion'>Connexion</button>
       </form>
     </div>
   )

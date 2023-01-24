@@ -1,4 +1,4 @@
-.Home__container {
+.login__container {
     display: flex;
     flex-direction: column;
     background-image: url(../../assets/girl-afro-green-blue.jpg);
@@ -6,37 +6,37 @@
     height: 100vh;
 }
 
-.Home__banner {
+.login__banner {
     display: flex;
     flex-direction: row;
     justify-content: end;
 }
 
-.Home__title {
+.login__title {
     font-size: 10rem;
     margin: 10rem 23rem 0 0;
     font-size: 6rem;
     color: white;
 }
 
-.Home__button {
+.login__button {
     font-weight: bold;
     border-radius: 2rem;
     padding: 0.5rem;
     margin: 1rem 1rem 0 0;
 }
 
-.Home__button-content {
+.login__button-content {
     font-size: 1.3rem;
     color: white;
 }
 
-.Home__button--welcome {
+.login__button--welcome {
     background: #E14EB0;
     border-color: #E14EB0;
 }
 
-.Home__button--connexion {
+.login__button--connexion {
     margin-right: 34rem;
     padding-left: 4rem;
     padding-right: 4rem;
