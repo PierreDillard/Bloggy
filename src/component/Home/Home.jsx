@@ -1,27 +1,27 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
+import imgLogo from "../../assets/logo_BloGGy_white.svg"
 import { useSelector } from 'react-redux';
+import Menu from '../Menu/Menu';
 import './Home.css';
 
- function Home() {
-  const isLoggedIn = useSelector(state => state.user.isLoggedIn);
-
+  export  default function Home() {
+    const isLoggedIn = useSelector(state => state.user.isLoggedIn);
   return (
-    <div className='Home__container'>
-      <div className='Home__banner'>
-        <h1 className='Home__title'>BloGGy</h1>
+    <div className='home__container'>
+      <div className='home__banner'>
+        <img className='home__logo' src={imgLogo} alt='Logo de BloGGy' />
         <Link to='/login'>
-          <button className='Home__button'>
-          <span className='Home__button-content'>Connexion</span>
+          <button className='home__button home__button--connexion'>
+          <span className='home__button-content'>Connexion</span>
           </button>
         </Link>
       </div>
-  {/*     Si l'utilisateur est connecté, on affiche le message, s'il n'est pas connecté on affiche rien */}
-      {isLoggedIn ? <p> Connecté</p> : null}
+        {/*     Si l'utilisateur est connecté, on affiche le menu s'il n'est pas connecté on affiche rien */}
+        {isLoggedIn ? <Menu /> : null}
       <p className='Home__slogan'>Le blog fait pour toi</p>
     </div>
   )
 }
 
 
-export default Home;

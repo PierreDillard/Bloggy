@@ -1,8 +1,11 @@
 import React from 'react'
+import './Internship.css';
+import Menu from '../Menu/Menu';
 
-function Internship() {
+export default function Internship() {
   return (
-    <div>Internship</div>
+    <React.Fragment>
+      <Menu />
+    </React.Fragment>
   )
 }
-export default Internship

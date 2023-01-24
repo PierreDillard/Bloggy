@@ -34,6 +34,7 @@
 .login__button--welcome {
     background: #E14EB0;
     border-color: #E14EB0;
+    width: 9rem;
 }
 
 .login__button--connexion {
