@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
 import { useDispatch } from 'react-redux';
-import { LOGIN,   LOGOUT } from '../../actions/user';
+import {  actionlogin,  LOGIN,   LOGOUT } from '../../actions/user';
 import { useNavigate } from 'react-router-dom';
 import './Login.css';
 
@@ -17,8 +17,8 @@ function Login() {
     // Création d' un email et d'un password de test
 
     if (email === 'test@example.com' && password === 'password') {
-      dispatch(LOGIN(email, 'token'))
-      navigate('/home')
+      dispatch(actionlogin(email, 'token'))
+      navigate('/')
     /*   Si l'email et le mot de passe sont correct on envoie l'action "login", l'email et le password */
     } else {
       console.log("erreur de connexion!")
