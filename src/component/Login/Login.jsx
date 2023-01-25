@@ -26,7 +26,7 @@ function Login() {
       /*  Si l'email et le mot de passe sont corrects on envoie l'action "login", l'email et le password */
     } else {
       /*  S'il y a une erreur, on envoie un message d'erreur */
-      setError("Email ou mot de passe incorrect");
+      setError("Email et/ou mot de passe incorrects");
       setEmail('');
       setPassword('');
     }
@@ -46,9 +46,11 @@ function Login() {
           </button>
         </Link>
       </div>
+  
       <form onSubmit={handleSubmit} className="form">
         <div className="form__informations">
           <legend className="form__title">Se connecter</legend>
+         
           <label>
             <input
            className={`form__input ${error ? "error" : ""}`}
@@ -58,6 +60,7 @@ function Login() {
               onChange={(event) => setEmail(event.target.value)}
             />          
           </label>
+
           <label>
             <input
               className="form__input"
@@ -66,17 +69,20 @@ function Login() {
               placeholder="Mot de passe"
               onChange={(event) => setPassword(event.target.value)}
             />
-            {error && <p className="error-message" onClick={handleCloseError}>{error}</p>}
-           
+            
           </label>
         </div>
+
         <button
           type="submit"
           className="login__button login__button--connexion"
         >
           Connexion
         </button>
+
         {/*  On affiche un message erreur dans l'input si le mot de passe ou l'email est incorrect */}
+        {error && <p className="form__error-message" onClick={handleCloseError}>{error}</p>}
+        
       </form>
     </div>
   );
