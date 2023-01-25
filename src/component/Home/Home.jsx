@@ -2,7 +2,7 @@ import React from 'react';
 import { Link } from 'react-router-dom';
 import imgLogo from "../../assets/logo_BloGGy_white.svg"
 import { useSelector } from 'react-redux';
-import Menu from '../Menu/Menu';
+import Header from '../Header/Header';
 import './Home.css';
 
   export  default function Home() {
@@ -18,8 +18,8 @@ import './Home.css';
         </Link>
       </div>
         {/*     Si l'utilisateur est connecté, on affiche le menu s'il n'est pas connecté on affiche rien */}
-        {isLoggedIn ? <Menu /> : null}
-      <p className='hit ome__slogan'>Le blog fait pour toi</p>
+        {isLoggedIn ? <Header /> : null}
+      <p className='home__slogan'>Le blog fait pour toi</p>
     </div>
   )
 }
