@@ -8,6 +8,8 @@ export default function Menu() {
     const dispatch = useDispatch();
     const navigate = useNavigate();
 
+/* Cette fonction, envoie l'actionlogout qui sera récupéré par le reducer, pour supprimer, l'Email, le token et passer isLoggedIn à false */
+
     const handleLogout = () => {
         dispatch(actionlogout());
         navigate('/');
