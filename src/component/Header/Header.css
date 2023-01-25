@@ -1,0 +1,10 @@
+.header__banner {
+    display: flex;
+    flex-direction: row;
+    justify-content: end;
+}
+
+.header__logo {
+    width: 38rem;
+    margin: 1rem 24rem 0 0;
+}
