@@ -4,9 +4,15 @@
     justify-content: space-between;
 }
 
+.menu__connect {
+    margin-left: 1rem;
+}
+
 .menu__greeting {
+    margin-right: 1rem;
+    font-weight: bold;
     font-size: 1.7rem;
-    margin-right: 3rem;
+    margin-right: 1rem;
 }
 
 .menu__button {
@@ -14,14 +20,24 @@
     border-radius: 2rem;
     padding: 0.5rem;
     margin: 1rem 1rem 0 0;
-    background: none;
     border: none;
+    background: none;
 }
 
-.menu__button--home {
+.menu__button:hover {
     background: #E14EB0;
     border-color: #E14EB0;
-    width: 7rem;
+    box-shadow: 0.2rem 0.2rem #7a5a5a;
+}
+
+.menu__button--current {
+    background: #E14EB0;
+    border-color: #E14EB0;
+    box-shadow: 0.2rem 0.2rem #7a5a5a;
+}
+
+.menu__button--current:hover {
+    box-shadow: -0.2rem -0.2rem #7a5a5a;
 }
 
 .menu__button-content {

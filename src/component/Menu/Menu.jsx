@@ -9,7 +9,7 @@ export default function Menu() {
             <div className='menu__connect'>
                 {/* Home */}
                 <Link to='/'>
-                    <button className='menu__button menu__button--home'>
+                    <button className='menu__button menu__button--current'>
                         <span className='menu__button-content'>Accueil</span>
                     </button>
                 </Link>
@@ -45,10 +45,10 @@ export default function Menu() {
                 </Link>
             </div>
             <div className='menu__disconnect'>
+                <span className='menu__greeting'>Bonjour !</span>
                 {/* Disonnect */}
                 <Link to='/'>
                     <button className='menu__button'>
-                        <span className='menu__greeting'>Bonjour !</span>
                         <span className='menu__button-content'>Déconnexion</span>
                     </button>
                 </Link>
@@ -59,6 +59,5 @@ export default function Menu() {
     
   )
 }
-
 
 

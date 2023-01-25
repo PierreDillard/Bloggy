@@ -3,8 +3,7 @@ import { Link } from "react-router-dom";
 import { useDispatch } from "react-redux";
 import { actionlogin, LOGIN, LOGOUT } from "../../actions/user";
 import { useNavigate } from "react-router-dom";
-import { useRef, useEffect } from "react";
-import imgLogo from "../../assets/logo_BloGGy_white.svg";
+import imgLogo from "../../assets/logo_BloGGy_white.webp";
 import "./Login.css";
 
 function Login() {
@@ -81,7 +80,7 @@ function Login() {
           type="submit"
           className="login__button login__button--connexion"
         >
-          Connexion
+          <span className="login__button-content login__button-content--connect">Connexion</span>
         </button>
 
         {/*  On affiche un message erreur dans l'input si le mot de passe ou l'email est incorrect */}
