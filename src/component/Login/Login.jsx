@@ -23,13 +23,12 @@ function Login() {
     if (email === "test@example.com" && password === "password") {
       dispatch(actionlogin(email, "token"));
       navigate("/");
-      /*   Si l'email et le mot de passe sont correct on envoie l'action "login", l'email et le password */
+      /*  Si l'email et le mot de passe sont corrects on envoie l'action "login", l'email et le password */
     } else {
-      /*  Si il ya une erreur , en envoie un message d'errreur */
+      /*  S'il y a une erreur, on envoie un message d'erreur */
       setError("Email ou mot de passe incorrect");
       setEmail('');
       setPassword('');
-   
     }
   };
 
@@ -57,9 +56,7 @@ function Login() {
               value={email}
               placeholder="Email"
               onChange={(event) => setEmail(event.target.value)}
-            />
-             
-             
+            />          
           </label>
           <label>
             <input
@@ -79,9 +76,7 @@ function Login() {
         >
           Connexion
         </button>
-        {/*  On affiche un message erreur dans l'input  si le mot de passe ou l'email est incorect */}
-
-        
+        {/*  On affiche un message erreur dans l'input si le mot de passe ou l'email est incorrect */}
       </form>
     </div>
   );

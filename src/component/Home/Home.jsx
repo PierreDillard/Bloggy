@@ -19,7 +19,7 @@ import './Home.css';
       </div>
         {/*     Si l'utilisateur est connecté, on affiche le menu s'il n'est pas connecté on affiche rien */}
         {isLoggedIn ? <Menu /> : null}
-      <p className='Home__slogan'>Le blog fait pour toi</p>
+      <p className='home__slogan'>Le blog fait pour toi</p>
     </div>
   )
 }
