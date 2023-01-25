@@ -3,11 +3,14 @@ import { Link } from "react-router-dom";
 import { useDispatch } from "react-redux";
 import { actionlogin, LOGIN, LOGOUT } from "../../actions/user";
 import { useNavigate } from "react-router-dom";
+import { useRef,useEffect } from "react";
 import imgLogo from "../../assets/logo_BloGGy_white.svg";
 import "./Login.css";
 
 
+
 function Login() {
+  const inputRef = useRef(null)
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const dispatch = useDispatch();
@@ -15,6 +18,10 @@ function Login() {
 
 
   const navigate = useNavigate();
+
+  useEffect(() => {
+    inputRef.current.focus();
+  }, []);
 
   const handleSubmit = (event) => {
     event.preventDefault();
@@ -54,6 +61,7 @@ function Login() {
           <label>
             <input
            className={`form__input ${error ? "error" : ""}`}
+           ref={inputRef}
               type="email"
               value={email}
               placeholder="Email"
