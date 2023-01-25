@@ -1,8 +1,17 @@
 import React from 'react'
-import { Link } from 'react-router-dom';
+import { Link , useNavigate} from 'react-router-dom';
+import { useDispatch } from 'react-redux';
 import './Menu.css';
+import { actionlogout } from '../../actions/user';
 
 export default function Menu() {
+    const dispatch = useDispatch();
+    const navigate = useNavigate();
+
+    const handleLogout = () => {
+        dispatch(actionlogout());
+        navigate('/');
+    }
   return (
     <React.Fragment>
         <div className='menu__container'>
@@ -48,7 +57,8 @@ export default function Menu() {
                 <span className='menu__greeting'>Bonjour !</span>
                 {/* Disonnect */}
                 <Link to='/'>
-                    <button className='menu__button'>
+                    <button className='menu__button'
+                    onClick={handleLogout}>
                         <span className='menu__button-content'>Déconnexion</span>
                     </button>
                 </Link>
