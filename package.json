@@ -1,7 +1,10 @@
 {
   "dependencies": {
+    "cors": "^2.8.5",
     "dotenv": "^16.0.3",
     "express": "^4.18.2",
+    "morgan": "^1.10.0",
+    "nodemon": "^2.0.20",
     "pg": "^8.8.0"
   },
   "name": "projet_bloggy_back",
@@ -9,7 +12,8 @@
   "version": "1.0.0",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "start": "nodemon index.js",
+    "db": "psql -U admin_bloggy -d bloggy -f migrations/data/1.create_tables.sql"
   },
   "repository": {
     "type": "git",

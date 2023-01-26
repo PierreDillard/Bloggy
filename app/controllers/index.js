@@ -8,5 +8,6 @@ const labelController = require("./label");
 const mediaController = require("./media");
 const memberController = require("./member");
 const organizationController = require("./organization");
+const loginController = require ("./login")
 
-module.exports = { cardController,commentController,labelController,mediaController,memberController, organizationController };
+module.exports = { cardController,commentController,labelController,mediaController,memberController, organizationController, labelController };

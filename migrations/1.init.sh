@@ -1,6 +1,6 @@
-# 0. Je prends l'identité de spedata
+# 0. Je prends l'identité de admin
 
-export PGUSER=spedata # compte qui a tout les droits dont la création des base de données
+export PGUSER=bloggy # compte qui a tout les droits dont la création des base de données
 
 # 1.initialisation de la BDD
 
