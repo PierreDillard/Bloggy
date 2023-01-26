@@ -1,8 +1,11 @@
 import React from 'react'
+import './Internship.css';
 
-function Internship() {
+
+export default function Internship() {
   return (
-    <div>Internship</div>
+    <React.Fragment>
+      
+    </React.Fragment>
   )
 }
-export default Internship

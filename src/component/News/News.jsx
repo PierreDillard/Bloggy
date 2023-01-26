@@ -1,11 +1,16 @@
 import React from 'react'
+import Header from "../Header/Header";
+import Modale from '../Modale/Modale';
+import "./News.css";
 
-function News() {
+export default function News() {
   return (
-    <div>
-      
-    </div>
+    <React.Fragment>
+      <div className='news__container'>
+      <Header />
+ 
+      </div>
+    
+    </React.Fragment>
   )
 }
-
-export default News;

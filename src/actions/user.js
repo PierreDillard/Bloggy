@@ -1,4 +1,7 @@
-export const LOGIN = (email, token) => {
+export const LOGIN = "LOGIN";
+export const LOGOUT = "LOGOUT";
+
+export const actionlogin = (email, token) => {
     return {
       type: LOGIN,
       payload: {
@@ -6,10 +9,10 @@ export const LOGIN = (email, token) => {
         token
       }
     }
-  }
-  
-  export const LOGOUT = () => {
+}
+
+export const actionlogout = () => {
     return {
       type: LOGOUT
     }
-  }
+}

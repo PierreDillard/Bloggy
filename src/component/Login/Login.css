@@ -1,7 +1,7 @@
 .login__container {
     display: flex;
     flex-direction: column;
-    background-image: url(../../assets/girl-afro-green-blue.jpg);
+    background-image: url(../../assets/girl-afro-green-blue.webp);
     background-size: cover;
     height: 100vh;
 }
@@ -24,6 +24,9 @@
     border-radius: 2rem;
     padding: 0.5rem;
     margin: 1rem 1rem 0 0;
+    border: none;
+    background: none;
+    box-shadow: 0.2rem 0.2rem #7a5a5a;
 }
 
 .login__button-content {
@@ -31,9 +34,19 @@
     color: white;
 }
 
+.login__button-content--connect {
+    font-size: 1.3rem;
+    color: black;
+}
+
 .login__button--welcome {
     background: #E14EB0;
     border-color: #E14EB0;
+    width: 9rem;
+}
+
+.login__button:hover {
+    box-shadow: -0.2rem -0.2rem #7a5a5a;
 }
 
 .login__button--connexion {
@@ -44,6 +57,10 @@
     border-color: #CEDA51;
     font-size: 1.3rem;
     color: black;
+}
+
+.login__button:hover {
+    box-shadow: -0.2rem -0.2rem #7a5a5a;
 }
 
 .form {
@@ -71,4 +88,21 @@ align-items: end;
     margin: 1rem;
     width: 20rem;
 }
+
+.form__error-message {
+    font-size: 1rem;
+    margin: -15rem 33rem 0 0;
+}
+
+/* .error {
+    color:red;
+} */
+
+/* .hidden {
+    display: none;
+} */
+
+/* .error-image{
+    color:red;
+} */
 

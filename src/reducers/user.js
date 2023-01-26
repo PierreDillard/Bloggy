@@ -1,11 +1,12 @@
+import { LOGIN , LOGOUT } from '../actions/user';
+
 const initialState = {
     isLoggedIn: false,
     email: '',
     token: ''
   }
   
-  const LOGIN = 'LOGIN'
-  const LOGOUT = 'LOGOUT'
+
   
   const reducer = (state = initialState, action) => {
     switch (action.type) {

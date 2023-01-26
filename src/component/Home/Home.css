@@ -1,44 +1,57 @@
-.Home__container {
+.home__container {
     display: flex;
     flex-direction: column;
-    background-image: url(../../assets/girl-blond-pink.jpg);
+    background-image: url(../../assets/girl-blond-pink.webp);
     background-size: cover;
     height: 100vh;
 }
 
-.Home__banner {
+.home__banner {
     display: flex;
     flex-direction: row;
     justify-content: end;
 }
 
-.Home__title {
-    font-size: 10rem;
-    margin: 2rem 13rem 0 0;
-    font-size: 6rem;
-    color: white;
+.home__logo {
+    width: 38rem;
+    margin: 1rem 14rem 0 0;
 }
 
-.Home__button {
+.home__button {
     font-weight: bold;
     border-radius: 2rem;
     padding: 0.5rem;
     margin: 1rem 1rem 0 0;
     background: #84D0E1;
     border-color: #84D0E1;
+    box-shadow: 0.2rem 0.2rem #7a5a5a;
+    width: 9rem;
 }
 
-.Home__button-content {
+.home__button:hover {
+    box-shadow: -0.2rem -0.2rem #7a5a5a;
+}
+
+.home__button-content {
     font-size: 1.3rem;
     color: white;
 }
 
-.Home__slogan {
+.home__slogan {
     display: flex;
     flex-direction: row;
     justify-content: left;
-    margin: 20rem 0 0 5rem;
     color: white;
+    font-size: 3rem;
+    margin: 10rem 0 0 2rem;
     font-weight: bold;
-    font-size: 2rem;
+}
+
+.home__presentation {
+    margin-top: 10rem;
+    font-size: 2.5rem;
+    text-align: center;
+    font-weight: bold;
+    color: white;
+    text-shadow: 0 0 black;
 }
