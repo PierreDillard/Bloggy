@@ -1,4 +1,4 @@
-.login__container {
+.regist__container {
     display: flex;
     flex-direction: column;
     background-image: url(../../assets/connexion.webp);
@@ -6,20 +6,18 @@
     height: 100vh;
 }
 
-.login__banner {
+.regist__banner {
     display: flex;
     flex-direction: row;
     justify-content: end;
 }
 
-.login__title {
-    font-size: 10rem;
-    margin: 10rem 23rem 0 0;
-    font-size: 6rem;
-    color: white;
+.regist__logo {
+    width: 38rem;
+    margin: 1rem 14rem 0 0;
 }
 
-.login__button {
+.regist__button {
     font-weight: bold;
     border-radius: 2rem;
     padding: 0.5rem;
@@ -29,28 +27,28 @@
     box-shadow: 0.2rem 0.2rem #7a5a5a;
 }
 
-.login__button-content {
+.regist__button-content {
     font-size: 1.3rem;
     color: white;
 }
 
-.login__button-content--connect {
+.regist__button-content--confirm {
     font-size: 1.3rem;
     color: black;
 }
 
-.login__button--welcome {
+.regist__button--welcome {
     background: #E14EB0;
     border-color: #E14EB0;
     width: 9rem;
 }
 
-.login__button:hover {
+.regist__button:hover {
     box-shadow: -0.2rem -0.2rem #7a5a5a;
 }
 
-.login__button--connexion {
-    margin-right: 34rem;
+.regist__button--confirm {
+    margin-right: 35.5rem;
     padding-left: 4rem;
     padding-right: 4rem;
     background: #CEDA51;
@@ -64,9 +62,9 @@
 }
 
 .form {
-display: flex;
-flex-direction: column;
-align-items: end;
+    display: flex;
+    flex-direction: column;
+    align-items: end;
 }
 
 .form__informations {
@@ -93,16 +91,3 @@ align-items: end;
     font-size: 1rem;
     margin: -15rem 33rem 0 0;
 }
-
-/* .error {
-    color:red;
-} */
-
-/* .hidden {
-    display: none;
-} */
-
-/* .error-image{
-    color:red;
-} */
-

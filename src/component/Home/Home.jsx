@@ -10,11 +10,18 @@ export default function Home() {
   return (
     <div className="home__container">
 
-      {/* L'utilisateur n'est pas connecté, on affiche "connexion", sinon on n'affiche rien */}
+      {/*Si l'utilisateur n'est pas connecté, on affiche "connexion", sinon on n'affiche rien */}
       {!isLoggedIn ? (
         <React.Fragment>
           <div className="home__banner">
             <img className="home__logo" src={imgLogo} alt="Logo de BloGGy" />
+            {/* Connexion */}
+            <Link to="/registration">
+              <button className="home__button">
+                <span className="home__button-content">Inscription</span>
+              </button>
+            </Link>
+            {/* Inscription */}
             <Link to="/login">
               <button className="home__button">
                 <span className="home__button-content">Connexion</span>
@@ -25,7 +32,7 @@ export default function Home() {
         </React.Fragment>
       ) : null}
 
-      {/* Si l'utilisateur est connecté, on affiche le menu */}
+      {/* Si l'utilisateur est connecté, on affiche le menu, sinon on n'affiche rien */}
       {isLoggedIn ? (
         <React.Fragment>
           <Header /> 
