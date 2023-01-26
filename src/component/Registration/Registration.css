@@ -1,0 +1,94 @@
+.regist__container {
+    display: flex;
+    flex-direction: column;
+    background-image: url(../../assets/connexion.webp);
+    background-size: cover;
+    height: 100vh;
+}
+
+.regist__banner {
+    display: flex;
+    flex-direction: row;
+    justify-content: end;
+}
+
+.regist__logo {
+    width: 38rem;
+    margin: 1rem 14rem 0 0;
+}
+
+.regist__button {
+    font-weight: bold;
+    border-radius: 2rem;
+    padding: 0.5rem;
+    margin: 1rem 1rem 0 0;
+    border: none;
+    background: none;
+    box-shadow: 0.2rem 0.2rem #7a5a5a;
+}
+
+.regist__button-content {
+    font-size: 1.3rem;
+    color: white;
+}
+
+.regist__button-content--confirm {
+    font-size: 1.3rem;
+    color: black;
+}
+
+.regist__button--welcome {
+    background: #E14EB0;
+    border-color: #E14EB0;
+    width: 9rem;
+}
+
+.regist__button:hover {
+    box-shadow: -0.2rem -0.2rem #7a5a5a;
+}
+
+.regist__button--confirm {
+    margin-right: 35.5rem;
+    padding-left: 4rem;
+    padding-right: 4rem;
+    background: #CEDA51;
+    border-color: #CEDA51;
+    font-size: 1.3rem;
+    color: black;
+}
+
+.login__button:hover {
+    box-shadow: -0.2rem -0.2rem #7a5a5a;
+}
+
+.form {
+    display: flex;
+    flex-direction: column;
+    align-items: end;
+}
+
+.form__informations {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin: 10rem 30rem 0px 0;
+}
+
+.form__title {
+    margin-bottom: 2.5rem;
+    color: white;
+    font-weight: bold;
+    font-size: 1.8rem;
+}
+
+.form__input {
+    padding: 0.8rem;
+    margin: 1rem;
+    width: 20rem;
+}
+
+.form__error-message {
+    font-size: 1rem;
+    margin: -15rem 33rem 0 0;
+}
+

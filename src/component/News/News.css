@@ -1,7 +1,7 @@
 .news__container {
     display: flex;
     flex-direction: column;
-    background-image: url(../../assets/girl-ginger-finger-yellow.webp);
+    background-image: url(../../assets/news.webp);
     background-size: cover;
     height: 100vh;
 }

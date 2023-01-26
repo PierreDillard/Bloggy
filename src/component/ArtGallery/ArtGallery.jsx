@@ -1,5 +1,5 @@
 import React from 'react'
-import Header from "../ArtGallery/ArtGallery";
+import Header from "../Header/Header";
 import "./ArtGallery.css";
 
 export default function ArtGallery() {

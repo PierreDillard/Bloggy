@@ -1,5 +1,5 @@
 import React from 'react'
-import Header from "../Internship/Internship";
+import Header from "../Header/Header";
 import "./Internship.css";
 
 export default function Internship() {
