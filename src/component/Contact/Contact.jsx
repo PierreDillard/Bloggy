@@ -1,11 +1,11 @@
 import React from 'react'
 import Header from "../Header/Header";
-import "./Videos.css";
+import "./Contact.css";
 
-export default function Videos() {
+export default function Contact() {
   return (
     <React.Fragment>
-      <div className='videos__container'>
+      <div className='contact__container'>
         <Header />
         
       </div>

@@ -1,11 +1,14 @@
 import React from 'react'
+import Header from "../ArtGallery/ArtGallery";
+import "./ArtGallery.css";
 
- function ArtGallery() {
+export default function ArtGallery() {
   return (
-    <div>
-      
-    </div>
+    <React.Fragment>
+      <div className='art-gallery__container'>
+        <Header />
+        
+      </div>
+    </React.Fragment>
   )
 }
-
-export default ArtGallery

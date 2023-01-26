@@ -37,7 +37,7 @@ export default function Home() {
               Charge tes vidéos !<br />
               Tu as fait un super stage ? Témoigne !!
             </p>
-  </React.Fragment>
+        </React.Fragment>
        
       ) : null}
     
