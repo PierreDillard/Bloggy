@@ -21,8 +21,8 @@ function Login() {
 
   const handleSubmit = (event) => {
     event.preventDefault();
+    
     // Création d'un email et d'un password de test
-
     if (email === "test@example.com" && password === "password") {
       dispatch(actionlogin(email, "token"));
       navigate("/");

@@ -9,7 +9,7 @@ export default function ArtGallery() {
         <Header />
         <div className="card__container">
           <div className="card">
-            
+
           </div>
         </div>
       </div>
