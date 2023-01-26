@@ -7,10 +7,9 @@ export default function News() {
   return (
     <React.Fragment>
       <div className='news__container'>
-      <Header />
- 
+        <Header />
+        
       </div>
-    
     </React.Fragment>
   )
 }
