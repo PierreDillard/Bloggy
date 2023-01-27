@@ -8,6 +8,3 @@ export default function Card() {
   )
 }
 
-
-export default Card;
-
