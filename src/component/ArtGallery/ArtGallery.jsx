@@ -6,7 +6,7 @@ import "./ArtGallery.css";
 const data = [
   { id: 1, title: 'Actualités' },
   { id: 2, title: 'Sport' },
-  { id: 3, title: 'Théâtre' },
+  { id: 3, title: 'Théatre' },
 ];
 
 export default function ArtGallery() {
