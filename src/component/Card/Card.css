@@ -1,15 +1,18 @@
-.card-container {
-    margin-top: 5%;
+.card__container {
+    margin-top: 15%;
     width: 25rem;
     height: 25rem;
     background-color: black;
-    opacity: 0.6;
+    opacity: 0.8;
     border-radius: 1rem;
-    z-index: 1;
+   
   }
+
+
   .card__header {
     display: flex;
-    justify-content: center;
+    justify-content: space-around;
+    margin: 0.5rem;
   }
   
   .card__description {
@@ -33,5 +36,12 @@ text-align: center;
     color: white;
     font-size: 0.8 rem;
     text-align: center;
+  }
+  .card__image {
+    display: block;
+    margin: 0 auto;
+    max-width: 90%;
+    border-radius: 1rem;
+    
   }
   

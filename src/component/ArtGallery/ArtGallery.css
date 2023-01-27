@@ -13,3 +13,7 @@
     opacity: 0.2;
     border-radius: 1rem;
 }
+.art-gallery__card__container{
+    display: flex;
+    justify-content: space-between;
+}
