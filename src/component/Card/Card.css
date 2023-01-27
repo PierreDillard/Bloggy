@@ -1,0 +1,37 @@
+.card-container {
+    margin-top: 5%;
+    width: 25rem;
+    height: 25rem;
+    background-color: black;
+    opacity: 0.6;
+    border-radius: 1rem;
+    z-index: 1;
+  }
+  .card__header {
+    display: flex;
+    justify-content: center;
+  }
+  
+  .card__description {
+    border-radius: 1rem;
+    color : white;
+    font-size: 0.8rem;
+text-align: center;
+
+  }
+  
+  .card__button {
+    border-radius: 1rem;
+    margin: 0.1rem;
+  }
+  .card__tag {
+ border-radius: 1rem;
+ color: white;
+ 
+  }
+  .card__comment{
+    color: white;
+    font-size: 0.8 rem;
+    text-align: center;
+  }
+  
