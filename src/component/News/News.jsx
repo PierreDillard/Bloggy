@@ -8,7 +8,7 @@ export default function News() {
     <React.Fragment>
       <div className='news__container'>
         <Header />
-        
+      
       </div>
     </React.Fragment>
   )

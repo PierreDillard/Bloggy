@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 
 // fonction d'ajout, de modification et de suppression de commentaire
-export default function Comment() {
+function CommentManager() {
   // liste des commentaires existants
   const [comments, setComments] = useState([]);
   // nouveau commentaire
@@ -111,3 +111,5 @@ export default function Comment() {
     </div>
   );
 }
+
+export default CommentManager;

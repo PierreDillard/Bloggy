@@ -50,13 +50,13 @@ function Login() {
         </Link>
       </div>
 
-      <form onSubmit={handleSubmit} className="form">
-        <div className="form__informations">
-          <legend className="form__title">Se connecter</legend>
+      <form onSubmit={handleSubmit} className="login-form">
+        <div className="login-form__informations">
+          <legend className="login-form__title">Se connecter</legend>
 
           <label>
             <input
-              className={`form__input ${error ? "error" : ""}`}
+              className={`login-form__input ${error ? "error" : ""}`}
               ref={inputRef}
               type="email"
               value={email}
@@ -67,7 +67,7 @@ function Login() {
 
           <label>
             <input
-              className="form__input"
+              className="login-form__input"
               type="password"
               value={password}
               placeholder="Mot de passe"
@@ -85,7 +85,7 @@ function Login() {
 
         {/*  On affiche un message erreur dans l'input si le mot de passe ou l'email est incorrect */}
         {error && (
-          <p className="form__error-message" onClick={handleCloseError}>
+          <p className="login-form__error-message" onClick={handleCloseError}>
             {error}
           </p>
         )}

@@ -48,13 +48,13 @@ export default function Registration() {
 
                 {/* Formulaire d'inscription */}
                 <form  onSubmit={handleSubmit}
-                action="" className="form" method="">
-                    <div className="form__informations">
-                        <legend className="form__title">S'inscrire</legend>
+                action="" className="regist-form" method="">
+                    <div className="regist-form__informations">
+                        <legend className="regist-form__title">S'inscrire</legend>
 
                         <label>
                             <input
-                                className="form__input"
+                                className="regist-form__input"
                                 ref={inputRef} /* focus sur le champ */
                                 type="text"
                                 value={pseudo}
@@ -65,7 +65,7 @@ export default function Registration() {
 
                         <label>
                             <input
-                                className={`form__input ${error ? "error" : ""}`}
+                                className={`regist-form__input ${error ? "error" : ""}`}
                                 type="email"
                                 value={email}
                                 placeholder="Email"
@@ -75,7 +75,7 @@ export default function Registration() {
 
                         <label>
                             <input
-                                className="form__input"
+                                className="regist-form__input"
                                 type="password"
                                 value={password}
                                 placeholder="Mot de passe"
@@ -85,7 +85,7 @@ export default function Registration() {
 
                         <label>
                             <input
-                                className="form__input"
+                                className="regist-form__input"
                                 type="password"
                                 value={password}
                                 placeholder="Répétez le mot de passe"
