@@ -1,4 +1,4 @@
-.comment-container {
+.comment__container {
     display: flex;
     flex-direction: column;
     width: 20rem; 
@@ -7,119 +7,112 @@
     margin: 6rem 0 0 14rem; /* à suppr */
 }
 
-.comment-form {
-    display: flex;
-    flex-direction: row;
+.comment__add {
     align-items: center;
 }
 
-.comment-form__button {
+.comment__add-button {
     width: 1rem;
     padding: 0;
 }
 
-.comment-form__content {
-    margin: 0.3rem;
+.comment__add-content {
+    padding: 0.5rem;
+
     font-size: 0.8rem;
 }
 
-.comment-isOpenForm {
+.comment__form {
     display: flex;
     flex-direction: row;
+    align-items: center;
+    margin: 0.7rem 0 0.7rem 0;
+}
+
+.comment__input {
+    display: flex;
+    flex-direction: row;
+    margin-right: 0.3rem;
+    padding: 0.2rem;
     align-items: end;
-    margin-top: 0.8rem;
-}
-
-.comment-isOpenForm__area {
-    width: 10rem;
+    width: 12rem;
     height: 1rem;
+    font-size: 0.8rem;
+    border: hidden;
 }
 
-.comment-isOpenForm__button {
+.comment__button {
     margin: 0.1em;
-    width: 3.5rem;
-    height: 1.2rem;
-    padding: 0rem;
+    padding-left: 0.5rem;
+    padding-right: 0.5rem;
+    height: 1rem;
     border-radius: 1rem;
+    font-size: 0.8rem;
     text-align: center;
     box-shadow: 0.1rem 0.1rem #7a5a5a;
+    border: hidden;
 }
 
-.comment-isOpenForm__button:hover {
+.comment__button:hover {
     box-shadow: -0.1rem -0.1rem #7a5a5a;
 }
 
-.comment-isOpenForm__button--confirm {
+.comment__button--confirm {
     background: #CEDA51;
     border-color: #CEDA51;
 }
 
-.comment-isOpenForm__button--cancel {
+.comment__button--cancel {
     background: #E899AE;
     border-color: #E899AE;
 }
 
-.comment-isOpenForm__button-content {
-    font-size: 0.8rem;
-}
-
-.comment-list {
+.comment__list {
     display: flex;
-    flex-direction: column;
+    flex-direction: row;
+    align-items: center;
+    height: 1.2rem;
+    text-align: start;
+    vertical-align: middle;
     margin-top: 1rem;
 }
 
-.comment-list__item {
-    display: flex;
-    flex-direction: row;
-    justify-content: space-between;
-    margin: 0.8rem 0 0.4rem 0;
+.comment__content {
+    margin-right: 0.2rem;
     padding: 0.2rem;
-    width: 20rem;
-    height: 1rem;
-}
-
-.comment-list__content {
-    margin-right: 0.5rem;
-    padding: 0.4rem 0 0 0.3rem;
-    border-color: white;
-    background-color: white;
-    width: 15rem;
+    background-color: rgba(255,255,255,0.5);
+    width: 12rem;
     height: 1rem;
     font-size: 0.8rem;
+    text-align: start;
+    vertical-align: middle;
 }
 
-.comment-list__buttons {
-    display: flex;
-    flex-direction: row;
-}
-
-.comment-list__button {
+.comment__list-button {
     margin: 0.1em;
-    height: 1.2rem;
-    padding: 0rem;
+    padding-left: 0.5rem;
+    padding-right: 0.5rem;
+    height: 1rem;
     border-radius: 1rem;
+    font-size: 0.8rem;
     text-align: center;
     box-shadow: 0.1rem 0.1rem #7a5a5a;
-    font-size: 0.8rem;
+    border: hidden;
 }
 
-.comment-list__button:hover {
+.comment__list-button:hover {
     box-shadow: -0.1rem -0.1rem #7a5a5a;
 }
 
-.comment-list__button--modify {
+.comment__list-button--modify {
     width: 3.8rem;
     background: #84D0E1;
     border-color: #84D0E1;
 }
 
-.comment-list__button--delete {
+.comment__list-button--delete {
     width: 4.5rem;
     background: #E14EB0;
     border-color: #E14EB0;
 }
 
-.comment-list__button:hover {
-    box-shadow: -0.1rem -0.1rem #7a5a5a;
-}

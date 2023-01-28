@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import './Comment.css';
 
 // fonction d'ajout, de modification et de suppression de commentaire
 export default function Comment() {
@@ -80,34 +81,57 @@ export default function Comment() {
 
   return (
 
-    <div className=''>
+    <React.Fragment>
 
-      {/* l'utilisateur clique sur le bouton 'Ajouter un commentaire' */}
-      <button onClick={handleAddComment}>Ajouter un commentaire</button>
-      
-      {/* on affiche le formulaire de champ de saisie et les boutons 'Valider' et 'Annuler*/}
-      {isCommentFormVisible && (
-        <form onSubmit={handleSubmitComment}>
-          <input
-            type="text"
-            value={newComment}
-            // au clique on récupère la valeur de l'input et on maj sa valeur avec setNewComment
-            onChange={(e) => setNewComment(e.target.value)}
-          />
-          <button type="submit">Valider</button>
-          <button onClick={handleCancelComment}>Annuler</button>
-        </form>
-      )}
-      {/* liste des commentaires rangés par index */}
-      {/* la fonction map() parcourt les commentaires de la liste */}
-      {/* elle les affiche par ordre croissant d'ajout grâce à la fonction slice().reverse() en passant par une copie du tableau */}
-      {comments.slice().reverse().map((comment, index) => (
-        <div key={index}>
-          {comment}
-          <button onClick={() => handleEditComment(index)}>Modifier</button>
-          <button onClick={() => handleDeleteComment(index)}>Supprimer</button>
+        <div className='comment__container'>
+
+            <div className='comment__add'>
+                {/* l'utilisateur clique sur le bouton 'Ajouter un commentaire' */}
+                <button className='comment__add-button' onClick={handleAddComment}>+</button>
+                <span className='comment__add-content'>Ajouter un commentaire</span>
+            </div>
+            
+            {/* on affiche le formulaire de champ de saisie et les boutons 'Valider' et 'Annuler*/}
+            {isCommentFormVisible && (
+                <form className='comment__form' onSubmit={handleSubmitComment}>
+                <input 
+                    className='comment__input'
+                    type="text"
+                    value={newComment}
+                    // au clique on récupère la valeur de l'input et on maj sa valeur avec setNewComment
+                    onChange={(e) => setNewComment(e.target.value)}
+                />
+                <button className='comment__button comment__button--confirm' type="submit">
+                    Valider
+                </button>
+                <button className='comment__button comment__button--cancel' onClick={handleCancelComment}>
+                    Annuler
+                </button>
+                </form>
+            )}
+
+            {/* liste des commentaires rangés par index */}
+            {/* la fonction map() parcourt les commentaires de la liste */}
+            {/* elle les affiche par ordre décroissant d'ajout */}
+            {/* TODO: mettre en place l'affichage croissant */}
+            {comments.map((comment, index) => (
+                <div key={index} className='comment__list' >
+                <div className='comment__content'>
+                    {comment}
+                </div>
+                <button className='comment__list-button comment__list-button--modify' onClick={() => handleEditComment(index)}>
+                    Modifier
+                </button>
+                <button className='comment__list-button comment__list-button--delete' onClick={() => handleDeleteComment(index)}>
+                    Supprimer
+                </button>
+                </div>
+            ))}
+
         </div>
-      ))}
-    </div>
-  );
+
+    </React.Fragment>
+
+    );
+    
 }
