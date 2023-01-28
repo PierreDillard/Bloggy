@@ -12,11 +12,6 @@
     justify-content: end;
 }
 
-.home__logo {
-    width: 38rem;
-    margin: 1rem 14rem 0 0;
-}
-
 .home__button {
     width: 9rem;
     border-radius: 2rem;
@@ -44,7 +39,7 @@
     justify-content: left;
     color: white;
     font-size: 3rem;
-    margin: 10rem 0 0 2rem;
+    margin: 18rem 0 0 2rem;
     font-weight: bold;
 }
 

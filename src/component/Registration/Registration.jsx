@@ -35,8 +35,6 @@ export default function Registration() {
 
                 <div className="regist__banner">
 
-                    <img className="home__logo" src={imgLogo} alt="Logo de BloGGy" />
-
                     {/* Bouton Accueil */}
                     <Link to="/">
                     <button className="regist__button regist__button--welcome">
@@ -93,15 +91,15 @@ export default function Registration() {
                             />
                         </label>
 
-                    </div> {/* Fin div form__informations */}
+                        {/* Bouton validez */}
+                        <button
+                            type="submit"
+                            className="regist__button regist__button--confirm"
+                        >
+                            <span className="regist__button-content regist__button-content--confirm">Validez</span>
+                        </button>
 
-                    {/* Bouton validez */}
-                    <button
-                        type="submit"
-                        className="regist__button regist__button--confirm"
-                    >
-                        <span className="regist__button-content regist__button-content--confirm">Validez</span>
-                    </button>
+                    </div> {/* Fin div form__informations */}
                     
                 </form> {/* Fin du formulaire d'inscription */}
             </div> {/* Fin div regist__container */}

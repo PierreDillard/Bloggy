@@ -42,7 +42,6 @@ function Login() {
   return (
     <div className="login__container">
       <div className="login__banner">
-        <img className="home__logo" src={imgLogo} alt="Logo de BloGGy" />
         <Link to="/">
           <button className="login__button login__button--welcome">
             <span className="login__button-content">Accueil</span>
@@ -74,14 +73,15 @@ function Login() {
               onChange={(event) => setPassword(event.target.value)}
             />
           </label>
-        </div>
 
-        <button
+          <button
           type="submit"
           className="login__button login__button--connexion"
-        >
-          <span className="login__button-content login__button-content--connect">Connexion</span>
-        </button>
+          >
+            <span className="login__button-content login__button-content--connect">Connexion</span>
+          </button>
+
+        </div>
 
         {/*  On affiche un message erreur dans l'input si le mot de passe ou l'email est incorrect */}
         {error && (

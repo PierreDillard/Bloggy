@@ -14,7 +14,6 @@ export default function Home() {
       {!isLoggedIn ? (
         <React.Fragment>
           <div className="home__banner">
-            <img className="home__logo" src={imgLogo} alt="Logo de BloGGy" />
             {/* Connexion */}
             <Link to="/registration">
               <button className="home__button">
