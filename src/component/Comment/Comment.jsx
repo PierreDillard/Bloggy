@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import './Comment.css';
 
 // fonction d'ajout, de modification et de suppression de commentaire
@@ -11,6 +11,7 @@ export default function Comment() {
   const [isCommentFormVisible, setCommentFormVisible] = useState(false);
   // édition ou non d'un commentaire
   const [editingCommentIndex, setEditingCommentIndex] = useState(-1);
+  
 
   // action quand l'utilisateur clique sur le bouton "Ajouter un commentaire"
   const handleAddComment = () => {

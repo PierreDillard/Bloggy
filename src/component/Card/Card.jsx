@@ -1,14 +1,16 @@
-import React from 'react';
+import React, { memo } from 'react';
 import Button from'../Button/Button';
+import PropTypes from 'prop-types';
 import image from '../../assets/home.webp'
 import './Card.css';
 import '../Comment/Comment'
 import Comment from '../Comment/Comment';
+import { Card } from 'react-bootstrap';
 
 
+/* On utilise React memo, pour optimiser la performance de Card, on ne ré rendra Card, que si les props ont changé */
 
-
-export default function Card(props) {
+export default React.memo(function Card(props) {
 
   console.log(props);
   
@@ -21,8 +23,8 @@ export default function Card(props) {
    
        <div className='card__header'>
        <div className="card__bouton__container">
-        <button className='card__button'>Modifier</button>
-        <button className='card__button'>Supprimer</button>
+        <button className='card__button card__button--modify'>Modifier</button>
+        <button className='card__button card__button--cancel'>Supprimer</button>
         </div>
         <span className='card__tag'>{props.title}</span>
 
@@ -36,7 +38,8 @@ export default function Card(props) {
 
      </div>
      <div className="card__comment__container">
-     <Comment/>
+     <Comment
+     />
 
      </div>
     
@@ -47,4 +50,8 @@ export default function Card(props) {
   
     
   )
-}
+});
+
+Card.propTypes = {
+  title: PropTypes.string.isRequired,
+};

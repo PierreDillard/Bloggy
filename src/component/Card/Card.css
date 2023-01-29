@@ -1,67 +1,73 @@
 .card__container {
-    margin-top: 15%;
-    padding:0.5rem;
- 
-    background-color:black;
-    opacity:0.9;
-    max-height: 500px;
-    width: 30%;
-    
-    
-    border-radius: 1rem;
-   
-  }
+  margin-top: 10%;
+  padding: 0.5rem;
 
+  background-color: black;
+  opacity: 0.9;
+  max-height: 500px;
+  width: 30%;
 
-  .card__header {
-    display: flex;
-    justify-content: space-around;
-    margin: 0.5rem;
-  }
-  
-  .card__description {
-   
-    color : white;
-    font-size: 0.8rem;
-text-align: center;
-border: 1px solid white;
-width: 85%;
+  border-radius: 1rem;
+}
 
-  }
-  
-  .card__button {
-    border-radius: 1rem;
-    margin: 0.1rem;
-  }
-  .card__tag {
- border-radius: 1rem;
- color: white;
- 
-  }
-  .card__comment{
-    color: white;
-    font-size: 0.8 rem;
-    text-align: center;
-  }
-  .card__image {
-    display: block;
-    margin: 0 auto;
-    max-width: 90%;
-    border-radius: 1rem;
-  
-    
-  }
-  .card__description__container{
-    display: flex;
-    justify-content:center;
-   
-   
-  }
+.card__header {
+  display: flex;
+  justify-content: space-between;
+  margin: 0.5rem;
+}
 
+.card__description {
+  color: white;
+  font-size: 0.8rem;
+  text-align: center;
+  border: 1px solid white;
+  width: 85%;
+}
+.card__button__container{
+  margin-left: 2rem;
+}
+.card__button{
+  box-shadow: 0.1rem 0.1rem #7a5a5a;
+}
 
-  .card__comment__container{
-    display: flex;
-  
-    position:relative;
-    justify-content: center;
-  }
+.card__button:hover{
+  box-shadow: -0.1rem -0.1rem #7a5a5a;
+}
+.card__button--cancel {
+  border-radius: 1rem;
+  margin: 0.1rem;
+  background: #E14EB0;
+  border-color: #E14EB0;
+}
+.card__button--modify {
+  border-radius: 1rem;
+  margin: 0.1rem;
+  background: #84D0E1;
+  border-color: #84D0E1
+}
+.card__tag {
+  border-radius: 1rem;
+  color: white;
+}
+.card__comment {
+  color: white;
+  font-size: 0.8 rem;
+  text-align: center;
+}
+.card__image {
+  display: block;
+  margin: 0 auto;
+  max-width: 90%;
+  border-radius: 1rem;
+}
+.card__description__container {
+  display: flex;
+  justify-content: center;
+}
+
+.card__comment__container {
+  display: flex;
+
+  position: relative;
+  justify-content: center;
+}
