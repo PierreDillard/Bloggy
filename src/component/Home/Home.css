@@ -12,20 +12,16 @@
     justify-content: end;
 }
 
-.home__logo {
-    width: 38rem;
-    margin: 1rem 14rem 0 0;
-}
-
 .home__button {
-    font-weight: bold;
+    width: 9rem;
     border-radius: 2rem;
     padding: 0.5rem;
     margin: 1rem 1rem 0 0;
+    border: hidden;
     background: #84D0E1;
     border-color: #84D0E1;
     box-shadow: 0.2rem 0.2rem #7a5a5a;
-    width: 9rem;
+    font-weight: bold;
 }
 
 .home__button:hover {
@@ -43,7 +39,7 @@
     justify-content: left;
     color: white;
     font-size: 3rem;
-    margin: 10rem 0 0 2rem;
+    margin: 18rem 0 0 2rem;
     font-weight: bold;
 }
 

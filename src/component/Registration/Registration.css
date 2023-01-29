@@ -21,7 +21,6 @@
     font-weight: bold;
     border-radius: 2rem;
     padding: 0.5rem;
-    margin: 1rem 1rem 0 0;
     border: none;
     background: none;
     box-shadow: 0.2rem 0.2rem #7a5a5a;
@@ -38,6 +37,7 @@
 }
 
 .regist__button--welcome {
+    margin: 1rem 1rem 0 0;
     background: #E14EB0;
     border-color: #E14EB0;
     width: 9rem;
@@ -48,7 +48,7 @@
 }
 
 .regist__button--confirm {
-    margin-right: 35.5rem;
+    margin-top: 1rem;
     padding-left: 4rem;
     padding-right: 4rem;
     background: #CEDA51;
@@ -61,33 +61,33 @@
     box-shadow: -0.2rem -0.2rem #7a5a5a;
 }
 
-.form {
+.regist-form {
     display: flex;
     flex-direction: column;
     align-items: end;
 }
 
-.form__informations {
+.regist-form__informations {
     display: flex;
     flex-direction: column;
     align-items: center;
-    margin: 10rem 30rem 0px 0;
+    margin: 14rem 20rem 0px 0;
 }
 
-.form__title {
+.regist-form__title {
     margin-bottom: 2.5rem;
     color: white;
     font-weight: bold;
     font-size: 1.8rem;
 }
 
-.form__input {
+.regist-form__input {
     padding: 0.8rem;
     margin: 1rem;
     width: 20rem;
 }
 
-.form__error-message {
+.regist-form__error-message {
     font-size: 1rem;
     margin: -15rem 33rem 0 0;
 }

@@ -2,6 +2,8 @@ import React from 'react';
 import Button from'../Button/Button';
 import image from '../../assets/home.webp'
 import './Card.css';
+import '../Comment/Comment'
+import Comment from '../Comment/Comment';
 
 
 
@@ -29,9 +31,15 @@ export default function Card(props) {
         
       <img src={image} className='card__image'/>
       
-    
+    <div className="card__description__container"> 
      <p className='card__description'>here are many variations of passages of Lorem Ipsum available, but the majority</p>
-      <p className='card__comment'>It is a long established fact that a reader will be distracted by the readable content of a page when looking at its layout. </p>
+
+     </div>
+     <div className="card__comment__container">
+     <Comment/>
+
+     </div>
+    
      
       </div>
     </div>

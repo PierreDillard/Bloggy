@@ -35,8 +35,6 @@ export default function Registration() {
 
                 <div className="regist__banner">
 
-                    <img className="home__logo" src={imgLogo} alt="Logo de BloGGy" />
-
                     {/* Bouton Accueil */}
                     <Link to="/">
                     <button className="regist__button regist__button--welcome">
@@ -48,13 +46,13 @@ export default function Registration() {
 
                 {/* Formulaire d'inscription */}
                 <form  onSubmit={handleSubmit}
-                action="" className="form" method="">
-                    <div className="form__informations">
-                        <legend className="form__title">S'inscrire</legend>
+                action="" className="regist-form" method="">
+                    <div className="regist-form__informations">
+                        <legend className="regist-form__title">S'inscrire</legend>
 
                         <label>
                             <input
-                                className="form__input"
+                                className="regist-form__input"
                                 ref={inputRef} /* focus sur le champ */
                                 type="text"
                                 value={pseudo}
@@ -65,7 +63,7 @@ export default function Registration() {
 
                         <label>
                             <input
-                                className={`form__input ${error ? "error" : ""}`}
+                                className={`regist-form__input ${error ? "error" : ""}`}
                                 type="email"
                                 value={email}
                                 placeholder="Email"
@@ -75,7 +73,7 @@ export default function Registration() {
 
                         <label>
                             <input
-                                className="form__input"
+                                className="regist-form__input"
                                 type="password"
                                 value={password}
                                 placeholder="Mot de passe"
@@ -85,7 +83,7 @@ export default function Registration() {
 
                         <label>
                             <input
-                                className="form__input"
+                                className="regist-form__input"
                                 type="password"
                                 value={password}
                                 placeholder="Répétez le mot de passe"
@@ -93,15 +91,15 @@ export default function Registration() {
                             />
                         </label>
 
-                    </div> {/* Fin div form__informations */}
+                        {/* Bouton validez */}
+                        <button
+                            type="submit"
+                            className="regist__button regist__button--confirm"
+                        >
+                            <span className="regist__button-content regist__button-content--confirm">Validez</span>
+                        </button>
 
-                    {/* Bouton validez */}
-                    <button
-                        type="submit"
-                        className="regist__button regist__button--confirm"
-                    >
-                        <span className="regist__button-content regist__button-content--confirm">Validez</span>
-                    </button>
+                    </div> {/* Fin div form__informations */}
                     
                 </form> {/* Fin du formulaire d'inscription */}
             </div> {/* Fin div regist__container */}

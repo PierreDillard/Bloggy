@@ -1,9 +1,13 @@
 .card__container {
     margin-top: 15%;
-    width: 25rem;
-    height: 25rem;
-    background-color: black;
-    opacity: 0.8;
+    padding:0.5rem;
+ 
+    background-color:black;
+    opacity:0.9;
+    max-height: 500px;
+    width: 30%;
+    
+    
     border-radius: 1rem;
    
   }
@@ -16,11 +20,12 @@
   }
   
   .card__description {
-    border-radius: 1rem;
+   
     color : white;
     font-size: 0.8rem;
 text-align: center;
-border: 1px solid white
+border: 1px solid white;
+width: 85%;
 
   }
   
@@ -43,6 +48,20 @@ border: 1px solid white
     margin: 0 auto;
     max-width: 90%;
     border-radius: 1rem;
+  
     
   }
+  .card__description__container{
+    display: flex;
+    justify-content:center;
+   
+   
+  }
+
+
+  .card__comment__container{
+    display: flex;
   
+    position:relative;
+    justify-content: center;
+  }

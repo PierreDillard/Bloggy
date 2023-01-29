@@ -9,7 +9,6 @@ export default function News() {
     <React.Fragment>
       <div className='news__container'>
         <Header />
-        <Card />
         
       </div>
     </React.Fragment>
