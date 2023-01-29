@@ -7,6 +7,12 @@ const data = [
   { id: 1, title: 'Actualités' },
   { id: 2, title: 'Sport' },
   { id: 3, title: 'Théatre' },
+  { id: 4, title: 'Actualités' },
+  { id: 5, title: 'Sport' },
+  { id: 6, title: 'Théatre' },
+  { id: 7, title: 'Actualités' },
+  { id: 8, title: 'Sport' },
+  { id: 8, title: 'Théatre' },
 ];
 
 export default function ArtGallery() {

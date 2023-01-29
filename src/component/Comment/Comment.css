@@ -1,10 +1,17 @@
 .comment__container {
     display: flex;
     flex-direction: column;
-    width: 20rem; 
+   
     padding: 0.5rem;
-    border: 1px solid black; /* à suppr */
+   
+   
+   
+/*     border: 1px solid black; */ /* à suppr */
  /*    margin: 6rem 0 0 14rem; /* à suppr */ 
+}
+.comment__container--scroll{
+    max-height: 70px;
+    overflow-y: scroll;
 }
 
 .comment__add {
@@ -27,6 +34,7 @@
     flex-direction: row;
     align-items: center;
     margin: 0.7rem 0 0.7rem 0;
+   
 }
 
 .comment__input {
