@@ -1,4 +1,4 @@
-import React, { memo } from 'react';
+import React, { memo, useState } from 'react';
 import Button from'../Button/Button';
 import PropTypes from 'prop-types';
 import image from '../../assets/home.webp'
@@ -8,11 +8,14 @@ import Comment from '../Comment/Comment';
 import { Card } from 'react-bootstrap';
 
 
+
 /* On utilise React memo, pour optimiser la performance de Card, on ne ré rendra Card, que si les props ont changé */
 
 export default React.memo(function Card(props) {
 
   console.log(props);
+
+
   
   return (
     <React.Fragment>
@@ -51,7 +54,7 @@ export default React.memo(function Card(props) {
     
   )
 });
-
+/* On utilise propTypes, pour "typer" les props, en cas de Bug, on sait que la props attenu doit être une string */
 Card.propTypes = {
   title: PropTypes.string.isRequired,
 };
