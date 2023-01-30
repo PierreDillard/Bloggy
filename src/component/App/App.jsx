@@ -8,6 +8,8 @@ import Videos from '../Videos/Videos';
 import ArtGallery from '../ArtGallery/ArtGallery';
 import Internship from '../Internship/Internship';
 import Contact from '../Contact/Contact';
+import Dico from '../Dico/Dico';
+
 
 
 function App() {
@@ -22,6 +24,7 @@ function App() {
           <Route path='/art-gallery' element={(<ArtGallery />)} />
           <Route path='/internship' element={(<Internship />)} />
           <Route path='/contact' element={(<Contact />)} />
+          <Route path='/dico' element={(<Dico />)} />
         </Routes>
       </div>
   )
