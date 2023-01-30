@@ -29,7 +29,7 @@ router.get("/",mediaController.getAllMedias);
  * @return {object} 200 - retourne le media créée
  * @return {object} 500 - Unexpected error
  */
-router.post("/",mediaController.addMedia);
+router.post("/addMedia",mediaController.addMedia);
 
 router.get("/:id",mediaController.getMedia);
 router.patch("/:id",mediaController.modifyMedia);

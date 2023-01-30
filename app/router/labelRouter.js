@@ -29,7 +29,7 @@ router.get("/",labelController.getAllLabels);
  * @return {object} 200 - retourne le label créé
  * @return {object} 500 - Unexpected error
  */
-router.post("/",labelController.addLabel);
+router.post("/addLabel",labelController.addLabel);
 
 router.get("/:id",labelController.getLabel);
 router.patch("/:id",labelController.modifyLabel);

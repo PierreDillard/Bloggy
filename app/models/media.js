@@ -30,7 +30,7 @@ const mediaModel = {
        
         try{
             const sqlQuery = "INSERT INTO media(type, url, member_id, card_id) VALUES ($1, $2, $3, $4) RETURNING *;";
-            const values = [media.type, media.url, madie.member_id, media.card_id];
+            const values = [media.type, media.url, media.member_id, media.card_id];
             const result = await client.query(sqlQuery,values);
             cardDB = result.rows[0];
 

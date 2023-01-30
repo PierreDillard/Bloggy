@@ -78,7 +78,7 @@ const memberModel = {
             WHERE id=$1;`;
             const values = [id];
             const result = await client.query(sqlQuery,values);
-           
+           return result;
             // à voir ce que je remonte
 
        }catch(err){

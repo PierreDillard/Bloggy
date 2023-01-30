@@ -2,10 +2,10 @@ const client = require("./dbClient");
 const { cpSync } = require("fs");
 
 const cardModel = {
-    async findByMember_id(member_id){
+    async findByDescription(description){
         try{
-            const sqlQuery = `SELECT * FROM card WHERE member_id = $1;`;
-            const values = [member_id];
+            const sqlQuery = `SELECT * FROM card WHERE description = $1;`;
+            const values = [description];
             const result = await client.query(sqlQuery, values);
             return result.rows[0];
 
@@ -25,19 +25,21 @@ const cardModel = {
 
         return cards;
     },
-    async insert(card){
-        let cardDB;
-       
-        try{
-            const sqlQuery = "INSERT INTO card(description, url, type, member_id) VALUES ($1, $2, $3, $4) RETURNING *;";
-            const values = [card.description,card.url, card.type, card.member_id];
-            const result = await client.query(sqlQuery,values);
-            cardDB = result.rows[0];
-
+    async insert (card){
+        
+        try {
+          const sqlQuery = "INSERT INTO card( description, url, type, member_id) VALUES ($1, $2, $3, $4) RETURNING *;";
+          const values = [card.description, card.url, card.type, card.member_id ];
+      
+          const result = await client.query(sqlQuery, values);
+          console.log(result);
+          console.log(result.rows[0]);
+        return result.rows[0];
         }catch(err){
             console.log(err);
         }
-        
+          
+             
     },
     async findById(id){
         let card;
@@ -53,21 +55,20 @@ const cardModel = {
 
         return card;
     },
-    async update(card) {
-        let cardDB;
+    async update({ description, url, type, member_id, id}) {
+        let CardDB;
         try {
-        const sqlQuery = "SELECT * FROM update_card($1)";
-          const values = [card];
-
+          const sqlQuery = "UPDATE card SET description=$1, url=$2, type=$3, member_id=$4 WHERE id=$5 RETURNING *";
+          const values = [description, url, type, member_id, id];
+      
           const result = await client.query(sqlQuery, values);
-          return result.rows[0];
-        
-
-        }catch(err){
+          CardDB = result.rows[0];
+        } catch (error) {
             console.log(err);
         }
-        return cardDB
-                     
+      
+        return CardDB;
+           
     },
     async delete(id){
        
@@ -76,7 +77,7 @@ const cardModel = {
             WHERE id=$1;`;
             const values = [id];
             const result = await client.query(sqlQuery,values);
-           
+           return result;
             // à voir ce que je remonte
             
         }catch(err){

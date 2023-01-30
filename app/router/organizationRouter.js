@@ -30,7 +30,7 @@ router.get("/",organizationController.getAllOrganizations);
  * @return {object} 200 - retourne la catégorie créée
  * @return {object} 500 - Unexpected error
  */
-router.post("/",organizationController.addOrganization);
+router.post("/addOrganization",organizationController.addOrganization);
 
 router.get("/:id",organizationController.getOrganization);
 router.patch("/:id",organizationController.modifyOrganization);

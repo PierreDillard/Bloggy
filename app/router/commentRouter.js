@@ -29,7 +29,7 @@ router.get("/",commentController.getAllComments);
  * @return {object} 200 - retourne la catégorie créée
  * @return {object} 500 - Unexpected error
  */
-router.post("/",commentController.addComment);
+router.post("/addComment",commentController.addComment);
 
 router.get("/:id",commentController.getComment);
 router.patch("/:id",commentController.modifyComment);

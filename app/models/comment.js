@@ -1,7 +1,18 @@
 const client = require("./dbClient");
-
+const { cpSync } = require("fs");
 
 const commentModel = {
+    async findByMember_id(member_id){
+        try{
+            const sqlQuery = `SELECT * FROM card WHERE member_id = $1;`;
+            const values = [member_id];
+            const result = await client.query(sqlQuery, values);
+            return result.rows[0];
+
+        }catch(err){
+            console.log(err);
+        }
+    },
     async findAll(){
         let comments
         try{
@@ -26,7 +37,7 @@ const commentModel = {
         }catch(err){
             console.log(err);
         }
-        return commentDB
+        
     },
     async findById(id){
         let comment;
@@ -41,24 +52,18 @@ const commentModel = {
         }
         return comment;
     },
-    async update(comment){
-        let commentDB;
+    async update ({ id, member_id, card_id, content}) {
+        let comment;
         try{
-            // const sqlQuery = `UPDATE public.card
-            // SET route=$1, label=$2
-            // WHERE id=$3 RETURNING *;`;
-            // const values = [card.route,card.label,id];
-
-            const sqlQuery = "SELECT * FROM update_comment($1)";
-            const values = [comment];
+            const sqlQuery = "UPDATE comment SET member_id=$1, card_id=$2, content=$3, WHERE id=$4 RETURNING *";
+            const values = [member_id, card_id, content,id];
 
             const result = await client.query(sqlQuery,values);
-            commentDB = result.rows[0];
-
-         }catch(err){
-            console.log(err);
+            comment = result.rows[0];
+            }catch(err){
+            throw new Error(`Failed to update comment: ${error}`);
         }
-        return commentDB;
+        return comment;
     },
     async delete(id){
        
@@ -67,7 +72,7 @@ const commentModel = {
             WHERE id=$1;`;
             const values = [id];
             const result = await client.query(sqlQuery,values);
-           
+           return result;
             // à voir ce que je remonte
 
         }catch(err){

@@ -15,7 +15,7 @@ const commentController = {
                     return res.status(500).json("Erreur ajout de comment");
                 }
                     
-            },
+    },
     async getComment(req,res){
 
         const comment = await commentModel.findById(req.params.id);
