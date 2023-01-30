@@ -16,7 +16,7 @@ import { Card } from 'react-bootstrap';
 
 export default React.memo(function Card(props) {
 
-
+console.log(props);
 
   
   return (

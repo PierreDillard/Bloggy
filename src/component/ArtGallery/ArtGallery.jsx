@@ -2,6 +2,7 @@ import React, { useState } from "react";
 import Header from "../Header/Header";
 import Card from "../Card/Card";
 import "./ArtGallery.css";
+import { click } from "@testing-library/user-event/dist/click";
 
 const data = [
 { id: 1, title: "Actualités" },
@@ -18,6 +19,7 @@ const data = [
 export default function ArtGallery() {
 const [cardNumbers, setCardNumbers] = useState(3);
 
+/* function qui ajoute 3 Card au click */
 const handleShowMore = () => {
 setCardNumbers(cardNumbers + 3);
 };
@@ -31,6 +33,9 @@ return (
 <Card key={item.id} title={item.title} />
 ))}
 </div>
+
+{/* Si on a plus de 3 Card à afficher, on affiche le bouton "Afficher plus" */}
+
 {cardNumbers < data.length && (
 <button className="art-gallery__button__more" onClick={handleShowMore}>
 Afficher plus
