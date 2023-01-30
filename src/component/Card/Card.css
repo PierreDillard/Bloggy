@@ -4,8 +4,14 @@
 
   background-color: black;
   opacity: 0.9;
+  display: flex;
+  flex-direction: column;
+  
+
+  
  
   width: 30%;
+ 
 
   border-radius: 1rem;
 }
@@ -24,6 +30,7 @@
   width: 85%;
 }
 .card__button__container{
+  margin-top: 2rem;
   margin-left: 2rem;
 }
 .card__button{
@@ -66,9 +73,9 @@
 }
 
 .card__comment__container {
- display: flex;
+
   max-height: 5%;
  
 
-  justify-content: center;
+  
 }

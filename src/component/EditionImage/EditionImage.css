@@ -1,0 +1,23 @@
+.edition__image__container{
+    position: relative;
+    text-align: center;
+}
+.edition__image{
+    max-width: 80%;
+    border-radius: 1rem;
+   
+  
+}
+.image__author{
+    color: black;
+    font-weight: bold;
+    position: absolute;
+    bottom:8%;
+    left:20%;
+}
+.description{
+    color: white;
+    font-style: italic;
+    
+    text-align: left;
+}

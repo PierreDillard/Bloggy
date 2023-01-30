@@ -1,11 +1,14 @@
 import React, { memo, useState } from 'react';
 import Button from'../Button/Button';
 import PropTypes from 'prop-types';
-import image from '../../assets/home.webp'
+import image from '../../assets/home.webp';
+import EditionImage from '../EditionImage/EditionImage';
+
 import './Card.css';
 import '../Comment/Comment'
 import Comment from '../Comment/Comment';
 import { Card } from 'react-bootstrap';
+
 
 
 
@@ -34,17 +37,13 @@ export default React.memo(function Card(props) {
        </div>
        <div className="card__content">
         
-      <img src={image} className='card__image'/>
-      
-    <div className="card__description__container"> 
-     <p className='card__description'>here are many variations of passages of Lorem Ipsum available, but the majority</p>
-
-     </div>
-     <div className="card__comment__container">
+       <EditionImage
+       className="edition__image__container" />
+   
      <Comment
      />
 
-     </div>
+    
     
      
       </div>
@@ -54,7 +53,7 @@ export default React.memo(function Card(props) {
     
   )
 });
-/* On utilise propTypes, pour "typer" les props, en cas de Bug, on sait que la props attenu doit être une string */
+/* On utilise propTypes, pour "typer" les props, en cas de Bug, on sait que la props attendu doit être une string */
 Card.propTypes = {
   title: PropTypes.string.isRequired,
 };
