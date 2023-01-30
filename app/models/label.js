@@ -2,10 +2,10 @@ const client = require("./dbClient");
 const { cpSync } = require("fs");
 
 const labelModel = {
-    async findByLabel_id(media_id){
+    async findByContent(content){
         try{
-            const sqlQuery = `SELECT * FROM card WHERE media_id = $1;`;
-            const values = [media_id];
+            const sqlQuery = `SELECT * FROM label WHERE content = $1;`;
+            const values = [content];
             const result = await client.query(sqlQuery, values);
             return result.rows[0];
 
@@ -31,8 +31,9 @@ const labelModel = {
             const sqlQuery = "INSERT INTO label(content, media_id) VALUES ($1, $2) RETURNING *;";
             const values = [label.content, label.media_id];
             const result = await client.query(sqlQuery,values);
-            labelDB = result.rows[0];
-
+            console.log(result);
+            console.log(result.rows[0]);
+          return result.rows[0];
         }catch(err){
             console.log(err);
         }
@@ -78,13 +79,12 @@ const labelModel = {
             WHERE id=$1;`;
             const values = [id];
             const result = await client.query(sqlQuery,values);
-           
+           return result;
             // à voir ce que je remonte
             
          }catch(err){
             console.log(err);
         }
-
         return;
     }
 };

@@ -7,14 +7,23 @@ const organizationController = {
         res.json(organizations);
     },
     async  addOrganization(req, res) {
-        const { id, name, member_id } = req.body;
-        try {
-                return res.status(200).json("Organization ajoutée avec succes");
-        }       
-                catch (error) {
-                    return res.status(500).json("Erreur ajout d'oraganization'");
-                }
-                    
+        const {  name, member_id } = req.body;
+        console.log(req.body);
+        const organization = await organizationModel.findByName(name);
+    console.log("Is findByName problem ? ");
+        if(organization) {
+            return res.status(401).json("Ce name est déjà présente en bdd");
+        // Code to add card to database using the destructured variables
+      
+        //return res.status(500).json;
+        }
+    const newOrganization = {
+        name : name,
+        member_id : member_id
+    }
+//Finalement on l'envoi en base de données
+const organizationDb = await organizationModel.insert(newOrganization);
+res.status(200).json(organizationDb);  
             },
     async getOrganization(req,res){
 

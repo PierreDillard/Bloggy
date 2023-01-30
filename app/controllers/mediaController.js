@@ -7,14 +7,24 @@ const mediaController = {
         res.json(medias);
     },
     async  addMedia(req, res) {
-        const { id, description, url, type, member_id, card_id} = req.body;
-        try {
-                return res.status(200).json("Media ajoutée avec succes");
-        }       
-                catch (error) {
-                    return res.status(500).json("Erreur ajout de media");
-                }
-                    
+        const { type, url, member_id, card_id} = req.body;
+        console.log(req.body);
+        const media = await mediaModel.findByMember_id(member_id);
+        console.log("Is findByMember_id problem ?"); 
+        if(media) {
+            return res.status(401).json("Ce media est déjà présente en bdd");
+        }
+    const newMedia = {
+        type : type,
+        url : url,
+        member_id : member_id,
+        card_id : card_id
+    }
+    //Finalement on l'envoi en base de données
+    const mediaDb = await mediaModel.insert(newMedia);
+    res.status(200).json(mediaDb);
+
+
             },
     async getMedia(req,res){
 

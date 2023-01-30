@@ -6,14 +6,26 @@ const commentController = {
         const Comments = await commentModel.findAll();
         res.json(Comments);
     },
-    async  addComment(req, res) {
-        const { id, member_id, card_id, content, } = req.body;
-        try {
-                return res.status(200).json("Comment ajoutée avec succes");
-        }       
-                catch (error) {
-                    return res.status(500).json("Erreur ajout de comment");
-                }
+    async addComment(req, res) {
+       
+        const {  member_id, card_id, content } = req.body;
+        console.log(req.body);
+        const comment = await commentModel.findByContent(content);
+    console.log("Is findByContent problem ? ");
+        if(comment) {
+            return res.status(401).json("Ce content est déjà présente en bdd");
+        // Code to add card to database using the destructured variables
+      
+        //return res.status(500).json;
+        }
+    const newComment = {
+         member_id : member_id,
+         card_id : card_id,
+         content : content
+    }
+//Finalement on l'envoi en base de données
+const commentDb = await commentModel.insert(newComment);
+res.status(200).json(commentDb);
                     
     },
     async getComment(req,res){

@@ -35,6 +35,7 @@ const cardModel = {
           console.log(result);
           console.log(result.rows[0]);
         return result.rows[0];
+        
         }catch(err){
             console.log(err);
         }
@@ -55,19 +56,20 @@ const cardModel = {
 
         return card;
     },
-    async update({ description, url, type, member_id, id}) {
-        let CardDB;
+    async updateCard({ id, description, url, type, member_id }) {
+        let updatedCard;
         try {
           const sqlQuery = "UPDATE card SET description=$1, url=$2, type=$3, member_id=$4 WHERE id=$5 RETURNING *";
           const values = [description, url, type, member_id, id];
       
           const result = await client.query(sqlQuery, values);
-          CardDB = result.rows[0];
+          updatedCard = result.rows[0];
         } catch (error) {
-            console.log(err);
+          console.error(`Failed to update card: ${error}`);
         }
       
-        return CardDB;
+        return updatedCard;
+      
            
     },
     async delete(id){

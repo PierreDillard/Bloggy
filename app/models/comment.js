@@ -2,10 +2,10 @@ const client = require("./dbClient");
 const { cpSync } = require("fs");
 
 const commentModel = {
-    async findByMember_id(member_id){
+    async findByContent(content){
         try{
-            const sqlQuery = `SELECT * FROM card WHERE member_id = $1;`;
-            const values = [member_id];
+            const sqlQuery = `SELECT * FROM comment WHERE content = $1;`;
+            const values = [content];
             const result = await client.query(sqlQuery, values);
             return result.rows[0];
 
@@ -26,18 +26,20 @@ const commentModel = {
         return comments;
     },
     async insert(comment){
-        let commentDB;
-       
+               
         try{
             const sqlQuery = "INSERT INTO comment(member_id, card_id, content) VALUES ($1, $2, $3) RETURNING *;";
             const values = [comment.member_id, comment.card_id, comment.content];
+            
             const result = await client.query(sqlQuery,values);
-            commentDB = result.rows[0];
-
-        }catch(err){
-            console.log(err);
-        }
-        
+            console.log(result);
+            console.log(result.rows[0]);
+          return result.rows[0];
+          
+          }catch(err){
+              console.log(err);
+          }
+            
     },
     async findById(id){
         let comment;

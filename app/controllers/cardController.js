@@ -27,21 +27,15 @@ const cardController = {
     //Finalement on l'envoi en base de données
     const cardDb = await cardModel.insert(newCard);
     res.status(200).json(cardDb);
-
-
           
     },
     async getCard(req,res){
 
         const card = await cardModel.findById(req.params.id);
-        if(card) {
-            return res.status(401).json("Cette card est déjà présente en bdd");
-        // Code to add card to database using the destructured variables
-      
-        //return res.status(500).json;
-        }
+
         res.json(card);
     },
+
     async modifyCard(req,res){
         const card = req.body; // les modifications apportées à card
 

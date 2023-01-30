@@ -26,19 +26,21 @@ const mediaModel = {
         return medias;
     },
     async insert(media){
-        let mediaDB;
+        
        
         try{
             const sqlQuery = "INSERT INTO media(type, url, member_id, card_id) VALUES ($1, $2, $3, $4) RETURNING *;";
             const values = [media.type, media.url, media.member_id, media.card_id];
-            const result = await client.query(sqlQuery,values);
-            cardDB = result.rows[0];
 
+            const result = await client.query(sqlQuery,values);
+            console.log(result);
+            console.log(result.rows[0]);
+          return result.rows[0];
         }catch(err){
             console.log(err);
         }
 
-        return mediaDB;
+        
     },
     async findById(id){
         let media;
@@ -80,7 +82,7 @@ const mediaModel = {
             WHERE id=$1;`;
             const values = [id];
             const result = await client.query(sqlQuery,values);
-           
+            return result;
             // à voir ce que je remonte
             
         }catch(err){

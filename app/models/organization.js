@@ -2,6 +2,18 @@ const client = require("./dbClient");
 
 
 const organizationModel = {
+    async findByName(name){
+        try{
+            const sqlQuery = `SELECT * FROM organization WHERE name = $1;`;
+            const values = [name];
+            const result = await client.query(sqlQuery, values);
+            return result.rows[0];
+
+        }catch(err){
+            console.log(err);
+        }
+    },
+
     async findAll(){
         let organizations
         try{
@@ -15,19 +27,19 @@ const organizationModel = {
         return organizations;
     },
     async insert(organization){
-        let organizationDB;
-       
+               
         try{
             const sqlQuery = "INSERT INTO organization(name, member_id) VALUES ($1, $2) RETURNING *;";
-            const values = [organization.name, card.member_id];
+            const values = [organization.name, organization.member_id];
             const result = await client.query(sqlQuery,values);
-            organizationDB = result.rows[0];
+            console.log(result);
+            console.log(result.rows[0]);
+          return result.rows[0];
 
-        }catch(err){
-            console.log(err);
-        }
-
-        return organizationDB;
+          }catch(err){
+              console.log(err);
+          }
+            
     },
     async findById(id){
         let organization;
@@ -69,7 +81,7 @@ const organizationModel = {
             WHERE id=$1;`;
             const values = [id];
             const result = await client.query(sqlQuery,values);
-           
+           return result;
             // à voir ce que je remonte
             
          }catch(err){
