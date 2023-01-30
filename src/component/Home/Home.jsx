@@ -1,16 +1,30 @@
-import React from "react";
+import React, { useEffect } from "react";
 import { Link } from "react-router-dom";
 import imgLogo from "../../assets/logo_BloGGy_white.webp";
-import { useSelector } from "react-redux";
+import { useSelector, useDispatch } from "react-redux";
 import Header from "../Header/Header";
+import { actionlogin } from "../../actions/user";
 import "./Home.css";
 
 export default function Home() {
+
   const isLoggedIn = useSelector((state) => state.user.isLoggedIn);
+  const dispatch = useDispatch();
+  
+/* On vérifie si un utilisateur est connecté en consultant les données stockées localement via le localStorage, si on trouve un token et un email, on envoie une action de connexion via "dispatch(actionlogin..." */
+
+  useEffect(() => {
+    const email = localStorage.getItem("email");
+    const token = localStorage.getItem("token");
+    if (email && token) {
+      dispatch(actionlogin(email, token));
+    }
+  }, [dispatch]);
+
   return (
     <div className="home__container">
 
-      {/*Si l'utilisateur n'est pas connecté, on affiche "connexion", sinon on n'affiche rien */}
+      {/*Si l'utilisateur n'est pas connecté, on affiche "connexion" et "Inscription", sinon on n'affiche rien */}
       {!isLoggedIn ? (
         <React.Fragment>
           <div className="home__banner">
