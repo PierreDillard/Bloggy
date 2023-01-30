@@ -13,8 +13,10 @@ router.get("/",memberController.getAllMembers);
 router.post("/addMember", memberController.addMember);
 
 
-router.get("/member/:id",memberController.getMember);
-router.patch("/member/:id",memberController.modifyMember);
-router.delete("/member/:id",memberController.deleteMember);
+router.get("/:id",memberController.getMember);
+
+router.patch("/:id",memberController.modifyMember);
+
+router.delete("/:id",memberController.deleteMember);
 
 module.exports = router;
