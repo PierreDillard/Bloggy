@@ -39,16 +39,7 @@ expressJSDocSwagger(app)(options);
 
 app.use(express.json());
 
-function ici(req,res,next){
-    console.log("ici");
-    next();
-}
-app.use(ici);
-
 app.use("/api",router);
 
-app.use(errorHandler._404);
-
-app.use(errorHandler.manage);
 
 module.exports = app;

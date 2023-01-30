@@ -1,4 +1,4 @@
-const e = require("express");
+/*const e = require("express");
 const errorHandler = require("../service/error/errorHandler");
 const debug = require('debug')('validation');
 
@@ -31,7 +31,7 @@ const validationModule = {
      * @error renvoie une erreur 500
      * @returns {} next()
      */
-    validate(schema,key){
+    /*validate(schema,key){
         return (req,res,next)=>{
             debug(req[key]);
             const {error} = schema.validate(req[key]);

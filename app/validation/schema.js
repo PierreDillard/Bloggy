@@ -1,4 +1,4 @@
-const Joi = require('joi');
+/*const Joi = require('joi');
 
 // Joi nous permet de préciser la forme de ce qui est attendu
 const schemaQuery = Joi.object({

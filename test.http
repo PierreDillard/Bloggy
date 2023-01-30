@@ -1,42 +1,36 @@
-### Récupère toutes les catégories
+### Récupère toutes les members
 
-GET http://localhost:3000/api/categories
+GET http://localhost:5000/api/member
 
-### Crèe une catégorie
+### Crèe un membre
 
-POST http://localhost:3000/api/categories
-content-type: application/json
+POST http://localhost:5000/addMember
 
-{
-    "route": "/test",
-    "label": "Test"
-}
 
-### Récupère une catégorie
+### Récupère un member
 
-GET http://localhost:3000/api/categories/95
+GET http://localhost:5000/api/member/:id
 
-### Modifie une catégorie
+### Modifie un member
 
-PATCH http://localhost:3000/api/categories/96
-content-type: application/json
+PATCH http://localhost:5000/api/member/:id
 
-{
-    "route": "/test",
-    "label": "Test2"
-}
 
-### Supprime une catégorie
+### Supprime un member
 
-DELETE  http://localhost:3000/api/categories/95
+DELETE  http://localhost:5000/api/member/:id
 
-### Récupère tous les posts
-GET http://localhost:3000/api/posts
+
+
+
+### Récupère tous les cards
+
+GET http://localhost:5000/api/cards
 
 
 ### Crèe un post
 
-POST http://localhost:3000/api/posts
+POST http://localhost:5000/api/posts
 content-type: application/json
 
 {

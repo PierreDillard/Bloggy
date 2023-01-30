@@ -6,7 +6,9 @@ INSERT INTO "member" ("id", "pseudo", "email", "password", "role") VALUES
 (2, 'Pro', 'pro@gmail.com', 789, 'superUser'),
 (3, 'visiteur', 'visiteur@gmail.com',101010, 'user');
 
-INSERT INTO "card" 
+INSERT INTO "card" ("id", "description", "url", "type", "member_id") VALUES
+(1, 'tres jolie dessin', 'www.galerie.fr', 'dessin', 8),
+(3, 'belle peinture', 'www.peinture.com', 'peinture', 4);
 
 
 

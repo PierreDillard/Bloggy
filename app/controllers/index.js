@@ -2,12 +2,14 @@
 /* Fichier de configuration de mes controllers */
 /***********************************************/
 
-const cardController = require("./card");
-const commentController = require("./comment");
-const labelController = require("./label");
-const mediaController = require("./media");
-const memberController = require("./member");
-const organizationController = require("./organization");
-const loginController = require ("./login")
+const cardController = require("./cardController.js");
+const commentController = require("./commentController.js");
+const labelController = require("./labelController.js");
+const mediaController = require("./mediaController.js");
+const memberController = require("./memberController.js");
+const loginController = require("./loginController.js");
+const organizationController = require("./organizationContoller.js");
 
-module.exports = { cardController,commentController,labelController,mediaController,memberController, organizationController, labelController };
+
+
+module.exports = { cardController,commentController,labelController,mediaController,memberController, labelController, loginController,organizationController };

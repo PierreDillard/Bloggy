@@ -1,5 +1,3 @@
-const debug = require("debug")("SQL");
-
 const { Pool } = require('pg');
 const pool = new Pool(); // le pool permet de gérer plusieurs clients en même temps
 
@@ -18,4 +16,4 @@ module.exports = {
 };
 
 // l'export standard (sans le tracking) :
-// module.exports = pool;
+ module.exports = pool;

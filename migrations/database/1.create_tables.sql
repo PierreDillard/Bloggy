@@ -42,6 +42,7 @@ CREATE TABLE "media" (
 "type" TEXT NOT NULL,
 "url" TEXT NOT NULL,
 "member_id" INT NOT NULL REFERENCES "member"("id"),
+"card_id" INT NOT NULL REFERENCES card("id"),
 "create_at" TIMESTAMPTZ NOT NULL DEFAULT CURRENT_TIMESTAMP,
 "update_at" TIMESTAMPTZ
 );
