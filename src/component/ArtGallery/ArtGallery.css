@@ -19,3 +19,20 @@
     justify-content: space-around;
     flex-wrap: wrap;
 }
+
+.art-gallery__button__more{
+    padding: 0.5rem;
+    width:10%;
+    border-radius: 1rem;
+    margin: 1rem;
+    margin-left: 40%;
+    background: #84D0E1;
+    border-color: #84D0E1;
+    box-shadow: 0.1rem 0.1rem #7a5a5a;
+}
+
+.art-gallery__button__more:hover{
+
+    box-shadow: -0.1rem -0.1rem #7a5a5a;
+
+}
