@@ -19,7 +19,10 @@
     justify-content: space-around;
     flex-wrap: wrap;
 }
-
+.art-gallery__button__container{
+    display: flex;
+    
+}
 .art-gallery__button__more{
     padding: 0.5rem;
     width:10%;
@@ -35,4 +38,21 @@
 
     box-shadow: -0.1rem -0.1rem #7a5a5a;
 
+}
+.art-gallery__button__less{
+    background: #E899AE;
+    border-color: #E899AE;
+    box-shadow: 0.1rem 0.1rem #7a5a5a;
+    padding: 0.5rem;
+    width:10%;
+    border-radius: 1rem;
+    margin: 1rem;
+   
+    
+
+}
+
+.art-gallery__button__less:hover{
+    box-shadow: -0.1rem -0.1rem #7a5a5a;
+   
 }

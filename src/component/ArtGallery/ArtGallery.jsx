@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import Header from "../Header/Header";
 import Card from "../Card/Card";
 import "./ArtGallery.css";
-import { click } from "@testing-library/user-event/dist/click";
+
 
 const data = [
 { id: 1, title: "Actualités" },
@@ -17,35 +17,58 @@ const data = [
 ];
 
 export default function ArtGallery() {
+
+ /*  state */
 const [cardNumbers, setCardNumbers] = useState(3);
+const [showMore, setShowMore] = useState(true);
 
 /* function qui ajoute 3 Card au click */
 const handleShowMore = () => {
 setCardNumbers(cardNumbers + 3);
+setShowMore(false)
 };
 
+
+/* function qui enlève 3 Card au click */
+
+const handleShowLess = () => {
+
+  setCardNumbers(cardNumbers -3);
+  setShowMore(true)
+}
 return (
 <React.Fragment>
 <div className="art-gallery__container">
 <Header />
 <div className="art-gallery__card__container">
+
+{/* On affiche les Card (en partant du 1 element, puis on coupe en fonction de cardNumbers, si cardNumber = 3 on affiche 3 Card) */}
+
 {data.slice(0, cardNumbers).map((item) => (
 <Card key={item.id} title={item.title} />
 ))}
 </div>
 
 {/* Si on a plus de 3 Card à afficher, on affiche le bouton "Afficher plus" */}
+<div className="art-gallery__button__container">
+
 
 {cardNumbers < data.length && (
 <button className="art-gallery__button__more" onClick={handleShowMore}>
 Afficher plus
 </button>
 )}
-</div>
-</React.Fragment>
-);
+       {/* Si on a  au moins de 6 cartes à afficher, on affiche  le bouton "Afficher moins" */}
+       {!showMore && cardNumbers >= 6 && (
+          <button className="art-gallery__button__less" onClick={handleShowLess}>
+            Afficher moins
+          </button>
+        )}
+        </div>
+      </div>
+    </React.Fragment>
+  );
 }
-
 
 
 
