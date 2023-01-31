@@ -31,7 +31,7 @@ export default function Registration() {
         const response = await api.post('/api/member/addMember', { pseudo, email, password });
         console.log(response);
         const token = response.data.token;
-        // Vous pouvez sauvegarder le token dans le localStorage ou dans un state React pour l'utiliser plus tard
+        // On  sauvegarde le token dans le localStorage  pour l'utiliser plus tard
         localStorage.setItem('token', token);
         dispatch(actionregister(pseudo, email, password));
         navigate("/");
