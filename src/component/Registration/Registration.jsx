@@ -1,9 +1,12 @@
+import api from '../../api';
 import React, { useState, useEffect,useRef } from "react";
 import { Link } from "react-router-dom";
 import { useDispatch } from "react-redux";
 import { useNavigate } from "react-router-dom";
 import imgLogo from "../../assets/logo_BloGGy_white.webp";
 import { actionregister } from "../../actions/user";
+
+import axios from 'axios';
 import "./Registration.css";
 
 
@@ -22,11 +25,21 @@ export default function Registration() {
     inputRef.current.focus();
     }, []);
 
-    const handleSubmit = (event) => {
+    const handleSubmit = async (event) => {
         event.preventDefault();
+    try {
+        const response = await api.post('/api/member/addMember', { pseudo, email, password });
+        console.log(response);
+        const token = response.data.token;
+        // Vous pouvez sauvegarder le token dans le localStorage ou dans un state React pour l'utiliser plus tard
+        localStorage.setItem('token', token);
         dispatch(actionregister(pseudo, email, password));
         navigate("/");
+    } catch (error) {
+        setError('Error while registering user');
     }
+}
+    
 
     return (
         <React.Fragment>
