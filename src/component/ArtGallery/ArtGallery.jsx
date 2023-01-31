@@ -71,13 +71,10 @@ export default function ArtGallery() {
 
           </div>
 
+
         </div>
 
-      </React.Fragment>
-
-    );
-    
+      </React.Fragment> 
+       
+    )
 }
-
-
-
