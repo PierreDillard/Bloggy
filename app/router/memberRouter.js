@@ -2,6 +2,7 @@
 const express = require('express');
 const router = express.Router();
 const { memberController } = require("../controllers/index");
+const security = require ('../service/security');
 //const validationModule = require('../validation/validationModule');
 //const {  schemaMember } = require("../validation/schema");
 // Toutes mes urls commencent par /members
@@ -13,7 +14,7 @@ router.get("/",memberController.getAllMembers);
 router.post("/addMember", memberController.addMember);
 
 // "/api/member/avoirUnMember -> GET"....OK
-router.get("/:id",memberController.getMember);
+router.get("/:id",security.check,memberController.getMember);
 
 
 router.patch("/:id",memberController.modifyMember);

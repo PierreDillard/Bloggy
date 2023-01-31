@@ -25,6 +25,8 @@ const loginController = {
         }       
         //On enlève le password de l'objet member (pas de la DB)
         delete member.password;
+
+        req.session.user=member;
         //On génére un token
         const token = generateAccessToken(member);
         //On l'envoi vers l'extérieur

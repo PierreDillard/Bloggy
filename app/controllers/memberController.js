@@ -47,6 +47,11 @@ const memberController = {
         // TODO : See how made sequential updates.
         const member = req.body; // les modifications apportées à member
         member.id = req.params.id;
+        const update = await memberModel.findById(req.params.id);
+        for(const key in req.body){
+            update[key]= req.body[key]
+            console.log(update);
+        }
         const memberDB = await memberModel.update(member);
 
         res.json(memberDB);

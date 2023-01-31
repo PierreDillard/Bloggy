@@ -9,7 +9,7 @@ const { loginController } = require( "../controllers/index" );
 
 
 
-router.post( '/login', loginController.check);
+router.post( '/', loginController.check);
 //const validationModule = require('../validation/validationModule');
 //const {  schemaLogin } = require("../validation/schema");
 // /api/login/ -> POST

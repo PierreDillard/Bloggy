@@ -52,12 +52,24 @@ const memberModel = {
     async update(member){
         let memberDB;
         try{
-            console.log(value);
-            const values = [member.pseudo,member.email.member.password,member.role, member.id];
-            const sqlQuery = `UPDATE member
-            SET pseudo=$1, email=$2, password = $3, role = $4
-            WHERE id=$5 RETURNING *;`;
+            //1ere façon la plus courte pour faire la requete modify/update
+            //const values = [member.pseudo, member.email, member.password, member.role, member.id];
+            //const sqlQuery = `UPDATE member SET pseudo=$1, email=$2, password = $3, role = $4 WHERE id=$5 RETURNING *;`;
             
+            //2eme façon de faire la requete modify/update
+            const values = [];
+            const parameters = [];
+            let counter = 1;
+            for(const key in member){
+            if(key!="id"){
+            values.push(member[key]);
+            parameters.push(`${key}=$${counter}`);
+            counter++;
+            }
+            }
+            values.push(member.id);
+
+            const sqlQuery = `UPDATE member SET ${parameters.join()} WHERE id=$${counter} RETURNING *;`;
 
             const result = await client.query(sqlQuery,values);
             memberDB = result.rows[0];

@@ -7,12 +7,20 @@ require("dotenv").config();
 
 const express = require('express');
 const router = require('./app/router');
-
+var session = require('express-session')
 const multer = require('multer');
 const cors = require('cors');
 const morgan = require('morgan');
 const bodyParser = require("body-parser");
 const app = express();
+app.use(session({
+  secret: 'keyboard cat',
+  resave: false,
+  saveUninitialized: true,
+  cookie: { secure: true }
+}));
+
+
 
 const port = process.env.PORT || 3000;
 
