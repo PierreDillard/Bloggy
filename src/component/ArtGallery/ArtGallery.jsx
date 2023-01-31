@@ -59,7 +59,7 @@ Afficher plus
 </button>
 )}
        {/* Si on a  au moins de 6 cartes à afficher, on affiche  le bouton "Afficher moins" */}
-       {!showMore && cardNumbers >= 6 && (
+       { cardNumbers >= 6 && (
           <button className="art-gallery__button__less" onClick={handleShowLess}>
             Afficher moins
           </button>
