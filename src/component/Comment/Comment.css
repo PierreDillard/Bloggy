@@ -1,10 +1,11 @@
 .comment__container {
     display: flex;
     flex-direction: column;
-    width: 20rem; 
     padding: 0.5rem;
-    border: 1px solid black; /* à suppr */
-    margin: 6rem 0 0 14rem; /* à suppr */
+}
+.comment__container--scroll{
+    max-height: 70px;
+    overflow-y: scroll;
 }
 
 .comment__add {
@@ -18,8 +19,8 @@
 
 .comment__add-content {
     padding: 0.5rem;
-
     font-size: 0.8rem;
+    color: white;
 }
 
 .comment__form {
@@ -35,7 +36,7 @@
     margin-right: 0.3rem;
     padding: 0.2rem;
     align-items: end;
-    width: 12rem;
+    width: 100%;
     height: 1rem;
     font-size: 0.8rem;
     border: hidden;
@@ -81,7 +82,7 @@
     margin-right: 0.2rem;
     padding: 0.2rem;
     background-color: rgba(255,255,255,0.5);
-    width: 12rem;
+    width: 100%;
     height: 1rem;
     font-size: 0.8rem;
     text-align: start;

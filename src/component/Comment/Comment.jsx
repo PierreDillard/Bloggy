@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState  } from 'react';
 import './Comment.css';
 
 // fonction d'ajout, de modification et de suppression de commentaire
@@ -11,6 +11,11 @@ export default function Comment() {
   const [isCommentFormVisible, setCommentFormVisible] = useState(false);
   // édition ou non d'un commentaire
   const [editingCommentIndex, setEditingCommentIndex] = useState(-1);
+
+ 
+
+
+
 
   // action quand l'utilisateur clique sur le bouton "Ajouter un commentaire"
   const handleAddComment = () => {
@@ -83,7 +88,7 @@ export default function Comment() {
 
     <React.Fragment>
 
-        <div className='comment__container'>
+<div className="comment__container">
 
             <div className='comment__add'>
                 {/* l'utilisateur clique sur le bouton 'Ajouter un commentaire' */}
@@ -97,6 +102,7 @@ export default function Comment() {
                 <input 
                     className='comment__input'
                     type="text"
+               
                     value={newComment}
                     // au clique on récupère la valeur de l'input et on maj sa valeur avec setNewComment
                     onChange={(e) => setNewComment(e.target.value)}
