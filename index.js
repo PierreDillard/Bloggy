@@ -38,9 +38,7 @@ app.use(bodyParser.urlencoded({
         extended: true
 }));
 
-app.get('/', (req, res) => {
-    res.send('hello');
-  });
+
 
 
 
