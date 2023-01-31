@@ -10,17 +10,17 @@ const security = require ('../service/security');
 // /api/member/ -> GET...OK
 router.get("/",memberController.getAllMembers);
 
-// "/api/member/ajouterMember -> POST"....OK
+// "/api/member/ajouter Member -> POST"....OK
 router.post("/addMember", memberController.addMember);
 
-// "/api/member/avoirUnMember -> GET"....OK
-router.get("/:id",security.check,memberController.getMember);
+// "/api/member/voir Un Member -> GET"....OK
+router.get("/:id", security.checkAdmin, security.checkPro, memberController.getMember);
 
 
 router.patch("/:id",memberController.modifyMember);
 
 
-// "/api/member/DELETEmember -> DELETE"....OK
+// "/api/member/DELETE member -> DELETE"....OK
 router.delete("/:id",memberController.deleteMember);
 
 module.exports = router;

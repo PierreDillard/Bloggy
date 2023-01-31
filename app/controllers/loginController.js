@@ -17,15 +17,19 @@ const loginController = {
         //Si on le trouve pas on renvoi une 404
         if(!member){
             return res.status(404).json("Utilisateur inconnu")
-        }
+                    }
+                console.log(member.password);
+                console.log(password);
         //On compare les passwords, si ça ne match pas -> 401
         const pswdIsValid = await bcrypt.compare(password, member.password);
         if(!pswdIsValid){
             return res.status(401).json("bad password");
         }       
+        
         //On enlève le password de l'objet member (pas de la DB)
         delete member.password;
 
+// enregistre en memoire graçe à session=cookie
         req.session.user=member;
         //On génére un token
         const token = generateAccessToken(member);

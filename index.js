@@ -15,12 +15,12 @@ const bodyParser = require("body-parser");
 const app = express();
 app.use(session({
   secret: 'keyboard cat',
-  resave: false,
+  resave: true,
   saveUninitialized: true,
-  cookie: { secure: true }
+  // à voir combien je mets
+  cookie: { maxAge:1000605,  
+  sameSite: true }
 }));
-
-
 
 const port = process.env.PORT || 3000;
 
@@ -37,10 +37,6 @@ app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({
         extended: true
 }));
-
-
-
-
 
 // PREFIXER AVEC API
 app.use('/api', router);

@@ -1,6 +1,7 @@
 const client = require("./dbClient.js");
 
 
+
 const loginModel = {
     //Function findByPseudo : retrieve a Member by Pseudo 
     async findByPseudo(pseudo){
