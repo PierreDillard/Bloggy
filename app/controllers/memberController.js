@@ -1,7 +1,6 @@
 const { memberModel } = require("../models");
 const bcrypt = require('bcrypt');
 
-
 const memberController = {
     async getAllMembers(req,res){
         const members = await memberModel.findAll();
@@ -30,27 +29,35 @@ const memberController = {
         };
         //Finalement on l'envoi en base de données
         const memberDb = await memberModel.insert(newUser);
-        res.status(200).json(memberDb);
+        res.status(200).json("Inscription réussie");
     },
+
+    
     async getMember(req,res){
 
         const member = await memberModel.findById(req.params.id);
+        if(!member){
+            res.status(404).json(`Aucun utilsateur pour l'id : ${req.params.id}`);
+        }
 
-        res.json(member);
+        res.status(200).json(member);
     },
-    async modifyMember(req,res){
-        const member = req.body; // les modifications apportées à member
 
+    async modifyMember(req,res){
+        // TODO : See how made sequential updates.
+        const member = req.body; // les modifications apportées à member
         member.id = req.params.id;
         const memberDB = await memberModel.update(member);
 
         res.json(memberDB);
     },
+
+
     async deleteMember(req,res){
 
         const result = await memberModel.delete(req.params.id);
 
-        res.json(result);
+        res.status(200).json(result);
     }
 };
 

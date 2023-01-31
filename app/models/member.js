@@ -1,8 +1,5 @@
 const client = require("./dbClient");
 
-const { cpSync } = require("fs");
-
-
 const memberModel = {
     async findByEmail(mail){
         try{
@@ -20,8 +17,8 @@ const memberModel = {
         try{
             const result = await client.query("SELECT * FROM member;");
             members = result.rows;
-
-        }catch(err){
+        }
+        catch(err){
             console.log(err);
         }
 
@@ -33,8 +30,8 @@ const memberModel = {
             const values = [member.pseudo,member.email, member.password, member.role];
             const result = await client.query(sqlQuery, values);
             return result.rows[0];
-
-        }catch(err){
+        }
+        catch(err){
             console.log(err);
         }
     },
@@ -45,27 +42,27 @@ const memberModel = {
             const values = [id];
             const result = await client.query(sqlQuery,values);
             member = result.rows[0];
-
-        }catch(err){
+        }
+        catch(err){
             console.log(err);
         }
+
         return member;
     },
     async update(member){
         let memberDB;
         try{
-            // const sqlQuery = `UPDATE public.member
-            // SET route=$1, member=$2
-            // WHERE id=$3 RETURNING *;`;
-            // const values = [member.route,label.member,id];
-
-            const sqlQuery = "SELECT * FROM update_member($1)";
-            const values = [member];
+            console.log(value);
+            const values = [member.pseudo,member.email.member.password,member.role, member.id];
+            const sqlQuery = `UPDATE member
+            SET pseudo=$1, email=$2, password = $3, role = $4
+            WHERE id=$5 RETURNING *;`;
+            
 
             const result = await client.query(sqlQuery,values);
             memberDB = result.rows[0];
-
-       }catch(err){
+        }
+        catch(err){
             console.log(err);
         }
 
