@@ -4,6 +4,7 @@ const { route } = require('./loginRouter.js');
 //const validationModule = require('../validation/validationModule');
 //const {  schemaCard } = require("../validation/schema");
 const router = express.Router();
+const security = require ('../service/security');
 
 // Toutes mes urls commencent par /cards
 
@@ -21,9 +22,6 @@ const router = express.Router();
  * @return {array<Cards>} 200 - Liste de cards
  * @return {Error} 500 - Unexpected error
  */
-router.get("/",cardController.getAllCards);
-
-
 /**
  * POST /api/cards
  * @summary Ajoute une card
@@ -32,10 +30,26 @@ router.get("/",cardController.getAllCards);
  * @return {object} 200 - retourne la card créée
  * @return {object} 500 - Unexpected error
  */
-router.post("/addCard",cardController.addCard);
 
-router.get("/:id",cardController.getCard);
-router.patch("/:id",cardController.modifyCard);
-router.delete("/:id",cardController.deleteCard);
+
+
+
+//***MISE EN PLACE DE RESTRICTION avec attribution de roles (Admin=checkAdmin, Pro=checkPro, Visiteur=checkUser) "d'utilisation de fonctionalités" SUR LES ROUTES***
+
+// /api/card/ -> voir les CARDS ...-> GET...OK
+router.get("/", cardController.getAllCards);
+
+// "/api/card/ -> ajouter une CARD avec autorisation pour l'Admin et le Pro. -> POST"....OK
+router.post("/addCard",security.checkAdmin, security.checkPro, cardController.addCard);
+
+// "/api/card/ -> {numero de son id}...voir une CARD grâce a son numero id avec autorisation pour l'Admin et le Pro. -> GET"....OK
+router.get("/:id",security.checkAdmin, security.checkPro, cardController.getCard);
+
+// "/api/card/ -> {numero de son id}...modifier et mettre à jour une CARD grâce a son numero  id avec autorisation pour l'Admin et le Pro. -> PATCH"....OK
+router.patch("/:id",security.checkAdmin, security.checkPro, cardController.modifyCard);
+
+// "/api/card/ -> {numero de son id}...effacer une CARD grâce a son numero id avec autorisation pour l'Admin et le Pro. -> DELETE"....OK
+router.delete("/:id",security.checkAdmin, security.checkPro, cardController.deleteCard);
+
 
 module.exports = router;

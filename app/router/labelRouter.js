@@ -3,7 +3,7 @@ const { labelController } = require("../controllers/index");
 //const validationModule = require('../validation/validationModule');
 //const {  schemaLabel } = require("../validation/schema");
 const router = express.Router();
-
+const security = require ('../service/security');
 // Toutes mes urls commencent par /labels
 
 /**
@@ -20,7 +20,6 @@ const router = express.Router();
  * @return {array<Label>} 200 - Liste de labels
  * @return {Error} 500 - Unexpected error
  */
-router.get("/",labelController.getAllLabels);
 /**
  * POST /api/labels
  * @summary Ajoute un label
@@ -29,10 +28,29 @@ router.get("/",labelController.getAllLabels);
  * @return {object} 200 - retourne le label créé
  * @return {object} 500 - Unexpected error
  */
-router.post("/addLabel",labelController.addLabel);
 
-router.get("/:id",labelController.getLabel);
-router.patch("/:id",labelController.modifyLabel);
-router.delete("/:id",labelController.deleteLabel);
+
+
+
+
+
+//***MISE EN PLACE DE RESTRICTION avec attribution de roles (Admin=checkAdmin, Pro=checkPro, Visiteur=checkUser) "d'utilisation de fonctionalités" SUR LES ROUTES***
+
+// /api/label/ -> voir les LABELS avec autorisation pour l'Admin et le Pro...-> GET...OK
+router.get("/",labelController.getAllLabels);
+
+// "/api/label/ -> ajouter un LABEL avec autorisation pour l'Admin et le Pro. -> POST"....OK
+router.post("/addLabel",security.checkAdmin, security.checkPro, labelController.addLabel);
+
+// "/api/label/ -> {numero de son id}...voir un LABEL grâce a son numero id avec autorisation pour l'Admin et le Pro. -> GET"....OK
+router.get("/:id",security.checkAdmin, security.checkPro, labelController.getLabel);
+
+// "/api/label/ -> {numero de son id}...modifier et mettre à jour une LABEL grâce a son numero  id avec autorisation pour l'Admin et le Pro. -> PATCH"....OK
+router.patch("/:id",security.checkAdmin, security.checkPro, labelController.modifyLabel);
+
+// "/api/label/ -> {numero de son id}...effacer une LABEL grâce a son numero id avec autorisation pour l'Admin et le Pro. -> DELETE"....OK
+router.delete("/:id",security.checkAdmin, security.checkPro, labelController.deleteLabel);
+
+
 
 module.exports = router;
