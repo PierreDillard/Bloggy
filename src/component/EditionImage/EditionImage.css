@@ -1,23 +1,38 @@
-.edition__image__container{
-    position: relative;
-    text-align: center;
+.edition__image__container {
+  position: relative;
+  text-align: center;
+  width: 80%;
+  height: 0;
+  padding-bottom: 75%; /* Ajuste la hauteur en fonction de la largeur */
+
+  display: flex;
+  justify-content: center;
 }
-.edition__image{
-    max-width: 80%;
-    border-radius: 1rem;
-   
+
+.edition__image {
+  width: 100%;
+  height: 80%;
+  object-fit: cover;
+  position: absolute;
+top: 0;
+left: 10%;
   
+  border-radius: 1rem;
 }
 .image__author{
-    color: black;
-    font-weight: bold;
-    position: absolute;
-    bottom:8%;
-    left:20%;
+  color:white;
+/*   font-weight: bold; */
+  position: absolute;
+  top:70%;
+  left:20%;
+  background-color: black;
+  opacity: 0.8;
+  width: 30%;
+  border-radius: 1rem;
 }
 .description{
-    color: white;
-    font-style: italic;
-    
-    text-align: left;
+  color: white;
+  font-style: italic;
+  
+  text-align: left;
 }
