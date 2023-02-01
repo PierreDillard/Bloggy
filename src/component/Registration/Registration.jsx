@@ -5,7 +5,7 @@ import { useDispatch } from "react-redux";
 import { useNavigate } from "react-router-dom";
 import imgLogo from "../../assets/logo_BloGGy_white.webp";
 import { actionregister } from "../../actions/user";
-
+import jwt_decode from 'jwt-decode';
 import axios from 'axios';
 import "./Registration.css";
 
@@ -17,7 +17,7 @@ export default function Registration() {
     const inputRef = useRef(null);
     const [email, setEmail] = useState("");
     const [password, setPassword] = useState("");
-    const dispatch = useDispatch();
+    
     const [error, setError] = useState("");
     const navigate = useNavigate();
 
@@ -30,12 +30,17 @@ export default function Registration() {
     try {
         const response = await api.post('/api/member/addMember', { pseudo, email, password });
         console.log(response);
-        const token = response.data.token;
-        // On  sauvegarde le token dans le localStorage  pour l'utiliser plus tard
-        localStorage.setItem('token', token);
-        dispatch(actionregister(pseudo, email, password));
-        navigate("/");
+        if(response.status=== 200) {
+            navigate("/login");
+        } else{
+            console.log(response)
+        }
+   
+     
+     
+        
     } catch (error) {
+        console.log(error);
         setError('Error while registering user');
     }
 }

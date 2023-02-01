@@ -5,6 +5,7 @@ import { actionlogin, LOGIN, LOGOUT } from "../../actions/user";
 import axios from "axios";
 import { useNavigate } from "react-router-dom";
 import imgLogo from "../../assets/logo_BloGGy_white.webp";
+import api from '../../api';
 import "./Login.css";
 
 function Login() {
@@ -40,21 +41,20 @@ function Login() {
   })
 }
  */
-  const handleSubmit = (event) => {
-    event.preventDefault();
-    
-    // Création d'un email et d'un password de test
-    if (email === "test@example.com" && password === "password") {
-      dispatch(actionlogin(email, "token"));
-      navigate("/");
-      /*  Si l'email et le mot de passe sont corrects on envoie l'action "actionlogin", l'email et le password */
-    } else {
-      /*  S'il y a une erreur, on envoie un message d'erreur */
-      setError("Email et/ou mot de passe incorrects");
-      setEmail("");
-      setPassword("");
-    }
-  };
+const handleSubmit = async (event) => {
+  event.preventDefault();
+  try {
+    const response = await api.post('/login', { email, password });
+    console.log(response.data);
+    dispatch(actionlogin(email, "token"));
+    navigate("/");
+  } catch (error) {
+    console.log(error.response.data);
+    setError("Email et/ou mot de passe incorrects");
+    setEmail("");
+    setPassword("");
+  }
+};
 
   const handleCloseError = () => {
     setError("");
