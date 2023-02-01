@@ -38,10 +38,10 @@ console.log(props);
 
           <EditionImage className="edition__image-container" />
           <Comment 
-          key={props.id}
-          
+          key={props.id}>
 
-          />
+            
+          </Comment> 
 
         </div>
 
