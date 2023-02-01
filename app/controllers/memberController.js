@@ -3,8 +3,10 @@ const bcrypt = require('bcrypt');
 
 const memberController = {
     async getAllMembers(req,res){
+        console.log(req.body);
         const members = await memberModel.findAll();
         res.json(members);
+        
     },
     async addMember(req,res){
         //On récupére le contenu de notre body(aka le contenu du formulaire front)

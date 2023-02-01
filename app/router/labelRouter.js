@@ -37,7 +37,7 @@ const security = require ('../service/security');
 //***MISE EN PLACE DE RESTRICTION avec attribution de roles (Admin=checkAdmin, Pro=checkPro, Visiteur=checkUser) "d'utilisation de fonctionalités" SUR LES ROUTES***
 
 // /api/label/ -> voir les LABELS avec autorisation pour l'Admin et le Pro...-> GET...OK
-router.get("/",labelController.getAllLabels);
+router.get("/",security.checkAdmin, security.checkPro, labelController.getAllLabels);
 
 // "/api/label/ -> ajouter un LABEL avec autorisation pour l'Admin et le Pro. -> POST"....OK
 router.post("/addLabel",security.checkAdmin, security.checkPro, labelController.addLabel);

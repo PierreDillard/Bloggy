@@ -35,7 +35,7 @@ const security = require ('../service/security');
 
 
 // /api/media/ -> voir les MEDIAS avec autorisation pour l'Admin et le Pro...-> GET...OK
-router.get("/",mediaController.getAllMedias);
+router.get("/",security.checkAdmin, security.checkPro, mediaController.getAllMedias);
 
 // "/api/media/ -> ajouter un MEDIA avec autorisation pour l'Admin et le Pro. -> POST"....OK
 router.post("/addMedia",security.checkAdmin, security.checkPro, mediaController.addMedia);

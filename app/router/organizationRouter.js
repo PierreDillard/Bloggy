@@ -36,7 +36,7 @@ const security = require ('../service/security');
 
 
 // /api/organization/ -> voir les ORGANIZATIONS avec autorisation pour l'Admin et le Pro...-> GET...OK
-router.get("/",organizationController.getAllOrganizations);
+router.get("/",security.checkAdmin, security.checkPro, organizationController.getAllOrganizations);
 
 // "/api/organization/ -> ajouter un ORGANIZATION avec autorisation pour l'Admin et le Pro. -> POST"....OK
 router.post("/addOrganization",organizationController.addOrganization);

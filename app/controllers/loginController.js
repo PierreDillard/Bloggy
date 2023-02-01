@@ -29,7 +29,7 @@ const loginController = {
         //On enlève le password de l'objet member (pas de la DB)
         delete member.password;
 
-// enregistre en memoire graçe à session=cookie
+// enregistre en memoire grace à session=cookie
         req.session.user=member;
         //On génére un token
         const token = generateAccessToken(member);

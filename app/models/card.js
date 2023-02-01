@@ -56,21 +56,48 @@ const cardModel = {
 
         return card;
     },
-    async updateCard({ id, description, url, type, member_id }) {
-        let updatedCard;
-        try {
-          const sqlQuery = "UPDATE card SET description=$1, url=$2, type=$3, member_id=$4 WHERE id=$5 RETURNING *";
-          const values = [description, url, type, member_id, id];
-      
-          const result = await client.query(sqlQuery, values);
-          updatedCard = result.rows[0];
-        } catch (error) {
-          console.error(`Failed to update card: ${error}`);
+    async update(card){
+        let cardDB;
+        try{
+            //***1ere façon la plus courte pour faire la requete modify/update***
+            //const values = [member.description, member.url, member.type, member.member_id, member.id];
+            //const sqlQuery = `UPDATE member SET description=$1, url=$2, type = $3, member_id = $4 WHERE id=$5 RETURNING *;`;
+            
+            //***2eme façon plus longue pour faire la requete modify/update**
+
+            const values = [];                          // []=tableau contenant des valeurs = description, url, type, member_id, id
+            const parameters = [];                      // []=tableau contenant des parametres representant tout les:  noms de la propriété=$...ex: description=$1, url=$2, type = $3, ...etc
+            let counter = 1;
+            
+            for(const key in card){                     // "FOR IN" on lui envoi un objet "member" puis  parcourt toutes les propriétés de member (description, url, type, member_id, id)
+
+            if(key!="id"){                              // La propriété "id" permet de faire le WHERE id= (en ligne 82) et qui contient aussi ttes les propriétés qui viennent de req.body
+                                                        // (key!="id") veut dire que ttes les proprietes qui sont differents de id...on les enregistres la valeur à l'interieur de values et les
+                                                        // les requetes SQL (ex: $1=peudo) dans parametre.
+
+            values.push(card[key]);                     // member[key] represente = "member.description, member.url, member.type, member.member_id, member.id"
+
+            parameters.push(`${key}=$${counter}`);      //${key}=$${counter} represente: $1=description +1 = $2=url +1 $3=type...etc 
+
+            counter++;                                  // ajout de +1 à chaque $ 
+            }
+            }
+            values.push(card.id);
+
+            // "JOIN" permet de prendre chaque élément du tableau et de venir les coller ensemble, 
+            //pour former une chaîne de caractère, il les sépare d'une virgule.
+            const sqlQuery = `UPDATE card SET ${parameters.join()} WHERE id=$${counter} RETURNING *;`;
+            // "RETURNING avec * ": permet de retourner tout les champs qui t'interessent de la ligne qui ont été modifié.
+            // il retourne un objet qui represente tout les membreS.
+
+            const result = await client.query(sqlQuery,values);
+            cardDB = result.rows[0];
         }
-      
-        return updatedCard;
-      
-           
+        catch(err){
+            console.log(err);
+        }
+
+        return cardDB;     
     },
     async delete(id){
        

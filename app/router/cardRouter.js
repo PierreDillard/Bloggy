@@ -34,10 +34,11 @@ const security = require ('../service/security');
 
 
 
+
 //***MISE EN PLACE DE RESTRICTION avec attribution de roles (Admin=checkAdmin, Pro=checkPro, Visiteur=checkUser) "d'utilisation de fonctionalités" SUR LES ROUTES***
 
 // /api/card/ -> voir les CARDS ...-> GET...OK
-router.get("/", cardController.getAllCards);
+router.get("/", security.checkAdmin, security.checkPro, cardController.getAllCards);
 
 // "/api/card/ -> ajouter une CARD avec autorisation pour l'Admin et le Pro. -> POST"....OK
 router.post("/addCard",security.checkAdmin, security.checkPro, cardController.addCard);

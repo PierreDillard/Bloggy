@@ -38,8 +38,13 @@ const cardController = {
 
     async modifyCard(req,res){
         const card = req.body; // les modifications apportées à card
-
         card.id = req.params.id;
+        const update = await cardModel.findById(req.params.id);
+        for(const key in req.body){
+            update[key]= req.body[key]
+            console.log(update);
+        }
+
         const cardDB = await cardModel.update(card);
 
         res.json(cardDB);

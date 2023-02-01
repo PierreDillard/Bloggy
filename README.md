@@ -74,6 +74,44 @@ hello la team
 index.js
 routes.http               
 
-
-
 AAïe Caramba 
+
+Autorisation sur les routes:
+
+
+| en tant qu'ADMIN           |Login   |M'inscrire |Member  |Card    |Comment |label   |Media   |Organization|
+|:--------------------------:|:------:|:---------:|:------:|:------:|:------:|:------:|:------:|:----------:|
+|je peux me                  |Oui     |Non        |        |        |        |        |        |            |
+|je vois tous les            |        |           |Oui     |Oui     |Oui     |oui     |oui     | oui        |
+|je vois un/une              |        |           |Oui     |Oui     |Oui     |oui     |oui     | oui        |
+|je peux ajouter             |        |           |Oui     |Oui     |Oui     |oui     |oui     | oui        |
+|je peux modifier            |        |           |Oui     |Oui     |Oui     |oui     |oui     | oui        |
+|je peux supprimer           |        |           |Oui     |Oui     |Oui     |oui     |oui     | oui        |
+| en tant que PRO            |Login   |M'inscrire |Member  |Card    |Comment |label   |Media   |Organization|
+|:--------------------------:|:------:|:---------:|:------:|:------:|:------:|:------:|:------:|:----------:|
+|je peux me                  |Oui     |Oui        |        |        |        |        |        |            |
+|je vois tous les            |        |           |Non     |Oui     |Oui     |oui     |oui     | oui        |
+|je vois un/une              |        |           |Non     |Oui     |Oui     |oui     |oui     | oui        |
+|je peux ajouter             |        |           |Non     |Oui     |Oui     |oui     |oui     | oui        |
+|je peux modifier            |        |           |Non     |Oui     |Oui     |oui     |oui     | oui        |
+|je peux supprimer           |        |           |Non     |Oui     |Oui     |oui     |oui     | oui        |
+| en tant que VISITEUR       |Login   |M'inscrire |Member  |Card    |Comment |label   |Media   |Organization|
+|:--------------------------:|:------:|:---------:|:------:|:------:|:------:|:------:|:------:|:----------:|
+|je peux me                  |Oui     |Non        |        |        |        |        |        |            |
+|je vois toutes les membres  |        |           |Non     |Non     |Non     |Non     |Non     |Non         |
+|je vois un membre           |        |           |Non     |Non     |Non     |Non     |Non     |Non         |
+|je peux ajouter             |        |           |Non     |Non     |Non     |Non     |Non     |Non         |
+|je peux modifier            |        |           |Non     |Non     |Non     |Non     |Non     |Non         |
+|je peux supprimer           |        |           |Non     |Non     |Non     |Non     |Non     |Non         | (modifié) 
+
+
+
+
+
+
+
+
+
+
+
+
