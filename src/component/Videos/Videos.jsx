@@ -7,7 +7,7 @@ export default function Videos() {
     <React.Fragment>
       <div className='videos__container'>
         <Header />
-        
+       
       </div>
     </React.Fragment>
   )

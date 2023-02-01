@@ -9,6 +9,7 @@ import ArtGallery from '../ArtGallery/ArtGallery';
 import Internship from '../Internship/Internship';
 import Contact from '../Contact/Contact';
 import Dico from '../Dico/Dico';
+import RegistrationForm from '../RegistrationForm/RegistrationForm';
 
 // branchement Back
 // PGUSER=bloggy
@@ -31,6 +32,7 @@ function App() {
           <Route path='/internship' element={(<Internship />)} />
           <Route path='/contact' element={(<Contact />)} />
           <Route path='/dico' element={(<Dico />)} />
+          <Route path='/test' element={(<RegistrationForm />)} />
         </Routes>
       </div>
   )

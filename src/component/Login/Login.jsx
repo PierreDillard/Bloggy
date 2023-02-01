@@ -102,21 +102,21 @@ const handleSubmit = async (event) => {
             <span className="login__button-content login__button-content--connect">Connexion</span>
           </button>
 
+          {/*  On affiche un message erreur dans l'input si le mot de passe ou l'email est incorrect */}
+          {error && (
+            <p className="login-form__error-message" onClick={handleCloseError}>
+              {error}
+            </p>
+          )}
+
         </div>
 
-        {/*  On affiche un message erreur dans l'input si le mot de passe ou l'email est incorrect */}
-        {error && (
-          <p className="login-form__error-message" onClick={handleCloseError}>
-            {error}
-          </p>
-        )}
       </form>
     </div>
   );
 }
 
 export default Login;
-
 
 
 
