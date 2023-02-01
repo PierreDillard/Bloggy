@@ -56,23 +56,41 @@ const organizationModel = {
         return organization;
     },
     async update(organization){
-        let organizationDB;
+        let organizationDb;
         try{
-            // const sqlQuery = `UPDATE public.organization
-            // SET route=$1, organization=$2
-            // WHERE id=$3 RETURNING *;`;
-            // const values = [organization.route,label.organization,id];
+            const values = [];                          // []=tableau contenant des valeurs = name, member_id, id
+            const parameters = [];                      // []=tableau contenant des parametres representant tout les:  noms de la propriété=$...ex: name=$1, member_id=$2, ...etc
+            let counter = 1;
+            
+            for(const key in organization){             // "FOR IN" on lui envoi un objet "card" puis  parcourt toutes les propriétés de member (name, member_id, id)
 
-            const sqlQuery = "SELECT * FROM update_organization($1)";
-            const values = [organization];
+            if(key!="id"){                              // La propriété "id" permet de faire le WHERE id= (en ligne 82) et qui contient aussi ttes les propriétés qui viennent de req.body
+                                                        // (key!="id") veut dire que ttes les proprietes qui sont differents de id...on les enregistres la valeur à l'interieur de values et les
+                                                        // les requetes SQL (ex: $1=name) dans parametre.
+
+            values.push(organization[key]);                     // organization[key] represente = "organization.name, organization.member_id"
+
+            parameters.push(`${key}=$${counter}`);      //${key}=$${counter} represente: $1=name +1 = $2=member_id...etc 
+
+            counter++;                                  // ajout de +1 à chaque $ 
+            }
+            }
+            values.push(organization.id);
+
+            // "JOIN" permet de prendre chaque élément du tableau et de venir les coller ensemble, 
+            //pour former une chaîne de caractère, il les sépare d'une virgule.
+            const sqlQuery = `UPDATE organization SET ${parameters.join()} WHERE id=$${counter} RETURNING *;`;
+            // "RETURNING avec * ": permet de retourner tout les champs qui t'interessent de la ligne qui ont été modifié.
+            // il retourne un objet qui represente tout les organizations.
 
             const result = await client.query(sqlQuery,values);
-            organizationDB = result.rows[0];
-
-        }catch(err){
+            organizationDb = result.rows[0];
+        }
+        catch(err){
             console.log(err);
         }
-        return organizationDB;
+
+        return organizationDb;
     },
     async delete(id){
        
@@ -88,7 +106,7 @@ const organizationModel = {
             console.log(err);
         }
 
-        return;
+        return organizationDb;
     }
 };
 

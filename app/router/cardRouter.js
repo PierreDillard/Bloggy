@@ -38,19 +38,19 @@ const security = require ('../service/security');
 //***MISE EN PLACE DE RESTRICTION avec attribution de roles (Admin=checkAdmin, Pro=checkPro, Visiteur=checkUser) "d'utilisation de fonctionalités" SUR LES ROUTES***
 
 // /api/card/ -> voir les CARDS ...-> GET...OK
-router.get("/", security.checkAdmin, security.checkPro, cardController.getAllCards);
+router.get("/", security.checkPro, cardController.getAllCards);
 
 // "/api/card/ -> ajouter une CARD avec autorisation pour l'Admin et le Pro. -> POST"....OK
-router.post("/addCard",security.checkAdmin, security.checkPro, cardController.addCard);
+router.post("/addCard", security.checkPro, cardController.addCard);
 
 // "/api/card/ -> {numero de son id}...voir une CARD grâce a son numero id avec autorisation pour l'Admin et le Pro. -> GET"....OK
-router.get("/:id",security.checkAdmin, security.checkPro, cardController.getCard);
+router.get("/:id", security.checkPro, cardController.getCard);
 
 // "/api/card/ -> {numero de son id}...modifier et mettre à jour une CARD grâce a son numero  id avec autorisation pour l'Admin et le Pro. -> PATCH"....OK
-router.patch("/:id",security.checkAdmin, security.checkPro, cardController.modifyCard);
+router.patch("/:id",security.checkPro, cardController.modifyCard);
 
 // "/api/card/ -> {numero de son id}...effacer une CARD grâce a son numero id avec autorisation pour l'Admin et le Pro. -> DELETE"....OK
-router.delete("/:id",security.checkAdmin, security.checkPro, cardController.deleteCard);
+router.delete("/:id", security.checkPro, cardController.deleteCard);
 
 
 module.exports = router;

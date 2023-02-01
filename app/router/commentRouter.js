@@ -41,23 +41,23 @@ const security = require ('../service/security');
 
 
 // /api/comment/ -> voir les COMMENTS avec autorisation pour l'Admin et le Pro...-> GET...OK
-router.get("/",security.checkAdmin, security.checkPro, commentController.getAllComments);
+router.get("/",security.checkPro, commentController.getAllComments);
 
 
 // "/api/comment/ -> ajouter un COMMENT avec autorisation pour l'Admin et le Pro. -> POST"....OK
-router.post("/addComment",security.checkAdmin, security.checkPro, commentController.addComment);
+router.post("/addComment",security.checkPro, commentController.addComment);
 
 
 // "/api/comment/ -> {numero de son id}...voir un COMMENT grâce a son numero id avec autorisation pour l'Admin et le Pro. -> GET"....OK
-router.get("/:id",security.checkAdmin, security.checkPro, commentController.getComment);
+router.get("/:id",security.checkPro, commentController.getComment);
 
 
 // "/api/comment/ -> {numero de son id}...modifier et mettre à jour une COMMENT grâce a son numero  id avec autorisation pour l'Admin et le Pro. -> PATCH"....OK
-router.patch("/:id",security.checkAdmin, security.checkPro,commentController.modifyComment);
+router.patch("/:id", security.checkPro,commentController.modifyComment);
 
 
 // "/api/comment/ -> {numero de son id}...effacer une COMMENT grâce a son numero id avec autorisation pour l'Admin et le Pro. -> DELETE"....OK
-router.delete("/:id",security.checkAdmin, security.checkPro, commentController.deleteComment);
+router.delete("/:id", security.checkPro, commentController.deleteComment);
 
 
 

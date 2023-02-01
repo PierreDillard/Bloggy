@@ -54,19 +54,44 @@ const commentModel = {
         }
         return comment;
     },
-    async update ({ id, member_id, card_id, content}) {
-        let comment;
+    async update (comment) {
+        let commentDb;
         try{
-            const sqlQuery = "UPDATE comment SET member_id=$1, card_id=$2, content=$3, WHERE id=$4 RETURNING *";
-            const values = [member_id, card_id, content,id];
+            const values = [];                          // []=tableau contenant des valeurs = member_id, card_id, content, id
+            const parameters = [];                      // []=tableau contenant des parametres representant tout les:  noms de la propriété=$...ex: member_id=$1, card_id=$2, content= $3, ...etc
+            let counter = 1;
+            
+            for(const key in comment){                     // "FOR IN" on lui envoi un objet "comment" puis  parcourt toutes les propriétés de comment (member_id, card_id, id)
+
+            if(key!="id"){                              // La propriété "id" permet de faire le WHERE id= (en ligne 82) et qui contient aussi ttes les propriétés qui viennent de req.body
+                                                        // (key!="id") veut dire que ttes les proprietes qui sont differents de id...on les enregistres la valeur à l'interieur de values et les
+                                                        // les requetes SQL (ex: $1=member_id) dans parametre.
+
+            values.push(comment[key]);                  // card[key] represente = "comment.member_id, comment.card_id, comment.content, comment.id"
+
+            parameters.push(`${key}=$${counter}`);      //${key}=$${counter} represente: $1=member_id +1 = $2=card_id +1 $3=content...etc 
+
+            counter++;                                  // ajout de +1 à chaque $ 
+            }
+            }
+            values.push(comment.id);
+
+            // "JOIN" permet de prendre chaque élément du tableau et de venir les coller ensemble, 
+            //pour former une chaîne de caractère, il les sépare d'une virgule.
+            const sqlQuery = `UPDATE comment SET ${parameters.join()} WHERE id=$${counter} RETURNING *;`;
+            // "RETURNING avec * ": permet de retourner tout les champs qui t'interessent de la ligne qui ont été modifié.
+            // il retourne un objet qui represente tout les comments.
 
             const result = await client.query(sqlQuery,values);
-            comment = result.rows[0];
-            }catch(err){
-            throw new Error(`Failed to update comment: ${error}`);
+            commentDb = result.rows[0];
         }
-        return comment;
+        catch(err){
+            console.log(err);
+        }
+
+        return commentDb;     
     },
+
     async delete(id){
        
         try{
@@ -80,7 +105,7 @@ const commentModel = {
         }catch(err){
             console.log(err);
         }
-        return;
+        return commentDb;
     }
 };
 

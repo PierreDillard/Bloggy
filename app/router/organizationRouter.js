@@ -36,19 +36,19 @@ const security = require ('../service/security');
 
 
 // /api/organization/ -> voir les ORGANIZATIONS avec autorisation pour l'Admin et le Pro...-> GET...OK
-router.get("/",security.checkAdmin, security.checkPro, organizationController.getAllOrganizations);
+router.get("/",security.checkPro, organizationController.getAllOrganizations);
 
 // "/api/organization/ -> ajouter un ORGANIZATION avec autorisation pour l'Admin et le Pro. -> POST"....OK
-router.post("/addOrganization",organizationController.addOrganization);
+router.post("/addOrganization",security.checkPro,organizationController.addOrganization);
 
 // "/api/organization/ -> {numero de son id}...voir un ORGANIZATION grâce a son numero id avec autorisation pour l'Admin et le Pro. -> GET"....OK
-router.get("/:id",security.checkAdmin, security.checkPro, organizationController.getOrganization);
+router.get("/:id", security.checkPro, organizationController.getOrganization);
 
 // "/api/organization/ -> {numero de son id}...modifier et mettre à jour une ORGANIZATION grâce a son numero  id avec autorisation pour l'Admin et le Pro. -> PATCH"....OK
-router.patch("/:id",security.checkAdmin, security.checkPro, organizationController.modifyOrganization);
+router.patch("/:id", security.checkPro, organizationController.modifyOrganization);
 
 // "/api/organization/ -> {numero de son id}...effacer une ORGANIZATION grâce a son numero id avec autorisation pour l'Admin et le Pro. -> DELETE"....OK
-router.delete("/:id",security.checkAdmin, security.checkPro, organizationController.deleteOrganization);
+router.delete("/:id", security.checkPro, organizationController.deleteOrganization);
 
 
 module.exports = router;

@@ -19,26 +19,31 @@ const mediaController = {
         url : url,
         member_id : member_id,
         card_id : card_id
-    }
+        }
     //Finalement on l'envoi en base de données
     const mediaDb = await mediaModel.insert(newMedia);
     res.status(200).json(mediaDb);
 
 
-            },
+    },
     async getMedia(req,res){
 
         const media = await mediaModel.findById(req.params.id);
 
-        res.json(media);
+        return res.status(200).json(media);
     },
     async modifyMedia(req,res){
         const media = req.body; // les modifications apportées à media
-
         media.id = req.params.id;
-        const mediaDB = await mediaModel.update(media);
+        const update = await mediaModel.findById(req.params.id);
+        for(const key in req.body){
+            update[key]= req.body[key]
+            console.log(update);
+        }
 
-        res.json(mediaDB);
+        const mediaDb = await mediaModel.update(media);
+
+        res.json(mediaDb);
     },
     async deleteMedia(req,res){
 

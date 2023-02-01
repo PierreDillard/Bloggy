@@ -35,19 +35,19 @@ const security = require ('../service/security');
 
 
 // /api/media/ -> voir les MEDIAS avec autorisation pour l'Admin et le Pro...-> GET...OK
-router.get("/",security.checkAdmin, security.checkPro, mediaController.getAllMedias);
+router.get("/",security.checkPro, mediaController.getAllMedias);
 
 // "/api/media/ -> ajouter un MEDIA avec autorisation pour l'Admin et le Pro. -> POST"....OK
-router.post("/addMedia",security.checkAdmin, security.checkPro, mediaController.addMedia);
+router.post("/addMedia", security.checkPro, mediaController.addMedia);
 
 // "/api/media/ -> {numero de son id}...voir un MEDIA grâce a son numero id avec autorisation pour l'Admin et le Pro. -> GET"....OK
-router.get("/:id",security.checkAdmin, security.checkPro, mediaController.getMedia);
+router.get("/:id", security.checkPro, mediaController.getMedia);
 
 // "/api/media/ -> {numero de son id}...modifier et mettre à jour une MEDIA grâce a son numero  id avec autorisation pour l'Admin et le Pro. -> PATCH"....OK
-router.patch("/:id",security.checkAdmin, security.checkPro, mediaController.modifyMedia);
+router.patch("/:id", security.checkPro, mediaController.modifyMedia);
 
 // "/api/media/ -> {numero de son id}...effacer une MEDIA grâce a son numero id avec autorisation pour l'Admin et le Pro. -> DELETE"....OK
-router.delete("/:id",security.checkAdmin, security.checkPro,mediaController.deleteMedia);
+router.delete("/:id", security.checkPro,mediaController.deleteMedia);
 
 
 

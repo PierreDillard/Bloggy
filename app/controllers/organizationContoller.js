@@ -21,24 +21,33 @@ const organizationController = {
         name : name,
         member_id : member_id
     }
-//Finalement on l'envoi en base de données
-const organizationDb = await organizationModel.insert(newOrganization);
-res.status(200).json(organizationDb);  
-            },
+        //Finalement on l'envoi en base de données
+        const organizationDb = await organizationModel.insert(newOrganization);
+        res.status(200).json(organizationDb);  
+    },
+
     async getOrganization(req,res){
 
         const organization = await organizationModel.findById(req.params.id);
 
         res.json(organization);
     },
+
     async modifyOrganization(req,res){
+
         const organization = req.body; // les modifications apportées à organization
-
         organization.id = req.params.id;
-        const organizationDB = await organizationModel.update(organization);
+        const update = await organizationModel.findById(req.params.id);
+        for(const key in req.body){
+            update[key]= req.body[key]
+            console.log(update);
+        }
 
-        res.json(organizationDB);
+        const organizationDb = await organizationModel.update(organization);
+
+        res.json(organizationDb);
     },
+    
     async deleteOrganization(req,res){
 
         const result = await organizationModel.delete(req.params.id);

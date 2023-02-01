@@ -4,7 +4,8 @@ const { cardModel } = require("../models");
 const cardController = {
     async getAllCards(req,res){
         const cards = await cardModel.findAll();
-        res.json(cards);
+        console.log(req.body);
+        return res.status(200).json(cards);
     },
     async addCard(req, res) {
        
@@ -33,7 +34,7 @@ const cardController = {
 
         const card = await cardModel.findById(req.params.id);
 
-        res.json(card);
+        return res.status(200).json(card);
     },
 
     async modifyCard(req,res){
@@ -45,9 +46,9 @@ const cardController = {
             console.log(update);
         }
 
-        const cardDB = await cardModel.update(card);
+        const cardDb = await cardModel.update(card);
 
-        res.json(cardDB);
+        res.json(cardDb);
     },
     async deleteCard(req,res){
 

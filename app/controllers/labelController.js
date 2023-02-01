@@ -33,15 +33,20 @@ const labelController = {
 
         const label = await labelModel.findById(req.params.id);
 
-        res.json(label);
+        return res.status(200).json(label);
     },
     async modifyLabel(req,res){
-        const label = req.body; // les modifications apportées à label
-
+        const label = req.body; // les modifications apportées à login
         label.id = req.params.id;
-        const labelDB = await labelModel.update(label);
+        const update = await labelModel.findById(req.params.id);
+        for(const key in req.body){
+            update[key]= req.body[key]
+            console.log(update);
+        }
 
-        res.json(labelDB);
+        const labelDb = await labelModel.update(label);
+
+        res.json(labelDb);
     },
     async deleteLabel(req,res){
 

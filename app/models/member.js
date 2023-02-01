@@ -50,7 +50,7 @@ const memberModel = {
         return member;
     },
     async update(member){
-        let memberDB;
+        let memberDb;
         try{
             //***1ere façon la plus courte pour faire la requete modify/update***
             //const values = [member.pseudo, member.email, member.password, member.role, member.id];
@@ -81,16 +81,16 @@ const memberModel = {
             //pour former une chaîne de caractère, il les sépare d'une virgule.
             const sqlQuery = `UPDATE member SET ${parameters.join()} WHERE id=$${counter} RETURNING *;`;
             // "RETURNING avec * ": permet de retourner tout les champs qui t'interessent de la ligne qui ont été modifié.
-            // il retourne un objet qui represente tout les membreS.
+            // il retourne un objet qui represente tout les membres.
 
             const result = await client.query(sqlQuery,values);
-            memberDB = result.rows[0];
+            memberDb = result.rows[0];
         }
         catch(err){
             console.log(err);
         }
 
-        return memberDB;
+        return memberDb;
     },
     async delete(id){
        
@@ -105,7 +105,7 @@ const memberModel = {
        }catch(err){
             console.log(err);
         }
-        return;
+        return memberDb
     }
 };
 

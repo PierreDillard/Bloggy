@@ -18,7 +18,7 @@ router.get("/",security.checkAdmin, memberController.getAllMembers);
 
 
 // "/api/member/ajouter un Member avec autorisation pour l'Admin et le Pro-> POST"....OK
-router.post("/addMember", memberController.addMember);
+router.post("/addMember", security.checkAdmin, memberController.addMember);
 
 
 // "/api/member/{numero de son id}...voir Un Member grace a son numero id avec autorisation pour l'Admin et le Pro -> GET"....OK

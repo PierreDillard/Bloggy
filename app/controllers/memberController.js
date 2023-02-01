@@ -31,7 +31,7 @@ const memberController = {
         };
         //Finalement on l'envoi en base de données
         const memberDb = await memberModel.insert(newUser);
-        res.status(200).json("Inscription réussie");
+        res.status(200).json(memberDb);
     },
 
     
@@ -54,9 +54,9 @@ const memberController = {
             update[key]= req.body[key]
             console.log(update);
         }
-        const memberDB = await memberModel.update(member);
+        const memberDb = await memberModel.update(member);
 
-        res.json(memberDB);
+        res.json(memberDb);
     },
 
 

@@ -28,20 +28,28 @@ const commentDb = await commentModel.insert(newComment);
 res.status(200).json(commentDb);
                     
     },
+
     async getComment(req,res){
 
         const comment = await commentModel.findById(req.params.id);
 
         res.json(comment);
     },
+
     async modifyComment(req,res){
-        const card = req.body; // les modifications apportées à comment
+        const comment = req.body; // les modifications apportées à card
+        comment.id = req.params.id;
+        const update = await commentModel.findById(req.params.id);
+        for(const key in req.body){
+            update[key]= req.body[key]
+            console.log(update);
+        }
 
-        card.id = req.params.id;
-        const commentDB = await commentModel.update(comment);
+        const commentDb = await commentModel.update(comment);
 
-        res.json(commentDB);
+        res.json(commentDb);
     },
+
     async deleteComment(req,res){
 
         const result = await commentModel.delete(req.params.id);

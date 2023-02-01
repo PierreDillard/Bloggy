@@ -37,19 +37,19 @@ const security = require ('../service/security');
 //***MISE EN PLACE DE RESTRICTION avec attribution de roles (Admin=checkAdmin, Pro=checkPro, Visiteur=checkUser) "d'utilisation de fonctionalités" SUR LES ROUTES***
 
 // /api/label/ -> voir les LABELS avec autorisation pour l'Admin et le Pro...-> GET...OK
-router.get("/",security.checkAdmin, security.checkPro, labelController.getAllLabels);
+router.get("/", security.checkPro, labelController.getAllLabels);
 
 // "/api/label/ -> ajouter un LABEL avec autorisation pour l'Admin et le Pro. -> POST"....OK
-router.post("/addLabel",security.checkAdmin, security.checkPro, labelController.addLabel);
+router.post("/addLabel", security.checkPro, labelController.addLabel);
 
 // "/api/label/ -> {numero de son id}...voir un LABEL grâce a son numero id avec autorisation pour l'Admin et le Pro. -> GET"....OK
-router.get("/:id",security.checkAdmin, security.checkPro, labelController.getLabel);
+router.get("/:id", security.checkPro, labelController.getLabel);
 
 // "/api/label/ -> {numero de son id}...modifier et mettre à jour une LABEL grâce a son numero  id avec autorisation pour l'Admin et le Pro. -> PATCH"....OK
-router.patch("/:id",security.checkAdmin, security.checkPro, labelController.modifyLabel);
+router.patch("/:id", security.checkPro, labelController.modifyLabel);
 
 // "/api/label/ -> {numero de son id}...effacer une LABEL grâce a son numero id avec autorisation pour l'Admin et le Pro. -> DELETE"....OK
-router.delete("/:id",security.checkAdmin, security.checkPro, labelController.deleteLabel);
+router.delete("/:id", security.checkPro, labelController.deleteLabel);
 
 
 
