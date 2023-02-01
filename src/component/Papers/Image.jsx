@@ -11,8 +11,9 @@ export default function Papers() {
     const [isPaperFormVisible, setIsPaperFormVisible] = useState(false);
     // édition ou non d'un nouveau lien de journal
     const [editingPaperIndex, setEditingPaperIndex] = useState(-1);
-  
 
+    const [selectedImage, setSelectedImage] = useState(null);
+  
 
     // action au clique sur le bouton 'Ajouter un commentaire'
     const handleAddPaper = () => {
@@ -65,7 +66,14 @@ export default function Papers() {
       setPapers(newPapers);
     }
     
-   
+    const handleImageChange = (e) => {
+        setSelectedImage(e.target.files[0]);
+      };
+      
+      const handleUploadImage = () => {
+        // upload selectedImage here
+      };
+    
 
   return (
 
@@ -100,7 +108,8 @@ export default function Papers() {
                 <button className='papers__button papers__button--cancel' onClick={handleCancelPaper}>
                     Annuler
                 </button>
-
+                <input type="file" onChange={handleImageChange} />
+<button onClick={handleUploadImage}>Charger une image</button>
               </form>
            )}
 
@@ -115,7 +124,7 @@ export default function Papers() {
 
               
 
-              
+
 
 
 
@@ -123,7 +132,9 @@ export default function Papers() {
                 <div className='papers__container-image'>
                   <div className='papers__input-image'>
 
+coucou
                   
+
 
 
                     <div>

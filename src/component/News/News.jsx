@@ -13,7 +13,6 @@ export default function News() {
         <Header />
         <Dico />
         <Papers />
-        
       </div>
     </React.Fragment>
   )
