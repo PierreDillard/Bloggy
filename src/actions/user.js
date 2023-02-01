@@ -1,14 +1,18 @@
+
+
 export const LOGIN = "LOGIN";
 export const LOGOUT = "LOGOUT";
 export const REGISTER = "REGISTER";
 
 export const actionlogin = (email, token) => {
+ 
     return dispatch => {
       dispatch({
         type: LOGIN,
         payload: {
           email,
-          token
+          token,
+      
         }
       });
       localStorage.setItem("email", email);

@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import Header from "../Header/Header";
 import Card from "../Card/Card";
+
 import "./ArtGallery.css";
 
 
@@ -15,6 +16,7 @@ const data = [
   { id: 8, title: "Sport" },
   { id: 9, title: "Théatre" },
 ];
+
 
 export default function ArtGallery() {
 
@@ -48,7 +50,7 @@ export default function ArtGallery() {
             {/* On affiche les Card (en partant du 1 element, puis 
               on coupe en fonction de cardNumbers, si cardNumber = 3 on affiche 3 Card) */}
             {data.slice(0, cardNumbers).map((item) => (
-            <Card key={item.id} title={item.title} />
+            <Card key={item.id} title={item.title} id= {item.id} />
             ))}
 
           </div>
@@ -71,10 +73,10 @@ export default function ArtGallery() {
 
           </div>
 
-
         </div>
 
-      </React.Fragment> 
-       
-    )
+      </React.Fragment>
+
+    );
+    
 }

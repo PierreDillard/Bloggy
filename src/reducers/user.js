@@ -14,7 +14,8 @@ const reducer = (state = initialState, action) => {
                 ...state,
                 isLoggedIn: true,
                 email: action.payload.email,
-                token: action.payload.token
+                token: action.payload.token,
+                decoded: action.payload.decoded
             }
         case LOGOUT:
             return {

@@ -1,8 +1,11 @@
-import React, { useState  } from 'react';
+import React, { useState,useRef  } from 'react';
+import { propTypes } from 'react-bootstrap/esm/Image';
 import './Comment.css';
 
 // fonction d'ajout, de modification et de suppression de commentaire
-export default function Comment() {
+export default function Comment({ id, ...props }) {
+
+ /*  State */
   // liste des commentaires existants
   const [comments, setComments] = useState([]);
   // nouveau commentaire
@@ -11,7 +14,10 @@ export default function Comment() {
   const [isCommentFormVisible, setCommentFormVisible] = useState(false);
   // édition ou non d'un commentaire
   const [editingCommentIndex, setEditingCommentIndex] = useState(-1);
+  
+  const [ isActive, setIsActive ] = useState(false);
 
+ /*  écouter le click, sur le boutton "ajouter un commentaire" */
  
 
 
@@ -21,6 +27,7 @@ export default function Comment() {
   const handleAddComment = () => {
     // rend visible le formulaire de saisie en modifiant l'état correspondant
     setCommentFormVisible(true);
+    
   };
 
   // action quand l'utilisateur clique sur le bouton "Annuler"
@@ -92,13 +99,18 @@ export default function Comment() {
 
             <div className='comment__add'>
                 {/* l'utilisateur clique sur le bouton 'Ajouter un commentaire' */}
-                <button className='comment__add-button' onClick={handleAddComment}>+</button>
+                <button className={`comment__add-button ${isActive ? 'active' : ''}`} onClick={handleAddComment}>+</button>
                 <span className='comment__add-content'>Ajouter un commentaire</span>
             </div>
             
             {/* on affiche le formulaire de champ de saisie et les boutons 'Valider' et 'Annuler*/}
             {isCommentFormVisible && (
-                <form className='comment__form' onSubmit={handleSubmitComment}>
+                <form className='comment__form'
+                 onSubmit={handleSubmitComment}
+                 
+               
+                 
+                 >
                 <input 
                     className='comment__input'
                     type="text"
