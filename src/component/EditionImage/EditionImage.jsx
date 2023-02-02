@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import image from '../../assets/home.webp';
 import './EditionImage.css';
 
-export default function EditionImage() {
+export default function EditionImage({showModal, setShowModal}) {
  
   const [imageUrl, setImageUrl] = useState(image);
   const [showFileInput, setShowFileInput] = useState(false);

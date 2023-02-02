@@ -9,7 +9,6 @@ import ArtGallery from '../ArtGallery/ArtGallery';
 import Internship from '../Internship/Internship';
 import Contact from '../Contact/Contact';
 import Dico from '../Dico/Dico';
-import RegistrationForm from '../RegistrationForm/RegistrationForm';
 
 // branchement Back
 // PGUSER=bloggy
@@ -18,6 +17,9 @@ import RegistrationForm from '../RegistrationForm/RegistrationForm';
 // HOST=http://localhost/
 // url pour inscription d'un membre : http://localhost:5000/api/member/addMember
 // PORT=5000
+// ACCESS_TOKEN_SECRET=4242XX
+// REFRESH_TOKEN_SECRET=424200000X1
+
 
 function App() {
   return (
@@ -32,7 +34,6 @@ function App() {
           <Route path='/internship' element={(<Internship />)} />
           <Route path='/contact' element={(<Contact />)} />
           <Route path='/dico' element={(<Dico />)} />
-          <Route path='/test' element={(<RegistrationForm />)} />
         </Routes>
       </div>
   )

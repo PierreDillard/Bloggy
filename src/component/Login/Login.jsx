@@ -11,6 +11,7 @@ import "./Login.css";
 function Login() {
 
   const inputRef = useRef(null);
+  const [pseudo, setPseudo] = useState("");
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const dispatch = useDispatch();
@@ -45,13 +46,14 @@ function Login() {
 const handleSubmit = async (event) => {
   event.preventDefault();
   try {
-    const response = await api.post('/login', { email, password });
+    const response = await api.post('/login', { pseudo, email, password });
     console.log(response.data);
     dispatch(actionlogin(email, "token"));
     navigate("/");
   } catch (error) {
     console.log(error.response.data);
-    setError("Email et/ou mot de passe incorrects");
+    setError("Pseudo, email ou mot de passe incorrects");
+    setPseudo("");
     setEmail("");
     setPassword("");
   }
@@ -77,8 +79,18 @@ const handleSubmit = async (event) => {
 
           <label>
             <input
-              className={`login-form__input ${error ? "error" : ""}`}
+              className={`login-form__input`}
               ref={inputRef}
+              type="pseudo"
+              value={pseudo}
+              placeholder="Pseudo"
+              onChange={(event) => setPseudo(event.target.value)}
+            />
+          </label>
+
+          <label>
+            <input
+              className={`login-form__input ${error ? "error" : ""}`}
               type="email"
               value={email}
               placeholder="Email"

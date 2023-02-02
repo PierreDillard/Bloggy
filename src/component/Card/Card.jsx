@@ -14,6 +14,12 @@ import '../Comment/Comment'
 
 export default memo(function Card({id,...props}) {
 
+  const [showModal, setShowModal] = useState(false);
+
+  const handleClick = () => {
+    setShowModal(true);
+  };
+
   
 console.log(props);
   
@@ -26,7 +32,7 @@ console.log(props);
         <div className='card__header'>
 
           <div className="card__bouton-container">
-            <button className='card__button card__button--modify'>Modifier</button>
+            <button className='card__button card__button--modify' onClick={handleClick}>Modifier</button>
             <button className='card__button card__button--cancel'>Supprimer</button>
           </div>
 
@@ -35,6 +41,8 @@ console.log(props);
         </div>
         
         <div className="card__content">
+
+        {showModal && <EditionImage showModal={showModal} setShowModal={setShowModal} />}
 
           <EditionImage className="edition__image-container" />
           <Comment 

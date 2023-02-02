@@ -87,7 +87,7 @@
     width: 20rem;
 }
 
-.regist-form__error-message {
+.regist__error-message{
     font-size: 1rem;
-    margin: -15rem 33rem 0 0;
+    margin-top: -24rem;
 }
