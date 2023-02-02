@@ -1,10 +1,9 @@
 .dico__container {
     display: flex;
     flex-direction: row;
-    width: 48rem; 
     padding: 0.5rem;
-    border: 1px solid black; /* à suppr */
-    margin: -15rem 0 0 14rem; /* à suppr */
+    background: rgba(0,0,0,0.4); /* transparence de 0.4 */
+    margin: 2rem 3rem 0 3rem; 
 }
 
 .dico__search {
