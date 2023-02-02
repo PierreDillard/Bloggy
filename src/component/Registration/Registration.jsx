@@ -32,7 +32,7 @@ export default function Registration() {
         if(response.status=== 200) {
             navigate("/login");
         } else{
-            console.log(response)
+            console.log(response);
         }
    
      
