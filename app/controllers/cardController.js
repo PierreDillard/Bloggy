@@ -54,7 +54,7 @@ const cardController = {
 
         const result = await cardModel.delete(req.params.id);
 
-        res.json(result);
+        res.status(200).json(result);
     }
 };
 
