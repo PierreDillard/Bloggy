@@ -34,14 +34,14 @@ const security = require ('../service/security');
 //***MISE EN PLACE DE RESTRICTION avec attribution de roles (Admin=checkAdmin, Pro=checkPro, Visiteur=checkUser) "d'utilisation de fonctionalités" SUR LES ROUTES***
 
 
-// /api/media/ -> voir les MEDIAS avec autorisation pour l'Admin et le Pro...-> GET...OK
-router.get("/",security.checkPro, mediaController.getAllMedias);
+// /api/media/ -> voir les MEDIAS.-> GET...OK
+router.get("/", mediaController.getAllMedias);
 
 // "/api/media/ -> ajouter un MEDIA avec autorisation pour l'Admin et le Pro. -> POST"....OK
 router.post("/addMedia", security.checkPro, mediaController.addMedia);
 
-// "/api/media/ -> {numero de son id}...voir un MEDIA grâce a son numero id avec autorisation pour l'Admin et le Pro. -> GET"....OK
-router.get("/:id", security.checkPro, mediaController.getMedia);
+// "/api/media/ -> {numero de son id}...voir un MEDIA grâce a son numero son numero id. -> GET"....OK
+router.get("/:id", mediaController.getMedia);
 
 // "/api/media/ -> {numero de son id}...modifier et mettre à jour une MEDIA grâce a son numero  id avec autorisation pour l'Admin et le Pro. -> PATCH"....OK
 router.patch("/:id", security.checkPro, mediaController.modifyMedia);

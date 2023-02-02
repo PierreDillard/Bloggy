@@ -34,7 +34,7 @@ const loginController = {
         //On génére un token
         const token = generateAccessToken(member);
         //On l'envoi vers l'extérieur
-        res.status(200).json({member, token});
+        res.status(200).json({member, token})
     }
 };
 module.exports = loginController;

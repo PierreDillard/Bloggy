@@ -35,14 +35,14 @@ const security = require ('../service/security');
 //***MISE EN PLACE DE RESTRICTION avec attribution de roles (Admin=checkAdmin, Pro=checkPro, Visiteur=checkUser) "d'utilisation de fonctionalités" SUR LES ROUTES***
 
 
-// /api/organization/ -> voir les ORGANIZATIONS avec autorisation pour l'Admin et le Pro...-> GET...OK
-router.get("/",security.checkPro, organizationController.getAllOrganizations);
+// /api/organization/ -> voir les ORGANIZATIONS.-> GET...OK
+router.get("/", organizationController.getAllOrganizations);
 
 // "/api/organization/ -> ajouter un ORGANIZATION avec autorisation pour l'Admin et le Pro. -> POST"....OK
 router.post("/addOrganization",security.checkPro,organizationController.addOrganization);
 
-// "/api/organization/ -> {numero de son id}...voir un ORGANIZATION grâce a son numero id avec autorisation pour l'Admin et le Pro. -> GET"....OK
-router.get("/:id", security.checkPro, organizationController.getOrganization);
+// "/api/organization/ -> {numero de son id}...voir un ORGANIZATION grâce a son numero id. -> GET"....OK
+router.get("/:id", organizationController.getOrganization);
 
 // "/api/organization/ -> {numero de son id}...modifier et mettre à jour une ORGANIZATION grâce a son numero  id avec autorisation pour l'Admin et le Pro. -> PATCH"....OK
 router.patch("/:id", security.checkPro, organizationController.modifyOrganization);

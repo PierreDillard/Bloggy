@@ -26,8 +26,7 @@ const mediaModel = {
         return medias;
     },
     async insert(media){
-        
-       
+               
         try{
             const sqlQuery = "INSERT INTO media(type, url, member_id, card_id) VALUES ($1, $2, $3, $4) RETURNING *;";
             const values = [media.type, media.url, media.member_id, media.card_id];

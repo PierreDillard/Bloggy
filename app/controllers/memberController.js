@@ -27,7 +27,8 @@ const memberController = {
             pseudo : pseudo,
             email : email,
             password : await bcrypt.hash(password, salt),
-            role : 'pro'  
+            role : 'pro'
+            
         };
         //Finalement on l'envoi en base de données
         const memberDb = await memberModel.insert(newUser);

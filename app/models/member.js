@@ -105,7 +105,7 @@ const memberModel = {
        }catch(err){
             console.log(err);
         }
-        return memberDb
+        return memberDb;
     }
 };
 
