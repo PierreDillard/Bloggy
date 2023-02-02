@@ -8,6 +8,8 @@ import { Card } from 'react-bootstrap';
 
 export default memo(function Card({ id, ...props }) {
   const [showFileInput, setShowFileInput] = useState(false);
+ /*  Le bouton "afficher" de EditionImage doit être caché par défault */
+  const [showModifyButton, setShowModifyButton] = useState(false);
 
   return (
     <React.Fragment>
@@ -16,7 +18,9 @@ export default memo(function Card({ id, ...props }) {
           <div className="card__bouton-container">
             <button
               className="card__button card__button--modify"
-              onClick={() => setShowFileInput(!showFileInput)}
+              /*Au click sur le bouton on affiche le bouton modifier, qui permet de upload un fichierAu click sur le bouton on affiche le bouton modifier, qui permet de upload un fichier*/
+              onClick={() => { setShowFileInput(!showFileInput);
+                setShowModifyButton(!showModifyButton);}}
             >
               Modifier
             </button>
@@ -26,7 +30,7 @@ export default memo(function Card({ id, ...props }) {
           </div>
         </div>
         <div className="card__content">
-          <EditionImage showFileInput={showFileInput} />
+          <EditionImage showFileInput={showFileInput} showModifyButton={showModifyButton} />
           <Comment 
           key={props.id}>
 
