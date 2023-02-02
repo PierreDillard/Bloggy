@@ -3,9 +3,8 @@ import React, { useState, useEffect,useRef } from "react";
 import { Link } from "react-router-dom";
 import { useDispatch } from "react-redux";
 import { useNavigate } from "react-router-dom";
-import imgLogo from "../../assets/logo_BloGGy_white.webp";
 import { actionregister } from "../../actions/user";
-import jwt_decode from 'jwt-decode';
+import ModaleRegistration from '../Modale/ModaleRegistration';
 import axios from 'axios';
 import "./Registration.css";
 
@@ -14,11 +13,12 @@ import "./Registration.css";
 export default function Registration() {
 
     const [pseudo, setPseudo] = useState("");
-    const inputRef = useRef(null);
     const [email, setEmail] = useState("");
     const [password, setPassword] = useState("");
-    
+    const [showModal, setShowModal] = useState(false);
+    const inputRef = useRef(null);
     const [error, setError] = useState("");
+    const dispatch = useDispatch();
     const navigate = useNavigate();
 
     useEffect(() => {
@@ -42,6 +42,9 @@ export default function Registration() {
     } catch (error) {
         console.log(error);
         setError('Error while registering user');
+    }
+    if (pseudo && email && password) {
+      setShowModal(true);
     }
 }
     

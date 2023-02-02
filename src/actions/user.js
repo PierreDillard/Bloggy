@@ -15,8 +15,8 @@ export const actionlogin = (email, token) => {
       
         }
       });
-      localStorage.setItem("email", email);
-      localStorage.setItem("token", token);
+   localStorage.setItem("email", email);
+      localStorage.setItem("token", token); 
     };
 };
 
@@ -35,7 +35,7 @@ export const actionlogout = () => {
       dispatch({
         type: LOGOUT
       });
-      localStorage.removeItem("email");
-      localStorage.removeItem("token");
+    localStorage.removeItem("email");
+      localStorage.removeItem("token"); 
     };
 };
