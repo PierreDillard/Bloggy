@@ -6,8 +6,12 @@ export default function EditionImage({showModal, setShowModal}) {
  
   const [imageUrl, setImageUrl] = useState(image);
   const [showFileInput, setShowFileInput] = useState(false);
+  const [description, setDescription] = useState(
+    'Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam, eaque ipsa quae ab illo inventore veritatis et quasi architecto beatae vitae dicta sunt explicabo.'
+  );
+  const [showDescriptionInput, setShowDescriptionInput] = useState(false);
 
-/*   const handleDownload = () => {
+  /*   const handleDownload = () => {
     const link = document.createElement('a');
     link.href = downloadUrl;
     link.download = 'image.webp';
@@ -16,7 +20,10 @@ export default function EditionImage({showModal, setShowModal}) {
 
   const handleFileInput = (event) => {
     setImageUrl(URL.createObjectURL(event.target.files[0]));
- 
+  };
+
+  const handleDescriptionInput = (event) => {
+    setDescription(event.target.value);
   };
 
   return (
@@ -31,14 +38,26 @@ export default function EditionImage({showModal, setShowModal}) {
       {showFileInput && (
         <input type="file" onChange={handleFileInput} />
       )}
-      <button onClick={() => setShowFileInput(!showFileInput)}>Modifier</button>
+      <button onClick={() => setShowFileInput(!showFileInput)}
+      className="button__supprimer">Modifier</button>
+      <button onClick={() => setImageUrl(null)}>Supprimer</button>
      {/*  <button onClick={handleDownload}>Télécharger une image</button> */}
-      <p className="description">
-        Sed ut perspiciatis unde omnis iste natus error sit voluptatem
-        accusantium doloremque laudantium, totam rem aperiam, eaque ipsa
-        quae ab illo inventore veritatis et quasi architecto beatae vitae
-        dicta sunt explicabo.
-      </p>
+      {showDescriptionInput ? (
+        <div className="description__input__container">
+          <input
+            type="text"
+            value={description}
+            onChange={handleDescriptionInput}
+          />
+          <button onClick={() => setDescription('')}
+          className="button__supprimer">Supprimer</button>
+        </div>
+      ) : (
+        <p className="description">{description}</p>
+      )}
+      <button onClick={() => setShowDescriptionInput(!showDescriptionInput)}>
+        Modifier
+      </button>
     </React.Fragment>
   );
 }

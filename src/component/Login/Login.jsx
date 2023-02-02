@@ -48,10 +48,10 @@ const handleSubmit = async (event) => {
   try {
     const response = await api.post('/login', { pseudo, email, password });
     console.log(response.data);
-    dispatch(actionlogin(email, "token"));
+    dispatch(actionlogin(email, pseudo));
     navigate("/");
   } catch (error) {
-    console.log(error.response.data);
+    /* console.log(error.response.data); */
     setError("Pseudo, email ou mot de passe incorrects");
     setPseudo("");
     setEmail("");
