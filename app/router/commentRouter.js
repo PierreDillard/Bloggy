@@ -40,16 +40,16 @@ const security = require ('../service/security');
 //***MISE EN PLACE DE RESTRICTION avec attribution de roles (Admin=checkAdmin, Pro=checkPro, Visiteur=checkUser) "d'utilisation de fonctionalités" SUR LES ROUTES***
 
 
-// /api/comment/ -> voir les COMMENTS -> GET...OK
-router.get("/", commentController.getAllComments);
+// /api/comment/ -> voir les COMMENTS avec autorisation pour l'Admin et le Pro...-> GET...OK
+router.get("/",security.checkPro, commentController.getAllComments);
 
 
 // "/api/comment/ -> ajouter un COMMENT avec autorisation pour l'Admin et le Pro. -> POST"....OK
 router.post("/addComment",security.checkPro, commentController.addComment);
 
 
-// "/api/comment/ -> {numero de son id}...voir un COMMENT grâce a son numero id. -> GET"....OK
-router.get("/:id", commentController.getComment);
+// "/api/comment/ -> {numero de son id}...voir un COMMENT grâce a son numero id avec autorisation pour l'Admin et le Pro. -> GET"....OK
+router.get("/:id",security.checkPro, commentController.getComment);
 
 
 // "/api/comment/ -> {numero de son id}...modifier et mettre à jour une COMMENT grâce a son numero  id avec autorisation pour l'Admin et le Pro. -> PATCH"....OK

@@ -30,7 +30,9 @@ app.use(session({
   //du cookie en millisecondes et sameSite qui spécifie si le cookie peut être envoyé avec des demandes depuis un autre domaine.
 
   const port = process.env.PORT || 3000;
-
+  
+//rend accessible depuis l'exterieur le dossier public
+  app.use(express.static('public'));
 
 //morgan permet de definir les infos que le serveur affiche dans la console à chaque fois qu'il recoit une requete http.
 app.use(morgan('combined'));

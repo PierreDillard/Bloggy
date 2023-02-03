@@ -20,7 +20,7 @@
   "main": "index.js",
   "scripts": {
     "start": "node index.js",
-    "dev": "nodemon server.js",
+    "dev": "nodemon index.js",
     "db": "psql -U admin_bloggy -d bloggy -f migrations/database/1.create_tables.sql"
   },
   "repository": {
