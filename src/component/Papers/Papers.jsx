@@ -112,20 +112,8 @@ export default function Papers() {
 
             <div key={index} className='papers__list' >
               <div className='papers__content'>
-
-              
-
-              
-
-
-
-
                 <div className='papers__container-image'>
                   <div className='papers__input-image'>
-
-                  
-
-
                     <div>
                       {paper}
                     </div>
@@ -147,3 +135,14 @@ export default function Papers() {
   )
 
 }
+
+
+// http://news.tremplin.be/
+// https://www.wow-news.eu/articles
+// https://www.jde.fr/
+// https://www.geekjunior.fr/
+// https://www.curionautes.com/actus/
+// https://www.1jour1actu.com/
+// https://www.juliemag.com/actus/
+// https://www.geoado.com/
+// https://www.lemondedesados.fr/
