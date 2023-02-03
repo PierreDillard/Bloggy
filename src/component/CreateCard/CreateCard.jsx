@@ -1,76 +1,59 @@
+
 import React, { useState } from "react";
+import api from "../../api";
 import './CreateCard.css'
 
-const CreateCard = ({ onSave, initialValues }) => {
-
-    console.log(initialValues);
+const Form = () => {
   const [description, setDescription] = useState("");
-  const [url, setUrl] = useState( "");
-  const [type, setType] = useState( "");
-
-  const handleFileInput = (event) => {
-    setImageUrl(URL.createObjectURL(event.target.files[0]));
-  };
+  const [url, setUrl] = useState(null);
+  const [type, setType] = useState(null);
 
   const handleSubmit = (event) => {
     event.preventDefault();
+
     const formData = new FormData();
-    formData.append("description", description);
     formData.append("url", url);
+    formData.append("description", description);
     formData.append("type", type);
-    onSave(formData);
+
+    api
+      .post("/card/addCard", formData)
+      .then((response) => {
+        console.log(response.data);
+      })
+      .catch((error) => {
+        console.error(error);
+      });
   };
 
   return (
-    <form 
-    className="createcard__form"
-    onSubmit={handleSubmit}>
-      <div>
-      <div className="description__input">
-
-      <label htmlFor="description"
-        className="createCard__label">Description de la Carte :</label>
+    <form onSubmit={handleSubmit}>
+      <label>
+        Description:
         <input
           type="text"
-          id="description"
           value={description}
           onChange={(event) => setDescription(event.target.value)}
-        /> 
-        
-      </div>
-     
-      </div>
-      <div>
-      <div className="url__input">
-      <label htmlFor="url"
-        className="createCard__label"
-        >URL de l'image ou vidéo:</label>
-        <input
-          type="text"
-          id="url"
-          value={url}
-          onChange={(event) => setUrl(event.target.value)}
         />
-      </div>
-    
-      </div>
-      <div>
-      <div className="type__input">
-      <label htmlFor="type"
-        className="createCard__label"
-        >Type du média :</label>
+      </label>
+      <br />
+      <label>
+        Image:
+        <input type="file" onChange={(event) => setUrl(event.target.files[0])} />
+      </label>
+      <br />
+      <label>
+        Type:
         <input
           type="text"
-          id="type"
           value={type}
           onChange={(event) => setType(event.target.value)}
         />
-      </div>
+      </label>
+      <button type="submit">Envoyer</button>
       
-      </div>
-      <button type="submit">Save</button>
     </form>
   );
 };
 
-export default CreateCard;
+export default Form;

@@ -64,8 +64,10 @@ Modifier la  description */
     <React.Fragment>
     <form className="edition__form"
     onSubmit={handleSubmit}>
+
       <div className="edition__image__container">
-        <img src={imageUrl} className="edition__image" />
+        <img src={imageUrl}
+         className="edition__image" />
 
         <span className="image__author">
           Par Sam
@@ -73,8 +75,12 @@ Modifier la  description */
       </div>
 
       {showFileInput && 
-      <input type="file" onChange={handleFileInput}
-      className="edition__image__upload" />}
+      <input 
+      className="edition__image__upload"
+      type="file"
+       onChange={handleFileInput}
+       />}
+       
       {showModifyButton && (
 
 
