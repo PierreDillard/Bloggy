@@ -7,7 +7,7 @@ const api = axios.create({
 
 api.interceptors.response.use(response => {
 
-   /*  On vérifie, qu'il  y a un token, présent et on le decode grace à jwt-decode */
+   /*  On vérifie, qu'il  y a un token, présent et on le décode grâce à jwt-decode */
   const token = response.headers["x-auth-token"];
   if (token) {
     const decoded = jwt_decode(token);
