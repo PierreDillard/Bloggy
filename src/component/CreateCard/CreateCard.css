@@ -1,0 +1,30 @@
+.createcard__form {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: left;
+  }
+  
+  .createcard__form input[type="text"] {
+    width: 60%;
+    padding: 0.5rem;
+    margin: 1rem;
+  }
+  
+  .createcard__form label {
+    text-align: center;
+    width: 60%;
+  }
+  
+  .createcard__form button {
+    padding: 10px 20px;
+    margin-top: 10px;
+    width: 5%;
+    background-color: #4CAF50;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+   
+  }
+  

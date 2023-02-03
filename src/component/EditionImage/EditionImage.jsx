@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import image from '../../assets/home.webp';
 import PropTypes from 'prop-types';
+import api from '../../api'
 
 import './EditionImage.css';
 
@@ -10,6 +11,29 @@ export default function EditionImage({ showFileInput , setShowFileInput,showModi
   const [description, setDescription] = useState("Il y a de la joie!!"
     
     );
+
+    const handleSubmit = (event) => {
+      event.preventDefault();
+      for( let key in event.target){
+        console.log(event.target[key].value);
+        
+      }
+      
+    
+      const data = {
+        imageUrl,
+        description,
+      };
+    
+      api.patch('/card/addCard', data)
+        .then((res) => {
+          console.log(res.data);
+        })
+        .catch((err) => {
+          console.error(err);
+        });
+    };
+    
 
     const [inputValue, setInputValue] = useState("");
 
@@ -38,6 +62,8 @@ Modifier la  description */
 
   return (
     <React.Fragment>
+    <form className="edition__form"
+    onSubmit={handleSubmit}>
       <div className="edition__image__container">
         <img src={imageUrl} className="edition__image" />
 
@@ -46,7 +72,8 @@ Modifier la  description */
         </span>
       </div>
 
-      {showFileInput && <input type="file" onChange={handleFileInput}
+      {showFileInput && 
+      <input type="file" onChange={handleFileInput}
       className="edition__image__upload" />}
       {showModifyButton && (
 
@@ -90,8 +117,12 @@ Modifier la  description */
       ) : null}
       </div>
       )}
-  
-   
+      {showModifyButton && (
+      <button type="submit" value="Envoyer"
+      className='edition__submit' > Envoyer
+      </button>
+      )}
+</form>
     
     </React.Fragment>
   );

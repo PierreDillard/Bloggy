@@ -19,13 +19,15 @@ export default memo(function Card({ id, ...props }) {
         <div className="card__header">
           <div className="card__bouton-container">
             <button
-              className="card__button card__button--modify"
+               className={`card__button card__button--modify ${showModifyButton ? 'valider-active' : ''}`}
               /*Au click sur le bouton on affiche le bouton modifier, qui permet de upload un fichierAu click sur le bouton on affiche le bouton modifier, qui permet de upload un fichier*/
               onClick={() => { setShowFileInput(!showFileInput);
                 setShowModifyButton(!showModifyButton);}}
             >
-              Modifier
-            </button>
+             
+              {showModifyButton ? 'Valider' : 'Modifier'}
+</button>
+           
             <button className="card__button card__button--cancel"
            >
               Supprimer

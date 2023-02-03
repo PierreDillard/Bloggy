@@ -15,9 +15,8 @@ const data = [
   { id: 7, title: "Actualités" },
   { id: 8, title: "Sport" },
   { id: 9, title: "Théatre" },
-];
 
-
+]
 
 export default function ArtGallery() {
 

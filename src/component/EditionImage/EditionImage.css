@@ -81,4 +81,20 @@ display: none;
   background: #CEDA51;
   border-color: #CEDA51;
 }
+.edition__submit{
+  padding-left: 0.5rem;
+  padding-right: 0.5rem;
+  height: 1rem;
+  border-radius: 1rem;
+  font-size: 0.8rem;
+  text-align: center;
+  box-shadow: 0.1rem 0.1rem #7a5a5a;
+  border: hidden;
+  margin-right: 2rem;
+  margin-bottom: 0.5rem;
+  background: #CEDA51;
+  border-color: #CEDA51;
+ 
+
+}
 
