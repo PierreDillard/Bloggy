@@ -40,6 +40,10 @@ Modifier la  description */
     <React.Fragment>
       <div className="edition__image__container">
         <img src={imageUrl} className="edition__image" />
+
+        <span className="image__author">
+          Par Sam
+        </span>
       </div>
 
       {showFileInput && <input type="file" onChange={handleFileInput}
