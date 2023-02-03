@@ -38,18 +38,7 @@ left: 10%;
   text-align:center;
 }
 .edition__button__image--modify{
-  width: 3.8rem;
-  background: #84D0E1;
-  border-color: #84D0E1;
-  margin: 0.1em;
-    padding-left: 0.5rem;
-    padding-right: 0.5rem;
-    height: 1rem;
-    border-radius: 1rem;
-    font-size: 0.8rem;
-    text-align: center;
-    box-shadow: 0.1rem 0.1rem #7a5a5a;
-    border: hidden;
+display: none;
 
 }
 .edition__description__button{

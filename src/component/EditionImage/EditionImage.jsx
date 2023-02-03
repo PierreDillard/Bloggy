@@ -1,13 +1,22 @@
 import React, { useState } from 'react';
 import image from '../../assets/home.webp';
+import PropTypes from 'prop-types';
+
 import './EditionImage.css';
 
 export default function EditionImage({ showFileInput , setShowFileInput,showModifyButton }) {
  /*  State */
   const [imageUrl, setImageUrl] = useState(image);
-  const [description, setDescription] = useState(""
+  const [description, setDescription] = useState("Il y a de la joie!!"
     
     );
+
+    const [inputValue, setInputValue] = useState("");
+
+const handleInputChange = (event) => {
+  setInputValue(event.target.value);
+};
+
   const [showInput, setShowInput] = useState(false);
 
   /* Fonction d'upload */
@@ -22,8 +31,8 @@ Modifier la  description */
     setDescription(event.target.value);
   };
  /*  vider la description */
- const handleUpdateDescription = () => {
-  setDescription(description);
+ const handleUpdateDescription = (event) => {
+  setDescription(event.target.value);
 }
 
 
@@ -40,36 +49,53 @@ Modifier la  description */
 
       <button onClick={() => setShowFileInput(!showFileInput)}
       className="edition__button__image--modify">
-        Modifier
+       
       </button>
       )}
       <p className="description">
-              Y a de la joie !!!!!!
+              {description}
       </p>
 
       {showModifyButton && (
+        
+
+        
         <div className="edition__button__container">
 
         <button onClick={() => setShowInput(!showInput)}
         className="edition__description__button">
           Modifier description
         </button>
-        <button onClick={handleUpdateDescription} className="edition__description__validate">
+
+     
+     
+      <button onClick={() => setDescription(inputValue)}
+        className="edition__description__validate">
       Valider
-      </button>
-        </div>
-      )}
-   
+</button>
+
+
+
+
    
     {/*   On clique sur "MOdifier la description", on affiche l'input de saisie en dessous de  la description */}
       {showInput ? (
-        <input type="text" value={description} onChange={handleDescription}
+        <input type="text" value={inputValue} onChange={handleInputChange}
         className="edition__input__description" />
         
       ) : null}
+      </div>
+      )}
   
    
     
     </React.Fragment>
   );
+};
+
+
+EditionImage.propTypes = {
+  showFileInput: PropTypes.bool.isRequired,
+  setShowFileInput: PropTypes.func.isRequired,
+  showModifyButton: PropTypes.bool.isRequired
 };

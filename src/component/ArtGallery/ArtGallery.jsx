@@ -18,6 +18,7 @@ const data = [
 ];
 
 
+
 export default function ArtGallery() {
 
   /*  state */

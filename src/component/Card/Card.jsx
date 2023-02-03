@@ -10,6 +10,8 @@ export default memo(function Card({ id, ...props }) {
   const [showFileInput, setShowFileInput] = useState(false);
  /*  Le bouton "afficher" de EditionImage doit être caché par défault */
   const [showModifyButton, setShowModifyButton] = useState(false);
+  
+  
 
   return (
     <React.Fragment>
@@ -24,13 +26,14 @@ export default memo(function Card({ id, ...props }) {
             >
               Modifier
             </button>
-            <button className="card__button card__button--cancel">
+            <button className="card__button card__button--cancel"
+           >
               Supprimer
             </button>
           </div>
         </div>
         <div className="card__content">
-          <EditionImage showFileInput={showFileInput} showModifyButton={showModifyButton} />
+          <EditionImage showFileInput={showFileInput} showModifyButton={showModifyButton}  />
           <Comment 
           key={props.id}>
 
