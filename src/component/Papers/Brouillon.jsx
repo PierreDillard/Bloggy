@@ -1,105 +1,50 @@
-import React, { useState } from 'react';
-import image from '../../assets/home.webp';
+import React, { memo, useState } from 'react';
+import EditionImage from '../EditionImage/EditionImage';
+import Button from'../Button/Button';
 import PropTypes from 'prop-types';
+import Comment from '../Comment/Comment';
+import { Card } from 'react-bootstrap';
 
-
-
-export default function EditionImage({ showFileInput , setShowFileInput,showModifyButton }) {
- /*  State */
-  const [imageUrl, setImageUrl] = useState();
-  const [description, setDescription] = useState("Il y a de la joie!!"
-    
-    );
-
-    const [inputValue, setInputValue] = useState("");
-
-const handleInputChange = (event) => {
-  setInputValue(event.target.value);
-};
-
-  const [showInput, setShowInput] = useState(false);
-
-  /* Fonction d'upload */
-
-  const handleFileInput = (event) => {
-    setImageUrl(URL.createObjectURL(event.target.files[0]));
-  };
-/* 
-Modifier la  description */
-
-  const handleDescription = (event) => {
-    setDescription(event.target.value);
-  };
- /*  vider la description */
- const handleUpdateDescription = (event) => {
-  setDescription(event.target.value);
-}
-
+export default memo(function Card({ id, ...props }) {
+  const [showFileInput, setShowFileInput] = useState(false);
+ /*  Le bouton "afficher" de EditionImage doit être caché par défault */
+  const [showModifyButton, setShowModifyButton] = useState(false);
+  
+  
 
   return (
     <React.Fragment>
-      <div className="edition__image__container">
-        <img src={imageUrl} className="edition__image" />
+      <div className="card__container">
+        <div className="card__header">
+          <div className="card__bouton-container">
+            <button
+              className="card__button card__button--modify"
+              /*Au click sur le bouton on affiche le bouton modifier, qui permet de upload un fichierAu click sur le bouton on affiche le bouton modifier, qui permet de upload un fichier*/
+              onClick={() => { setShowFileInput(!showFileInput);
+                setShowModifyButton(!showModifyButton);}}
+            >
+              Modifier
+            </button>
+            <button className="card__button card__button--cancel"
+           >
+              Supprimer
+            </button>
+          </div>
+        </div>
+        <div className="card__content">
+          <EditionImage showFileInput={showFileInput} showModifyButton={showModifyButton}  />
+          <Comment 
+          key={props.id}>
 
-        <span className="image__author">
-          Par Sam
-        </span>
+            
+          </Comment> 
+        </div>
       </div>
-
-      {showFileInput && <input type="file" onChange={handleFileInput}
-      className="edition__image__upload" />}
-      {showModifyButton && (
-
-
-      <button onClick={() => setShowFileInput(!showFileInput)}
-      className="edition__button__image--modify">
-       
-      </button>
-      )}
-      <p className="description">
-              {description}
-      </p>
-
-      {showModifyButton && (
-        
-
-        
-        <div className="edition__button__container">
-
-        <button onClick={() => setShowInput(!showInput)}
-        className="edition__description__button">
-          Modifier description
-        </button>
-
-     
-     
-      <button onClick={() => setDescription(inputValue)}
-        className="edition__description__validate">
-      Valider
-</button>
-
-
-
-
-   
-    {/*   On clique sur "MOdifier la description", on affiche l'input de saisie en dessous de  la description */}
-      {showInput ? (
-        <input type="text" value={inputValue} onChange={handleInputChange}
-        className="edition__input__description" />
-        
-      ) : null}
-      </div>
-      )}
-  
-   
-    
     </React.Fragment>
   );
-};
+});
 
-
-EditionImage.propTypes = {
-  showFileInput: PropTypes.bool.isRequired,
-  setShowFileInput: PropTypes.func.isRequired,
-  showModifyButton: PropTypes.bool.isRequired
+/* On utilise propTypes, pour "typer" les props, en cas de Bug, on sait que la props attendu doit être une string */
+Card.propTypes = {
+  title: PropTypes.string.isRequired,
 };
