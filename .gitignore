@@ -30,3 +30,6 @@ sqitch.conf
 
 #test
 coverage/
+
+#medias
+public
