@@ -47,7 +47,7 @@ const upload = require ('../service/uploader');
 router.get("/", cardController.getAllCards);
 
 // "/api/card/ -> ajouter une CARD avec autorisation pour l'Admin et le Pro. -> POST"....OK
-router.post("/addCard", security.checkPro, cardController.addCard);
+router.post("/addCard", security.checkPro, upload.single('uploaded_file'), cardController.addCard);
 
 // "/api/card/ -> {numero de son id}...voir une CARD grâce a son numero id. -> GET"....OK
 router.get("/:id", cardController.getCard);
