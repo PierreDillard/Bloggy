@@ -1,4 +1,4 @@
-import React, {useState} from 'react';
+import React, {useState, useEffect} from 'react';
 import "./Papers.css";
 
 export default function Papers() {
@@ -110,7 +110,7 @@ export default function Papers() {
 
       <div className='papers__container'>
         
-        <div className='papers__edit-form'>
+        <div className='papers__editForm'>
 
           <p className='papers__title'>Journaux à consulter</p>
 

@@ -7,12 +7,17 @@
 }
 
 .papers__edit-form {
-    width: 25rem;
+    width: 35rem;
+    padding-left: 1rem;
 }
 
-.papers__form-visible {
-
+.papers__title {
+    width: 15rem;
+    font-size: 1.2rem;
+    color: white;
+    font-weight: bold;
 }
+
 
 .papers__add {
     align-items: center;
@@ -25,14 +30,13 @@
 
 .papers__add-content {
     padding: 0.5rem;
-
     font-size: 0.8rem;
 }
 
 .papers__form {
     display: flex;
-    flex-direction: row;
-    align-items: center;
+    flex-direction: column;
+    align-items: start;
     margin: 0.7rem 0 0.7rem 0;
 }
 
@@ -48,13 +52,21 @@
     border: hidden;
 }
 
+.papers__input-paper {
+    margin-bottom: 0.5rem;
+}
+
+.papers__input-upload {
+    margin-bottom: 0.5rem;
+}
+
 .papers__container-image {
     height: 100%;
 }
 
 .papers__input-image {
     display: flex;
-    flex-direction: column;
+    flex-direction: row;
     width: max-content;
     height: 100%;
 }
@@ -64,7 +76,7 @@
 }
 
 .papers__image {
-    width: 15%;
+    width: 100%;
 }
 
 .papers__button {
@@ -103,15 +115,19 @@
 .papers__container-list {
     display: flex;
     flex-direction: row;
-    justify-content: space-between;
+    justify-content: space-around;
     align-items: center;
     flex-wrap: wrap;
+    list-style-type: none;
 }
 
 .papers__list {
+    flex-direction: column;
     display: flex;
-    flex-direction: row;
     align-items: center;
+    flex-wrap: wrap;
+    flex-basis: calc(15% - 1rem); /* 15% donc environ 6 par ligne avec 1rem d'espacement */
+    width: 7%;
     text-align: start;
     vertical-align: middle;
     margin: 1rem;
