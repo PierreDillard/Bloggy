@@ -1,10 +1,8 @@
-import React, { useState, useEffect,useRef } from "react";
+import React, { useState, useEffect, useRef } from "react";
 import { Link } from "react-router-dom";
 import { useDispatch } from "react-redux";
-import { actionlogin, LOGIN, LOGOUT } from "../../actions/user";
-import axios from "axios";
+import { actionlogin} from "../../actions/user";
 import { useNavigate } from "react-router-dom";
-import imgLogo from "../../assets/logo_BloGGy_white.webp";
 import api from '../../api';
 import "./Login.css";
 
@@ -23,26 +21,6 @@ function Login() {
   }, []);
 
 
-/* 
-  api.post('/login', { email, password })
-  .then(res => {
-      api.defaults.headers.common.Authorization = `Bearer ${res.data.token}`
-
-      dispatch({
-          type: SET_USER,
-          payload: {
-              email: res.data.email,
-              token: res.data.token
-          }
-      })
-
-      navigate('/')
-  })
-  .catch(err => {
-      //Gestion d'erreur
-  })
-}
- */
 const handleSubmit = async (event) => {
   event.preventDefault();
   try {

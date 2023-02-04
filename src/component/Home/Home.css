@@ -8,7 +8,12 @@
 
 .home__banner {
     display: flex;
+    flex-direction: column;
+}
+
+.home__buttons {
     flex-direction: row;
+    display: flex;
     justify-content: end;
 }
 
@@ -34,11 +39,12 @@
 }
 
 .home__slogan {
+    position: fixed;
     display: flex;
     flex-direction: row;
     justify-content: left;
     color: white;
-    font-size: 3rem;
+    font-size: 2.8rem;
     margin: 18rem 0 0 2rem;
     font-weight: bold;
 }
