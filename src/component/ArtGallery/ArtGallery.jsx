@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import Header from "../Header/Header";
-import {useState} from 'react';
+import Card from "../Card/Card";
+
 import "./ArtGallery.css";
 
 
@@ -20,13 +21,38 @@ const data = [
 
 export default function ArtGallery() {
 
+  /*  state */
+  const [cardNumbers, setCardNumbers] = useState(3);
+  const [showMore, setShowMore] = useState(true);
 
-  return (
-    <React.Fragment>
-      <div className="art-gallery__container">
-        <Header />
-        <div className="card__container">
-          <div className="card">
+  /* function qui ajoute 3 Card au click */
+  const handleShowMore = () => {
+    setCardNumbers(cardNumbers + 3);
+    setShowMore(false)
+  };
+
+
+  /* function qui enlève 3 Card au click */
+  const handleShowLess = () => {
+    setCardNumbers(cardNumbers -3);
+    setShowMore(true)
+  }
+
+    return (
+
+      <React.Fragment>
+
+        <div className="art-gallery__container">
+
+          <Header />
+
+          <div className="art-gallery__card-container">
+
+            {/* On affiche les Card (en partant du 1 element, puis 
+              on coupe en fonction de cardNumbers, si cardNumber = 3 on affiche 3 Card) */}
+            {data.slice(0, cardNumbers).map((item) => (
+            <Card key={item.id} title={item.title} id= {item.id} />
+            ))}
 
           </div>
 

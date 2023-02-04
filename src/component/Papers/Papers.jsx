@@ -189,3 +189,4 @@ export default function Papers() {
 // https://www.juliemag.com/actus/
 // https://www.geoado.com/
 // https://www.lemondedesados.fr/
+// https://www.vocable.fr/
