@@ -6,10 +6,26 @@
     margin: 2rem 3rem 0 3rem;
 }
 
+<<<<<<< HEAD
 .papers__editForm {
     width: 25rem;
 }
 
+=======
+.papers__edit-form {
+    width: 35rem;
+    padding-left: 1rem;
+}
+
+.papers__title {
+    width: 15rem;
+    font-size: 1.2rem;
+    color: white;
+    font-weight: bold;
+}
+
+
+>>>>>>> 9c4ba1cfb4ce246dfa90a8f7897815ad11e2b939
 .papers__add {
     align-items: center;
 }
@@ -21,14 +37,22 @@
 
 .papers__add-content {
     padding: 0.5rem;
+<<<<<<< HEAD
 
+=======
+>>>>>>> 9c4ba1cfb4ce246dfa90a8f7897815ad11e2b939
     font-size: 0.8rem;
 }
 
 .papers__form {
     display: flex;
+<<<<<<< HEAD
     flex-direction: row;
     align-items: center;
+=======
+    flex-direction: column;
+    align-items: start;
+>>>>>>> 9c4ba1cfb4ce246dfa90a8f7897815ad11e2b939
     margin: 0.7rem 0 0.7rem 0;
 }
 
@@ -44,13 +68,28 @@
     border: hidden;
 }
 
+<<<<<<< HEAD
+=======
+.papers__input-paper {
+    margin-bottom: 0.5rem;
+}
+
+.papers__input-upload {
+    margin-bottom: 0.5rem;
+}
+
+>>>>>>> 9c4ba1cfb4ce246dfa90a8f7897815ad11e2b939
 .papers__container-image {
     height: 100%;
 }
 
 .papers__input-image {
     display: flex;
+<<<<<<< HEAD
     flex-direction: column;
+=======
+    flex-direction: row;
+>>>>>>> 9c4ba1cfb4ce246dfa90a8f7897815ad11e2b939
     width: max-content;
     height: 100%;
 }
@@ -60,7 +99,11 @@
 }
 
 .papers__image {
+<<<<<<< HEAD
     height: 100%;
+=======
+    width: 100%;
+>>>>>>> 9c4ba1cfb4ce246dfa90a8f7897815ad11e2b939
 }
 
 .papers__button {
@@ -68,6 +111,10 @@
     padding-left: 0.5rem;
     padding-right: 0.5rem;
     height: 1rem;
+<<<<<<< HEAD
+=======
+    width: 4rem;
+>>>>>>> 9c4ba1cfb4ce246dfa90a8f7897815ad11e2b939
     border-radius: 1rem;
     font-size: 0.8rem;
     text-align: center;
@@ -98,6 +145,7 @@
 .papers__container-list {
     display: flex;
     flex-direction: row;
+<<<<<<< HEAD
     justify-content: space-between;
     align-items: center;
     flex-wrap: wrap;
@@ -107,6 +155,21 @@
     display: flex;
     flex-direction: row;
     align-items: center;
+=======
+    justify-content: space-around;
+    align-items: center;
+    flex-wrap: wrap;
+    list-style-type: none;
+}
+
+.papers__list {
+    flex-direction: column;
+    display: flex;
+    align-items: center;
+    flex-wrap: wrap;
+    flex-basis: calc(15% - 1rem); /* 15% donc environ 6 par ligne avec 1rem d'espacement */
+    width: 7%;
+>>>>>>> 9c4ba1cfb4ce246dfa90a8f7897815ad11e2b939
     text-align: start;
     vertical-align: middle;
     margin: 1rem;
@@ -123,3 +186,7 @@
     vertical-align: middle;
 }
 
+<<<<<<< HEAD
+=======
+
+>>>>>>> 9c4ba1cfb4ce246dfa90a8f7897815ad11e2b939

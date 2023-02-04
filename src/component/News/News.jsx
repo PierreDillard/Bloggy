@@ -1,9 +1,9 @@
 import React from 'react'
 import Header from "../Header/Header";
 import Dico from "../Dico/Dico";
-// import Card from '../Card/Card';
-import Papers from '../Papers/Papers';
-// import Modale from '../Modale/Modale';
+import Papers from "../Papers/Papers";
+import Comment from "../Comment/Comment";
+import Modale from '../Modale/Modale';
 import "./News.css";
 
 export default function News() {
@@ -11,7 +11,6 @@ export default function News() {
     <React.Fragment>
       <div className='news__container'>
         <Header />
-        {/* <Card /> */}
         <Dico />
         <Papers />
       </div>
