@@ -1,10 +1,11 @@
-import React, { useState } from "react";
+import React, { useState , useEffect} from "react";
 import Header from "../Header/Header";
 import Card from "../Card/Card";
+import api from "../../api";
 
 import "./ArtGallery.css";
 
-
+/* 
 const data = [
   { id: 1, title: "Actualités" },
   { id: 2, title: "Sport" },
@@ -16,13 +17,35 @@ const data = [
   { id: 8, title: "Sport" },
   { id: 9, title: "Théatre" },
 
-]
+] */
 
 export default function ArtGallery() {
 
-  /*  state */
-  const [cardNumbers, setCardNumbers] = useState(3);
+const [cardNumbers, setCardNumbers] = useState(3);
   const [showMore, setShowMore] = useState(true);
+  const [loading, setLoading] = useState(false);
+  const [data, setData] = useState([]);
+
+  useEffect(() => {
+    const fetchData = async () => {
+      setLoading(true);
+      try {
+        const response = await api.get("/card");
+        console.log(response.data)
+        setData(response.data);
+        setLoading(false);
+      } catch (err) {
+        console.log(err);
+        setLoading(false);
+      }
+    };
+    fetchData();
+  }, []);
+
+  
+console.log(data)
+
+  
 
   /* function qui ajoute 3 Card au click */
   const handleShowMore = () => {
@@ -50,7 +73,12 @@ export default function ArtGallery() {
             {/* On affiche les Card (en partant du 1 element, puis 
               on coupe en fonction de cardNumbers, si cardNumber = 3 on affiche 3 Card) */}
             {data.slice(0, cardNumbers).map((item) => (
-            <Card key={item.id} title={item.title} id= {item.id} />
+            <Card key={item.id} 
+               id= {item.id} 
+               description={item.description}
+               url={item.url}
+
+            />
             ))}
 
           </div>

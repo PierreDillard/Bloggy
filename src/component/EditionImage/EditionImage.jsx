@@ -4,13 +4,16 @@ import PropTypes from 'prop-types';
 import api from '../../api'
 
 import './EditionImage.css';
+import { NavItem } from 'react-bootstrap';
 
-export default function EditionImage({ showFileInput , setShowFileInput,showModifyButton }) {
+export default function EditionImage({ id,url,description, showFileInput , setShowFileInput,showModifyButton,data }) {
  /*  State */
-  const [imageUrl, setImageUrl] = useState(image);
-  const [description, setDescription] = useState("Il y a de la joie!!"
+
+ console.log(url);
+  const [imageUrl, setImageUrl] = useState("");
+  const [ediDescription, setEditDescription] = useState("");
     
-    );
+   
 
     const handleSubmit = (event) => {
       event.preventDefault();
@@ -18,9 +21,9 @@ export default function EditionImage({ showFileInput , setShowFileInput,showModi
         console.log(event.target[key].value);
         
       }
-      
+    }
     
-      const data = {
+/*       const data = {
         imageUrl,
         description,
       };
@@ -33,7 +36,7 @@ export default function EditionImage({ showFileInput , setShowFileInput,showModi
           console.error(err);
         });
     };
-    
+     */
 
     const [inputValue, setInputValue] = useState("");
 
@@ -52,21 +55,22 @@ const handleInputChange = (event) => {
 Modifier la  description */
 
   const handleDescription = (event) => {
-    setDescription(event.target.value);
+    setEditDescription(event.target.value);
   };
  /*  vider la description */
  const handleUpdateDescription = (event) => {
-  setDescription(event.target.value);
+  setEditDescription(event.target.value);
 }
 
 
   return (
     <React.Fragment>
+
     <form className="edition__form"
     onSubmit={handleSubmit}>
-
+  
       <div className="edition__image__container">
-        <img src={imageUrl}
+        <img src={url}
          className="edition__image" />
 
         <span className="image__author">
@@ -106,7 +110,7 @@ Modifier la  description */
 
      
      
-      <button onClick={() => setDescription(inputValue)}
+      <button onClick={() => setEditDescription(inputValue)}
         className="edition__description__validate">
       Valider
 </button>
@@ -130,9 +134,11 @@ Modifier la  description */
       )}
 </form>
     
+
     </React.Fragment>
   );
 };
+
 
 
 EditionImage.propTypes = {
