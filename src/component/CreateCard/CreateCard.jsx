@@ -1,17 +1,19 @@
 import React, { useState } from "react";
 import { useSelector } from "react-redux";
 import api from "../../api";
+
 import './CreateCard.css'
 
 
-const userRoleSelector = state => state.user.role;
+
 
 export default function  CreateCard() {
 
+  
 
-  const role = useSelector(userRoleSelector);
-  console.log(role);
 
+  
+  
   const [description, setDescription] = useState("");
   const [url, setUrl] = useState(null);
   const [type, setType] = useState("");

@@ -1,15 +1,16 @@
 import React, { useState, useEffect,useRef } from "react";
 import { Link } from "react-router-dom";
 import { useDispatch } from "react-redux";
-import { actionlogin, LOGIN, LOGOUT } from "../../actions/user";
-import axios from "axios";
+
 import { useNavigate } from "react-router-dom";
 import imgLogo from "../../assets/logo_BloGGy_white.webp";
+import { actionlogin, LOGIN, LOGOUT } from "../../actions/user";
 import api from '../../api';
 import "./Login.css";
 
 
 function Login() {
+ 
 
   const inputRef = useRef(null);
   const [pseudo, setPseudo] = useState("");
@@ -49,9 +50,10 @@ const handleSubmit = async (event) => {
   try {
     const response = await api.post('/login', { pseudo, email, password });
     const role = response.data.member.role;
-    console.log(role);
-    dispatch(actionlogin(email, pseudo,role));
+ 
+    dispatch(actionlogin(email, role));
     navigate("/");
+    
    
    
   } catch (error) {

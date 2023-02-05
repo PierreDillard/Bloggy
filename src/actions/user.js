@@ -4,7 +4,7 @@ export const LOGIN = "LOGIN";
 export const LOGOUT = "LOGOUT";
 export const REGISTER = "REGISTER";
 
-export const actionlogin = (email,token,role) => {
+export const actionlogin = (email,role,token) => {
  
     return dispatch => {
       dispatch({
@@ -19,7 +19,7 @@ export const actionlogin = (email,token,role) => {
         }
       });
    localStorage.setItem("email", email);
-      localStorage.setItem("role",role); 
+      localStorage.setItem("role",role); console.log(role)
      localStorage.setItem("token",token );  
     }
 };

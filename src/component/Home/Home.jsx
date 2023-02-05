@@ -6,11 +6,11 @@ import Header from "../Header/Header";
 import { actionlogin } from "../../actions/user";
 import "./Home.css";
 
-export default function Home() {
+export default function Home( ) {
 
   const isLoggedIn = useSelector((state) => state.user.isLoggedIn);
   const dispatch = useDispatch();
-  
+
 /* On vérifie si un utilisateur est connecté en consultant les données stockées localement via le localStorage, si on trouve un token et un email, on envoie une action de connexion via "dispatch(actionlogin..." */
 
   useEffect(() => {
@@ -50,7 +50,8 @@ export default function Home() {
       {isLoggedIn ? (
         <React.Fragment>
           <Header /> 
-          <Link to="/createCard">
+          <Link to="/createCard"
+          >
               <button className="home__button">
                 <span className="home__button-content">Créer une carte</span>
               </button>
