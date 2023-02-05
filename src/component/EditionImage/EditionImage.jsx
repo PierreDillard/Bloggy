@@ -6,7 +6,7 @@ import api from '../../api'
 import './EditionImage.css';
 import { NavItem } from 'react-bootstrap';
 
-export default function EditionImage({ id,url,description, showFileInput , setShowFileInput,showModifyButton,data }) {
+export default function EditionImage({ id,url,description,type, showFileInput , setShowFileInput,showModifyButton,data }) {
  /*  State */
 
  console.log(url);
@@ -67,11 +67,12 @@ Modifier la  description */
     <React.Fragment>
 
     <form className="edition__form"
-    onSubmit={handleSubmit}>
+    onSubmit={handleSubmit}
+    type={type} >
   
       <div className="edition__image__container">
         <img src={url}
-         className="edition__image" />
+         className="edition__image" type="file" />
 
         <span className="image__author">
           Par Sam

@@ -40,6 +40,7 @@ export default function Home() {
                 <span className="home__button-content">Connexion</span>
               </button>
             </Link>
+          
           </div>
         <p className="home__slogan">Le blog fait pour toi</p>
         </React.Fragment>
@@ -49,6 +50,13 @@ export default function Home() {
       {isLoggedIn ? (
         <React.Fragment>
           <Header /> 
+          <Link to="/createCard">
+              <button className="home__button">
+                <span className="home__button-content">Créer une carte</span>
+              </button>
+            </Link>
+          
+         
             <p className='home__presentation'>
               C'est quoi BloGGy ?<br />
               C'est un blog pour toi, utilise-le !!!<br />

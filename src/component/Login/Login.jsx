@@ -8,6 +8,7 @@ import imgLogo from "../../assets/logo_BloGGy_white.webp";
 import api from '../../api';
 import "./Login.css";
 
+
 function Login() {
 
   const inputRef = useRef(null);
@@ -47,9 +48,12 @@ const handleSubmit = async (event) => {
   event.preventDefault();
   try {
     const response = await api.post('/login', { pseudo, email, password });
-    console.log(response.data);
-    dispatch(actionlogin(email, pseudo));
+    const role = response.data.member.role;
+    console.log(role);
+    dispatch(actionlogin(email, pseudo,role));
     navigate("/");
+   
+   
   } catch (error) {
     /* console.log(error.response.data); */
     setError("Pseudo, email ou mot de passe incorrects");

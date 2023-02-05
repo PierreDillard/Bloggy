@@ -77,6 +77,7 @@ console.log(data)
                id= {item.id} 
                description={item.description}
                url={item.url}
+               type={item.type}
 
             />
             ))}

@@ -1,8 +1,17 @@
 import React, { useState } from "react";
+import { useSelector } from "react-redux";
 import api from "../../api";
 import './CreateCard.css'
 
-export default function  Form() {
+
+const userRoleSelector = state => state.user.role;
+
+export default function  CreateCard() {
+
+
+  const role = useSelector(userRoleSelector);
+  console.log(role);
+
   const [description, setDescription] = useState("");
   const [url, setUrl] = useState(null);
   const [type, setType] = useState("");
@@ -27,6 +36,9 @@ export default function  Form() {
   };
 
   return (
+    <div className="form__container">
+
+   
     <form onSubmit={handleSubmit}>
       <label>
         Description:
@@ -61,5 +73,6 @@ export default function  Form() {
       </label>
       <button type="submit">Envoyer</button>
     </form>
+    </div>
   );
 };
