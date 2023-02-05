@@ -7,6 +7,7 @@ import News from '../News/News';
 import Videos from '../Videos/Videos';
 import ArtGallery from '../ArtGallery/ArtGallery';
 import Internship from '../Internship/Internship';
+import Organization from '../Organization/Organization';
 import Contact from '../Contact/Contact';
 
 // branchement Back
@@ -28,9 +29,10 @@ function App() {
           <Route path='/login' element={(<Login />)} />
           <Route path='/registration' element={(<Registration />)} />
           <Route path='/news' element={(<News />)} />
-          <Route path='/video' element={(<Videos />)} />
+          <Route path='/videos' element={(<Videos />)} />
           <Route path='/art-gallery' element={(<ArtGallery />)} />
           <Route path='/internship' element={(<Internship />)} />
+          <Route path='/organization' element={(<Organization />)} />
           <Route path='/contact' element={(<Contact />)} />
         </Routes>
       </div>

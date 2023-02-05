@@ -1,13 +1,11 @@
 import React, {useState} from 'react'
 import Header from "../Header/Header";
-import Dico from "../Dico/Dico";
-import Papers from "../Papers/Papers";
 import Card from "../Card/Card";
-import "./News.css";
+import "./Organization.css";
 
-export default function News() {
-  
-   // State
+export default function Organization() {
+
+  // State
   // Card à afficher 3 par 3
   const [cardNumbers, setCardNumbers] = useState(3);
   // afficher ou non plus de 3 Card
@@ -26,28 +24,33 @@ export default function News() {
   };
 
   const data = [
-    { id: 1 },
-    { id: 2},
-    { id: 3},
-    { id: 4},
-    { id: 5 }
+    { id: 1,},
+    { id: 2,},
+    { id: 3,},
+    { id: 4,},
+    { id: 5,}
   ];
 
   return (
 
-    <React.Fragment> 
+    <React.Fragment >
 
-      <div className='news__container'>
+      <div className='organization__container'>
 
         <Header />
 
-        <Dico />
+        <p className='organization__title'>
+          Tu cherches un stage ? <br />
+          Retrouve la liste des strucures dans la/les villes de ton choix !
+        </p>
 
-        <Papers />
+        <button className='organization__button-return'>
+          Retour
+        </button>
 
         {/* Card */}
-
-        <div className="news__card-container">
+        
+        <div className="organization__card-container">
 
           {/* On affiche les Card */}
           {/* si cardNumber = 3 -> on affiche 3 Card  */}
@@ -57,26 +60,24 @@ export default function News() {
 
         </div>
 
-        <div className="news__button-container">
+        <div className="organization__button-container">
 
           {/* Si on a plus de 3 Card à afficher, on affiche le bouton "Afficher plus" */}
-          {cardNumbers < 4 && (
-            <button className="news__button news__button--more" onClick={handleShowMore}>
+          {cardNumbers < data.length && (
+            <button className="organization__button organization__button--more" onClick={handleShowMore}>
               Afficher plus
             </button>
           )}
 
           {/* Si on a au moins 6 cartes à afficher, on affiche le bouton "Afficher moins" */}
           {cardNumbers >= 6 && (
-            <button className="news__button news__button--less" onClick={handleShowLess}>
+            <button className="organization__button organization__button--less" onClick={handleShowLess}>
               Afficher moins
             </button>
           )}
 
         </div>
 
-        {/* Fin Card */}
-        
       </div>
 
     </React.Fragment>

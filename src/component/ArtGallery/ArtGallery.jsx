@@ -1,7 +1,6 @@
 import React, { useState } from "react";
 import Header from "../Header/Header";
 import Card from "../Card/Card";
-
 import "./ArtGallery.css";
 
 
@@ -25,14 +24,13 @@ export default function ArtGallery() {
   const [cardNumbers, setCardNumbers] = useState(3);
   const [showMore, setShowMore] = useState(true);
 
-  /* function qui ajoute 3 Card au click */
+  /* fonction qui ajoute 3 Card au clique */
   const handleShowMore = () => {
     setCardNumbers(cardNumbers + 3);
     setShowMore(false)
   };
 
-
-  /* function qui enlève 3 Card au click */
+  /* fonction qui enlève 3 Card au clique */
   const handleShowLess = () => {
     setCardNumbers(cardNumbers -3);
     setShowMore(true)
@@ -48,10 +46,11 @@ export default function ArtGallery() {
 
           <div className="art-gallery__card-container">
 
-            {/* On affiche les Card (en partant du 1 element, puis 
-              on coupe en fonction de cardNumbers, si cardNumber = 3 on affiche 3 Card) */}
+            {/* On affiche les Card (en partant du 1er élément, 
+            puis on coupe en fonction de cardNumbers
+            si cardNumber = 3 on affiche 3 Card) */}
             {data.slice(0, cardNumbers).map((item) => (
-            <Card key={item.id} title={item.title} id= {item.id} />
+              <Card key={item.id} title={item.title} id= {item.id} />
             ))}
 
           </div>
@@ -73,7 +72,6 @@ export default function ArtGallery() {
             )}
 
           </div>
-
 
         </div>
 

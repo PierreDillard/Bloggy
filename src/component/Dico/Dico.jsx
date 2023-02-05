@@ -24,6 +24,7 @@ export default function Dico() {
         <div className='dico__container'>
 
             <form className='dico__search' onSubmit={handleSubmit}>
+                <p className='dico__title'>Dictionnaire</p>
                 <input className='dico__word' type="text" value={word} onChange={handleChange} />
                 <button className='dico__button' type="submit">Rechercher</button>
             </form>

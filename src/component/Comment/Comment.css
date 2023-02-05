@@ -3,6 +3,7 @@
     flex-direction: column;
     padding: 0.5rem;
 }
+
 .comment__container--scroll{
     max-height: 70px;
     overflow-y: scroll;
