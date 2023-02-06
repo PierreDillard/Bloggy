@@ -1,7 +1,7 @@
 .regist__container {
     display: flex;
     flex-direction: column;
-    background-image: url(../../assets/connexion.webp);
+    background-image: url(../../../public/assets/connexion.webp);
     background-size: cover;
     height: 100vh;
 }

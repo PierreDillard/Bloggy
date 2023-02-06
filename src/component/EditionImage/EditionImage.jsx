@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import image from '../../assets/home.webp';
+
 import PropTypes from 'prop-types';
 import api from '../../api'
 
@@ -71,7 +71,7 @@ Modifier la  description */
     type={type} >
   
       <div className="edition__image__container">
-        <img src={url}
+        <img src={`http://localhost:3000/assets/${url}`}
          className="edition__image" type="file" />
 
         <span className="image__author">

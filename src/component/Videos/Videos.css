@@ -1,7 +1,7 @@
 .videos__container {
     display: flex;
     flex-direction: column;
-    background-image: url(../../assets/videos.webp);
+    background-image: url(../../../public/assets/videos.webp);
     background-size: cover;
     height: 100vh;
 }

@@ -28,7 +28,7 @@ function Login() {
 const handleSubmit = async (event) => {
   event.preventDefault();
   try {
-    const response = await api.post('/login', { pseudo, email, password });
+    const response = await api.post('/login', { pseudo, email, password },  { withCredentials: true });
     const role = response.data.member.role;
  
     dispatch(actionlogin(email, role));
@@ -38,6 +38,7 @@ const handleSubmit = async (event) => {
    
   } catch (error) {
     /* console.log(error.response.data); */
+    console.log(error)
     setError("Pseudo, email ou mot de passe incorrects");
     setPseudo("");
     setEmail("");
