@@ -81,6 +81,7 @@ Modifier la  description */
 
       {showFileInput && 
       <input 
+      name="file"
       className="edition__image__upload"
       type="file"
        onChange={handleFileInput}
@@ -122,8 +123,11 @@ Modifier la  description */
    
     {/*   On clique sur "MOdifier la description", on affiche l'input de saisie en dessous de  la description */}
       {showInput ? (
-        <input type="text" value={inputValue} onChange={handleInputChange}
-        className="edition__input__description" />
+        <input type="text"
+         value={inputValue} 
+         onChange={handleInputChange}
+        className="edition__input__description"
+        name="description" />
         
       ) : null}
       </div>

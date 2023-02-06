@@ -48,12 +48,16 @@ export default function  CreateCard() {
           type="text"
           value={description}
           onChange={(event) => setDescription(event.target.value)}
+          name="description"
         />
       </label>
       <br />
       <label>
         Image:
-        <input type="file" onChange={(event) => setUrl(event.target.files[0])} />
+        <input 
+        type="file"
+         onChange={(event) => setUrl(event.target.files[0])}
+         name="file" />
       </label>
       <br />
       <label>
@@ -62,6 +66,7 @@ export default function  CreateCard() {
           type="text"
           value={type}
           onChange={(event) => setType(event.target.value)}
+          name="type"
         />
       </label>
       <br />
@@ -71,6 +76,7 @@ export default function  CreateCard() {
           type="number"
           value={member_id}
           onChange={(event) => setMemberId(event.target.value)}
+          name="menber_id"
         />
       </label>
       <button type="submit">Envoyer</button>
