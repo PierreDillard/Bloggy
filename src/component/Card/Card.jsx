@@ -37,7 +37,8 @@ console.log(id);
         </div>
         <div className="card__content">
           <EditionImage showFileInput={showFileInput} showModifyButton={showModifyButton} description={ data.description}
-          url={data.url} />
+          url={data.url}
+          />
           <Comment 
           key={id}>
 

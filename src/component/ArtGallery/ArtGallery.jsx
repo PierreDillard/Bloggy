@@ -73,11 +73,13 @@ console.log(data)
             puis on coupe en fonction de cardNumbers
             si cardNumber = 3 on affiche 3 Card) */}
             {data.slice(0, cardNumbers).map((item) => (
+            
             <Card key={item.id} 
                id= {item.id} 
                description={item.description}
                url={item.url}
                type={item.type}
+             
 
             />
             ))}

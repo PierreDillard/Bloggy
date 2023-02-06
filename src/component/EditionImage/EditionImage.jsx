@@ -6,7 +6,7 @@ import api from '../../api'
 import './EditionImage.css';
 import { NavItem } from 'react-bootstrap';
 
-export default function EditionImage({ id,url,description,type, showFileInput , setShowFileInput,showModifyButton,data }) {
+export default function EditionImage({ id,url,description,type,uploaded_file, showFileInput , setShowFileInput,showModifyButton,data }) {
  /*  State */
 
  console.log(url);

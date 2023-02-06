@@ -39,7 +39,8 @@ function App() {
           <Route path='/videos' element={(<Videos />)} />
           <Route path='/art-gallery' element={(<ArtGallery />)} />
           <Route path='/internship' element={(<Internship />)} />
-          <Route path='/organization' element={(<Organization />)} />
+          <Route path='/organization' element={(<Organization/>)} />
+          <Route path='/createCard' element ={(<CreateCard /> )} />
           <Route path='/contact' element={(<Contact />)} />
           <Route path='/dico' element={(<Dico />)} />
         </Routes>

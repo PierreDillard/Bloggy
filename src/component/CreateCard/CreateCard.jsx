@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import { useSelector } from "react-redux";
+import axios from 'axios';
 import api from "../../api";
 
 import './CreateCard.css'
@@ -18,6 +19,7 @@ export default function  CreateCard() {
   const [uploaded_file, setUploaded_file] = useState(null);
   const [type, setType] = useState("");
   const [member_id, setMemberId] = useState(0);
+  const [url, setUrl] = useState("");
 
   const handleSubmit = async (event) => {
     console.log(event.target)
@@ -28,9 +30,10 @@ export default function  CreateCard() {
     formData.append("description", description);
     formData.append("type", type);
     formData.append("member_id", member_id);
+    formData.append("url", url);
 
     try {
-      const response = await api.post("/card/addCard", formData);
+      const response = await axios.post("http://localhost:5000/api/card/addCard", formData);
       console.log(response.data);
     } catch (error) {
       console.error(error);
@@ -69,6 +72,24 @@ export default function  CreateCard() {
           name="type"
         />
       </label>
+      <label>
+  Type de média:
+  <select value={type} onChange={(event) => setType(event.target.value)}>
+    <option value="news">News</option>
+    <option value="art">Art</option>
+    <option value="video">Vidéo</option>
+  </select>
+</label>
+<br />
+<label>
+  Url:
+  <input
+    type="text"
+    value={url}
+    onChange={(event) => setUrl(event.target.value)}
+    name="url"
+  />
+</label>
       <br />
       <label>
         Member ID:

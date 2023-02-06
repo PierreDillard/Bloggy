@@ -111,6 +111,12 @@ export default function Home( ) {
         <React.Fragment>
 
           <Header /> 
+       {/*    <Link to="/createCard">
+          
+              <button className="home__button">
+                <span className="home__button-content">Créer une carte</span>
+              </button>
+              </Link> */}
             <p className='home__presentation'>
               C'est quoi BloGGy ?<br />
               C'est un blog pour toi, utilise-le !!!<br />
