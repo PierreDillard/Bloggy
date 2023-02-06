@@ -6,23 +6,17 @@
     height: 100vh;
 }
 
-.card {
-    background-color: black;
-    width: 15%;
-    height: 40%;
-    opacity: 0.2;
-    border-radius: 1rem;
-}
-
 .art-gallery__card-container {
     display: flex;
     justify-content: space-around;
     flex-wrap: wrap;
+    background-color: #f77214;
 }
 
 .art-gallery__button-container {
     display: flex;
     justify-content: center;
+    background-color: #f77214;
 }
 
 .art-gallery__button {

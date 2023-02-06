@@ -47,14 +47,13 @@ console.log(data)
 
   
 
-  /* function qui ajoute 3 Card au click */
+  /* fonction qui ajoute 3 Card au clique */
   const handleShowMore = () => {
     setCardNumbers(cardNumbers + 3);
     setShowMore(false)
   };
 
-
-  /* function qui enlève 3 Card au click */
+  /* fonction qui enlève 3 Card au clique */
   const handleShowLess = () => {
     setCardNumbers(cardNumbers -3);
     setShowMore(true)
@@ -70,8 +69,9 @@ console.log(data)
 
           <div className="art-gallery__card-container">
 
-            {/* On affiche les Card (en partant du 1 element, puis 
-              on coupe en fonction de cardNumbers, si cardNumber = 3 on affiche 3 Card) */}
+            {/* On affiche les Card (en partant du 1er élément, 
+            puis on coupe en fonction de cardNumbers
+            si cardNumber = 3 on affiche 3 Card) */}
             {data.slice(0, cardNumbers).map((item) => (
             <Card key={item.id} 
                id= {item.id} 
@@ -101,7 +101,6 @@ console.log(data)
             )}
 
           </div>
-
 
         </div>
 

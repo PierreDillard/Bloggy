@@ -50,19 +50,19 @@ export default function Registration() {
 
       } catch (error) {
         console.log(error);
-        setError('Error while registering user');
+        setError(`Erreur d'enregistrement`);
       }
 
-    if (pseudo && email && password === passwordRepeat) {
-      setShowModal(true);
-      setError("");
-    } else if (password !== passwordRepeat) {
-      setError("Les mots de passe doivent être identiques");
-    } else if (!(pseudo && email && password && passwordRepeat) !== "") {
-      setError("Tous les champs sont requis");
-    } else {
-      setError("Veuillez vérifier vos informations d'inscription");
-    } 
+      if (pseudo && email && password === passwordRepeat) {
+        setShowModal(true);
+        setError("");
+      } else if (password !== passwordRepeat) {
+        setError("Les mots de passe doivent être identiques");
+      } else if (!(pseudo && email && password && passwordRepeat) !== "") {
+        setError("Tous les champs sont requis");
+      } else {
+        setError("Veuillez vérifier vos informations d'inscription");
+      } 
 
 }
 

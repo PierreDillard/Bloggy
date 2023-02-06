@@ -2,15 +2,25 @@
     display: flex;
     flex-direction: row;
     padding: 0.5rem;
-    background: rgba(0,0,0,0.4); /* transparence de 0.4 */
-    margin: 2rem 3rem 0 3rem;
+    background: rgba(255, 255, 255, 0.5); /* transparence de 0.4 */
+    border-radius: 1rem;
+    margin: 2rem 1rem 3rem 1rem;
 }
 
-.papers__editForm {
-    width: 25rem;
+.papers__edit-form {
+    width: 35rem;
+    padding-left: 1rem;
+}
+
+.papers__title {
+    margin: 1rem 0 1rem 0;
+    font-size: 1.2rem;
+    color: black;
+    font-weight: bold;
 }
 
 .papers__add {
+    margin-bottom: 1rem;
     align-items: center;
 }
 
@@ -21,14 +31,13 @@
 
 .papers__add-content {
     padding: 0.5rem;
-
     font-size: 0.8rem;
 }
 
 .papers__form {
     display: flex;
-    flex-direction: row;
-    align-items: center;
+    flex-direction: column;
+    align-items: start;
     margin: 0.7rem 0 0.7rem 0;
 }
 
@@ -44,13 +53,21 @@
     border: hidden;
 }
 
+.papers__input-paper {
+    margin-bottom: 0.5rem;
+}
+
+.papers__input-upload {
+    margin-bottom: 0.5rem;
+}
+
 .papers__container-image {
     height: 100%;
 }
 
 .papers__input-image {
     display: flex;
-    flex-direction: column;
+    flex-direction: row;
     width: max-content;
     height: 100%;
 }
@@ -60,7 +77,7 @@
 }
 
 .papers__image {
-    height: 100%;
+    width: 100%;
 }
 
 .papers__button {
@@ -68,6 +85,7 @@
     padding-left: 0.5rem;
     padding-right: 0.5rem;
     height: 1rem;
+    width: 4rem;
     border-radius: 1rem;
     font-size: 0.8rem;
     text-align: center;
@@ -98,15 +116,19 @@
 .papers__container-list {
     display: flex;
     flex-direction: row;
-    justify-content: space-between;
+    justify-content: space-around;
     align-items: center;
     flex-wrap: wrap;
+    list-style-type: none;
 }
 
 .papers__list {
+    flex-direction: column;
     display: flex;
-    flex-direction: row;
     align-items: center;
+    flex-wrap: wrap;
+    flex-basis: calc(15% - 1rem); /* 15% donc environ 6 par ligne avec 1rem d'espacement */
+    width: 7%;
     text-align: start;
     vertical-align: middle;
     margin: 1rem;

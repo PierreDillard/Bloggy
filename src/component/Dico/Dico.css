@@ -1,21 +1,31 @@
 .dico__container {
     display: flex;
     flex-direction: row;
+    align-items: center;
     padding: 0.5rem;
-    background: rgba(0,0,0,0.4); /* transparence de 0.4 */
-    margin: 2rem 3rem 0 3rem; 
+    background: rgba(255, 255, 255, 0.5); /* transparence de 0.4 */
+    border-radius: 1rem;
+    margin: 0rem 1rem 0 1rem; 
 }
 
 .dico__search {
     display: flex;
     flex-direction: row;
+    align-items: center;
+}
+
+.dico__title {
+    margin: 1rem;
+    font-size: 1.2rem;
+    color: black;
+    font-weight: bold;
 }
 
 .dico__word {
-    margin-right: 0.2rem;
+    margin-right: 1rem;
     padding: 0.2rem;
     background-color: rgba(255,255,255,0.5);
-    width: 14rem;
+    width: 20rem;
     height: 1rem;
     font-size: 0.8rem;
     text-align: start;
@@ -50,7 +60,8 @@
 }
 
 .dico__definition {
-    margin: 0rem;
+    margin: 0 1rem 0 1rem;
+    padding: 0.5rem;
     background: rgba(255,255,255,0.5);
     font-size: 0.8rem;
 }

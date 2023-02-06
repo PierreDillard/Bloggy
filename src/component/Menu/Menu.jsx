@@ -38,8 +38,8 @@ pour supprimer l'Email, le token et passer isLoggedIn à false */
                 </Link>
 
                 {/* Videos */}
-                <Link to='/video'>
-                    <button className={`menu__button ${location.pathname === '/video' ? 'menu__button--current' : ''}`}>
+                <Link to='/videos'>
+                    <button className={`menu__button ${location.pathname === '/videos' ? 'menu__button--current' : ''}`}>
                         <span className='menu__button-content'>Vidéos</span>
                     </button>
                 </Link>

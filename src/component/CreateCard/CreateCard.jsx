@@ -15,7 +15,7 @@ export default function  CreateCard() {
   
   
   const [description, setDescription] = useState("");
-  const [url, setUrl] = useState(null);
+  const [uploaded_file, setUploaded_file] = useState(null);
   const [type, setType] = useState("");
   const [member_id, setMemberId] = useState(0);
 
@@ -24,7 +24,7 @@ export default function  CreateCard() {
     event.preventDefault();
 
     const formData = new FormData();
-    formData.append("url", url);
+    formData.append("uploaded_file", uploaded_file);
     formData.append("description", description);
     formData.append("type", type);
     formData.append("member_id", member_id);
@@ -56,7 +56,7 @@ export default function  CreateCard() {
         Image:
         <input 
         type="file"
-         onChange={(event) => setUrl(event.target.files[0])}
+         onChange={(event) => setUploaded_file(event.target.files[0])}
          name="file" />
       </label>
       <br />
