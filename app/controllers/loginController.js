@@ -31,10 +31,10 @@ const loginController = {
 
 // enregistre en memoire grace à session=cookie
         req.session.user=member;
-        //On génére un token
-        const token = generateAccessToken(member);
+        //On génére un token/* 
+     /*    const token = generateAccessToken(member); */ 
         //On l'envoi vers l'extérieur
-        res.status(200).json({member, token})
+        res.status(200).json({member})
     }
 };
 module.exports = loginController;

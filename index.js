@@ -15,11 +15,12 @@ const bodyParser = require("body-parser");
 const app = express();
 app.use(session({
   secret: 'keyboard cat',
-  resave: true,
+  resave: false,
   saveUninitialized: true,
   // à voir combien je mets
   cookie: { maxAge:1000605,  
-    sameSite: true }
+    secure : false
+   }
   }));
   //******* APP.USE(SESSION) *************/
   // Ce code est une configuration pour une session utilisant le middleware "session" dans une application Express.js.
@@ -29,7 +30,7 @@ app.use(session({
   // cookie est un objet qui définit les options pour le cookie de session, telles que maxAge qui définit la durée de vie
   //du cookie en millisecondes et sameSite qui spécifie si le cookie peut être envoyé avec des demandes depuis un autre domaine.
 
-  const port = process.env.PORT || 3000;
+  const port = process.env.PORT || 5000;
   
 //rend accessible depuis l'exterieur le dossier public
   app.use(express.static('public'));
@@ -47,7 +48,10 @@ app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({
         extended: true
 }));
-
+app.use((req,res,next) => {
+console.log("uuuuuuuuuuuuuser session", req.session?.user);
+next();
+})
 // PREFIXER AVEC API
 app.use('/api', router);
 
