@@ -97,7 +97,7 @@ export default function  CreateCard() {
           type="number"
           value={member_id}
           onChange={(event) => setMemberId(event.target.value)}
-          name="menber_id"
+          name="member_id"
         />
       </label>
       <button type="submit">Envoyer</button>

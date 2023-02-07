@@ -72,7 +72,14 @@ Modifier la  description */
   
       <div className="edition__image__container">
         <img src={`http://localhost:5000/${url}`}
+        type="type"
          className="edition__image" type="file" />
+          {type === "video" && (
+        <video width="320" height="240" controls>
+          <source src={url} type="video/mp4"/>
+          <p>Your browser does not support the video tag.</p>
+        </video>
+      )}
 
         <span className="image__author">
           Par Sam
