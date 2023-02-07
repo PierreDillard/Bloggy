@@ -1,11 +1,11 @@
 const client = require("./dbClient");
-
+const { cpSync } = require("fs");
 
 const paperModel = {
-    async findByTitle(title){
+    async findByTitle(description){
         try{
-            const sqlQuery = `SELECT * FROM paper WHERE title = $1;`;
-            const values = [title];
+            const sqlQuery = `SELECT * FROM paper WHERE description = $3;`;
+            const values = [description];
             const result = await client.query(sqlQuery, values);
             return result.rows[0];
 
@@ -28,13 +28,14 @@ const paperModel = {
     async insert(paper){
                
         try{
-            const sqlQuery = "INSERT INTO paper(title, description) VALUES ($1, $2) RETURNING *;";
-            const values = [paper.title, paper.description];
+            const sqlQuery = "INSERT INTO paper(url, title, description) VALUES ($1, $2, $3) RETURNING *;";
+            const values = [paper.url, paper.title, paper.description];
 
             const result = await client.query(sqlQuery,values);
             console.log(result);
             console.log(result.rows[0]);
           return result.rows[0];
+
         }catch(err){
             console.log(err);
         }

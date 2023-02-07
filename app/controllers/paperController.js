@@ -7,16 +7,17 @@ const paperController = {
         res.json(papers);
     },
     async  addPaper(req, res) {
-        const {title, description } = req.body;
+        const {url, title, description } = req.body;
         console.log(req.body);
-        const paper = await paperModel.findByTitle(title);
-        console.log("Is findByTitle problem ?"); 
+        const paper = await paperModel.findByTitle(description);
+        console.log("Is findByDescription problem ?"); 
         if(paper) {
             return res.status(401).json("Ce paper est déjà présente en bdd");
         }
     const newPaper = {
+        url : url,
         title : title,
-        decription  : description,
+        description  : description,
         }
     //Finalement on l'envoi en base de données
     const paperDb = await paperModel.insert(newPaper);
