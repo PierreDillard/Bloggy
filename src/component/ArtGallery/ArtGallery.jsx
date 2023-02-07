@@ -1,9 +1,11 @@
 import React, { useState , useEffect} from "react";
 import Header from "../Header/Header";
 import Card from "../Card/Card";
+import ModaleCreateCard from '../Modale/ModaleCreateCard';
 import api from "../../api";
 
 import "./ArtGallery.css";
+import CreateCard from "../CreateCard/CreateCard";
 
 /* 
 const data = [
@@ -21,31 +23,42 @@ const data = [
 
 export default function ArtGallery() {
 
-const [cardNumbers, setCardNumbers] = useState(3);
+  const [cardNumbers, setCardNumbers] = useState(3);
   const [showMore, setShowMore] = useState(true);
+  const [isShowModale, setIsShowModale] = useState(false);
   const [loading, setLoading] = useState(false);
   const [data, setData] = useState([]);
 
   useEffect(() => {
+
     const fetchData = async () => {
+
       setLoading(true);
+
       try {
         const response = await api.get("/card");
         console.log(response.data)
         setData(response.data);
         setLoading(false);
+
       } catch (err) {
         console.log(err);
         setLoading(false);
       }
+
     };
+
     fetchData();
+
   }, []);
 
   
-console.log(data)
+  console.log(data)
 
-  
+  // ouverture de la modale d'ajout de Card au clique
+  const handleAddCard = () => {
+    setIsShowModale(true);
+  };
 
   /* fonction qui ajoute 3 Card au clique */
   const handleShowMore = () => {
@@ -57,7 +70,8 @@ console.log(data)
   const handleShowLess = () => {
     setCardNumbers(cardNumbers -3);
     setShowMore(true)
-  }
+  };
+
 
     return (
 
@@ -68,6 +82,17 @@ console.log(data)
           <Header />
 
           <div className="art-gallery__card-container">
+
+            <div className='art-gallery__add-acrd'>
+                {/* l'utilisateur clique sur le bouton 'Ajouter un journal' */}
+                <button className='art-gallery__add-card-button' onClick={handleAddCard}>+</button>
+                <span className='art-gallery__add-card-content'>Ajouter un journal</span>
+            </div>
+
+            {/* Modale d'ajout de Card */}
+            <ModaleCreateCard>
+              <CreateCard />
+            </ModaleCreateCard>
 
             {/* On affiche les Card (en partant du 1er élément, 
             puis on coupe en fonction de cardNumbers

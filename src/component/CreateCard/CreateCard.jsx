@@ -9,7 +9,7 @@ export default function  CreateCard() {
   const [description, setDescription] = useState("");
   const [uploaded_file, setUploaded_file] = useState(null);
   const [type, setType] = useState("");
-  const [member_id, setMemberId] = useState(0);
+  // const [member_id, setMemberId] = useState(0);
   const [url, setUrl] = useState("");
 
   const handleSubmit = async (event) => {
@@ -20,7 +20,7 @@ export default function  CreateCard() {
     formData.append("uploaded_file", uploaded_file);
     formData.append("description", description);
     formData.append("type", type);
-    formData.append("member_id", member_id);
+    // formData.append("member_id", member_id);
     formData.append("url", url);
 
     try {
@@ -58,7 +58,7 @@ export default function  CreateCard() {
           />
         </label>
 
-        <label>
+        {/* <label>
           Type:
           <input
             type="text"
@@ -66,7 +66,7 @@ export default function  CreateCard() {
             onChange={(event) => setType(event.target.value)}
             name="type"
           />
-        </label>
+        </label> */}
 
         <label>
           Type de média:
@@ -87,7 +87,7 @@ export default function  CreateCard() {
           />
         </label>
 
-        <label>
+        {/* <label>
           Member ID:
           <input
             type="number"
@@ -95,7 +95,7 @@ export default function  CreateCard() {
             onChange={(event) => setMemberId(event.target.value)}
             name="member_id"
           />
-        </label>
+        </label> */}
 
          <button type="submit">Envoyer</button>
 
