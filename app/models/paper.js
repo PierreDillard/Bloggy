@@ -1,11 +1,11 @@
 const client = require("./dbClient");
 
 
-const mediaModel = {
-    async findByMember_id(member_id){
+const paperModel = {
+    async findByTitle(title){
         try{
-            const sqlQuery = `SELECT * FROM card WHERE member_id = $1;`;
-            const values = [member_id];
+            const sqlQuery = `SELECT * FROM paper WHERE title = $1;`;
+            const values = [title];
             const result = await client.query(sqlQuery, values);
             return result.rows[0];
 
@@ -14,22 +14,22 @@ const mediaModel = {
         }
     },
     async findAll(){
-        let medias
+        let papers
         try{
-            const result = await client.query("SELECT * FROM media;");
-            medias = result.rows;
+            const result = await client.query("SELECT * FROM paper;");
+            papers = result.rows;
 
         }catch(err){
             console.log(err);
         }
 
-        return medias;
+        return papers;
     },
-    async insert(media){
+    async insert(paper){
                
         try{
-            const sqlQuery = "INSERT INTO media(type, url, member_id, card_id) VALUES ($1, $2, $3, $4) RETURNING *;";
-            const values = [media.type, media.url, media.member_id, media.card_id];
+            const sqlQuery = "INSERT INTO paper(title, description) VALUES ($1, $2) RETURNING *;";
+            const values = [paper.title, paper.description];
 
             const result = await client.query(sqlQuery,values);
             console.log(result);
@@ -42,59 +42,59 @@ const mediaModel = {
         
     },
     async findById(id){
-        let media;
+        let paper;
         try{
-            const sqlQuery = "SELECT * FROM media WHERE id=$1;";
+            const sqlQuery = "SELECT * FROM paper WHERE id=$1;";
             const values = [id];
             const result = await client.query(sqlQuery,values);
-            media = result.rows[0];
+            paper = result.rows[0];
 
         }catch(err){
             console.log(err);
         }
-        return media;
+        return paper;
     },
-    async update(media){
-        let mediaDb;
+    async update(paper){
+        let paperDb;
         try{
-            const values = [];                          // []=tableau contenant des valeurs = type, url, member_id,card_id, id
-            const parameters = [];                      // []=tableau contenant des parametres representant tout les:  noms de la propriété=$...ex: type=$1, url=$2, member_id = $3, ...etc
+            const values = [];                          // []=tableau contenant des valeurs =  url, member_id, id
+            const parameters = [];                      // []=tableau contenant des parametres representant tout les:  noms de la propriété=$...ex:  url=$1, member_id = $2, ...etc
             let counter = 1;
             
-            for(const key in media){                    //"FOR IN" on lui envoi un objet "media" puis  parcourt toutes les propriétés de member (type, url, type, member_id, card_id, id)
+            for(const key in paper){                    //"FOR IN" on lui envoi un objet "paper" puis  parcourt toutes les propriétés de member (url, member_id, id)
 
             if(key!="id"){                              // La propriété "id" permet de faire le WHERE id= (en ligne 82) et qui contient aussi ttes les propriétés qui viennent de req.body
                                                         // (key!="id") veut dire que ttes les proprietes qui sont differents de id...on les enregistres la valeur à l'interieur de values et les
                                                         // les requetes SQL (ex: $1=type) dans parametre.
 
-            values.push(media[key]);                     // media[key] represente = "media.type, media.url, media.member_id, media.card_id, id"
+            values.push(paper[key]);                     // paper[key] represente = "paper.url, paper.member_id,id"
 
-            parameters.push(`${key}=$${counter}`);      //${key}=$${counter} represente: $1=type +1 = $2=url +1 $3=member_id...etc 
+            parameters.push(`${key}=$${counter}`);      //${key}=$${counter} represente: $1=url +1 $2=member_id +1...etc 
 
             counter++;                                  // ajout de +1 à chaque $ 
             }
             }
-            values.push(media.id);
+            values.push(paper.id);
 
             // "JOIN" permet de prendre chaque élément du tableau et de venir les coller ensemble, 
             //pour former une chaîne de caractère, il les sépare d'une virgule.
-            const sqlQuery = `UPDATE media SET ${parameters.join()} WHERE id=$${counter} RETURNING *;`;
+            const sqlQuery = `UPDATE paper SET ${parameters.join()} WHERE id=$${counter} RETURNING *;`;
             // "RETURNING avec * ": permet de retourner tout les champs qui t'interessent de la ligne qui ont été modifié.
-            // il retourne un objet qui represente tout les medias.
+            // il retourne un objet qui represente tout les papers.
 
             const result = await client.query(sqlQuery,values);
-            mediaDb = result.rows[0];
+            paperDb = result.rows[0];
         }
         catch(err){
             console.log(err);
         }
 
-        return mediaDb;
+        return paperDb;
     },
     async delete(id){
        
         try{
-            const sqlQuery = `DELETE FROM public.media
+            const sqlQuery = `DELETE FROM public.paper
             WHERE id=$1;`;
             const values = [id];
             const result = await client.query(sqlQuery,values);
@@ -105,8 +105,8 @@ const mediaModel = {
             console.log(err);
         }
 
-        return mediaDb;
+        return paperDb;
     }
 };
 
-module.exports = mediaModel;
+module.exports = paperModel;
