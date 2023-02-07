@@ -33,7 +33,7 @@ export default function  CreateCard() {
     formData.append("url", url);
 
     try {
-      const response = await axios.post("http://localhost:3000/api/card/addCard", formData,  { withCredentials: true });
+      const response = await axios.post("http://localhost:5000/api/card/addCard", formData,  { withCredentials: true });
       console.log(response.data);
     } catch (error) {
       console.error(error);

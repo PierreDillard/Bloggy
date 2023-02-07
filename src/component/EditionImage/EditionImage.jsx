@@ -71,7 +71,7 @@ Modifier la  description */
     type={type} >
   
       <div className="edition__image__container">
-        <img src={`http://localhost:3000/assets/${url}`}
+        <img src={`http://localhost:5000/${url}`}
          className="edition__image" type="file" />
 
         <span className="image__author">
