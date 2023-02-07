@@ -8,7 +8,7 @@ import { useNavigate } from "react-router-dom";
 import ModaleCode from '../Modale/ModaleCode';
 import "./Home.css";
 
-export default function Home( ) {
+export default function Home() {
 
   const isLoggedIn = useSelector((state) => state.user.isLoggedIn);
   const dispatch = useDispatch();
@@ -85,18 +85,61 @@ export default function Home( ) {
         <React.Fragment>
 
           <div className="home__banner">
-            {/* Connexion */}
-            <Link to="/registration">
-              <button className="home__button">
-                <span className="home__button-content">Inscription</span>
+
+            <div className="home__buttons">
+
+              {/* Espace Pro */}
+              <button className="home__button" onClick={handleSubmit}>
+                <span className="home__button-content">Espace Pro</span>
               </button>
-            </Link>
-            {/* Inscription */}
-            <Link to="/login">
-              <button className="home__button">
-                <span className="home__button-content">Connexion</span>
-              </button>
-            </Link>
+
+              {/* Connexion */}
+              <Link to="/login">
+                <button className="home__button">
+                  <span className="home__button-content">Connexion</span>
+                </button>
+              </Link>
+
+            </div>
+
+            <div className="modale-code__block">
+              
+              <div className="modale-code">
+
+                {/* On affiche un message erreur dans l'input si le mot de passe ou l'email est incorrect */}
+                {error && (
+                  <p className="modale-code__error-message">
+                    {error}
+                  </p>
+                )}
+
+                {showModal && (
+
+                  <ModaleCode onClose={handleCloseModal}>
+
+                    <p className='modale-code__text'>Code autorisation</p>
+
+                    <input 
+                    className={`modale-code__input`}
+                    ref={inputRef}
+                    type="code"
+                    value={code}
+                    placeholder="Code"
+                    onChange={(event) => setCode(event.target.value)}
+                    />
+
+                    <button className='modale-code__button' onClick={handleSubmitCode}>Valider</button>
+
+                    <button className='modale-code__button' onClick={handleCloseModal}>Fermer</button>
+
+                  </ModaleCode>
+
+                )}
+
+              </div>
+
+            </div>
+            
           </div>
 
         <p className="home__slogan">Le blog fait pour toi</p>
@@ -111,12 +154,7 @@ export default function Home( ) {
         <React.Fragment>
 
           <Header /> 
-       {/*    <Link to="/createCard">
-          
-              <button className="home__button">
-                <span className="home__button-content">Créer une carte</span>
-              </button>
-              </Link> */}
+
             <p className='home__presentation'>
               C'est quoi BloGGy ?<br />
               C'est un blog pour toi, utilise-le !!!<br />
