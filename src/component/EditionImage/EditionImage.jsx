@@ -13,7 +13,7 @@ console.log(author);
   const [imageUrl, setImageUrl] = useState(url);
   const [editDescription, setEditDescription] = useState(description);
   
-  const [member_id, setMemberId] = useState(0);
+  /* const [member_id, setMemberId] = useState(0); */
     
    
 
@@ -26,7 +26,7 @@ console.log(author);
       formData.append("description", description);
       formData.append("url", imageUrl);
       formData.append("type", type);
-      formData.append("member_id", member_id);
+     /*  formData.append("member_id", member_id); */
      
   
    

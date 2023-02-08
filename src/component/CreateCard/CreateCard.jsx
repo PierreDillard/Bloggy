@@ -27,13 +27,14 @@ export default function  CreateCard() {
     event.preventDefault();
 
     const formData = new FormData();
+    formData.append("author", author);
     formData.append("uploaded_file", uploaded_file);
     formData.append("description", description);
-   
+    formData.append("url", url);
     formData.append("type", type);
     formData.append("member_id", member_id);
-    formData.append("url", url);
-    formData.append("author", author);
+   
+    
 
     try {
       const response = await axios.post("http://localhost:5000/api/card/addCard", formData,  { withCredentials: true });
