@@ -7,7 +7,7 @@ import './Card.css';
 import { Card } from 'react-bootstrap';
 
 export default memo(function Card({  id,...data }) {
-console.log(id);
+console.log(data);
   const [showFileInput, setShowFileInput] = useState(false);
  /*  Le bouton "afficher" de EditionImage doit être caché par défault */
   const [showModifyButton, setShowModifyButton] = useState(false);
@@ -38,6 +38,8 @@ console.log(id);
         <div className="card__content">
           <EditionImage showFileInput={showFileInput} showModifyButton={showModifyButton} description={ data.description}
           url={data.url}
+           type ={data.type}
+            id={id}
           />
           <Comment 
           key={id}>
