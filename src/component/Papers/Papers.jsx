@@ -1,3 +1,4 @@
+import api from '../../api';
 import React, {useState} from 'react';
 import "./Papers.css";
 
@@ -19,6 +20,8 @@ export default function Papers() {
     const [editingImageIndex, setEditingImageIndex] = useState(-1);
     // affichage ou non de l'upload d'une nouvelle image
     const [isImageUploadVisible, setIsImageUploadVisible] = useState(false);  
+    // message d'erreur
+    const [error, setError] = useState("");
 
 
     // action au clique sur le bouton 'Ajouter un commentaire'
@@ -39,43 +42,62 @@ export default function Papers() {
       setEditingPaperIndex(-1);
     }
 
+
+
     // action au clique sur le bouton 'Valider'
-    const handleSubmitPaper = (event) => {
+    const handleSubmitPaper =  async (event) => {
       // empếche le comportement par défaut
       event.preventDefault();
 
-      // si aucun paper en cours d'édition
-      if (editingPaperIndex === -1) {
-        // on ajoute le nouveau paper dans la liste
-        setPapers([...papers, newPaper]);
-        // on ajoute la nouvelle imahhe dans la liste
-        setImages([...images, newImage]);
+      try {
 
-      // si un paper en cours d'édition
-      } else {
+        const response = await api.post('/api/add/addPaper', { newPaper }, {withCredentials:true});
+        console.log(response);
+  
+        if (response.status=== 200) {
 
-        // création d'une copie de la liste des papers
-        const newPapers = [...papers];
-        // on remplace le paper à l'index correspondant
-        newPapers[editingPaperIndex] = newPaper;
-        // on met à jour la liste avec la copie
-        setPapers(newPapers);
+          // si aucun paper en cours d'édition
+          if (editingPaperIndex === -1) {
+            // on ajoute le nouveau paper dans la liste
+            setPapers([...papers, newPaper]);
+            // on ajoute la nouvelle imahhe dans la liste
+            setImages([...images, newImage]);
 
-        // création d'une copie de la liste des images
-        const newImages = [...images];
-        // on remplace l'image à l'index correspondant
-        newImages[editingImageIndex] = newImage;
-        // on met à jour la liste avec la copie
-        setImages(newImages);
+          // si un paper en cours d'édition
+          } else {
 
-        // l'édition du paper est terminée
-        setEditingPaperIndex(-1);
+            // création d'une copie de la liste des papers
+            const newPapers = [...papers];
+            // on remplace le paper à l'index correspondant
+            newPapers[editingPaperIndex] = newPaper;
+            // on met à jour la liste avec la copie
+            setPapers(newPapers);
+
+            // création d'une copie de la liste des images
+            const newImages = [...images];
+            // on remplace l'image à l'index correspondant
+            newImages[editingImageIndex] = newImage;
+            // on met à jour la liste avec la copie
+            setImages(newImages);
+
+            // l'édition du paper est terminée
+            setEditingPaperIndex(-1);
+          }
+
+        } else {
+          console.log(response)
+        }
+
+      } catch (error) {
+        console.log(error);
+        setError(`Erreur d'enregistrement`);
       }
 
       // on cache le formulaire de saisie
       setIsPaperFormVisible(false);      
       // on efface le contenu du champ de saisie
       setNewPaper('');
+
     }
 
     // action du clique sur le bouton 'Supprimer' d'un lien 
