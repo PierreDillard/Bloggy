@@ -1,6 +1,22 @@
+import React, { useRef } from "react";
 
-import ReactPlayer from 'react-player'
+export default function EditionVideo ({url} ) { 
+  const videoRef = useRef(null)
 
-export default function EditionVideo({ url }) {
-    return <ReactPlayer url={url} />
-  }
+  return (
+    <div>
+      <video
+      className="edition_video"
+        ref={videoRef}
+        controls
+        onPlay={() => {
+          videoRef.current.play();
+        }}
+      >
+        <source src={url} type="video/mp4" />
+        Your browser does not support the video tag.
+      </video>
+    </div>
+  );
+
+      }      

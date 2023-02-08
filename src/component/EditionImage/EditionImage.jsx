@@ -10,8 +10,19 @@ export default function EditionImage({author, id,url,description,type,uploaded_f
  /*  State */
 console.log(author);
 /*  console.log(data); */
-  const [imageUrl, setImageUrl] = useState(url);
+ /*  const [imageUrl, setImageUrl] = useState(url);
+  const [editDescription, setEditDescription] = useState(description); */
+ 
+  const [authorName, setAuthorName] = useState(author);
   const [editDescription, setEditDescription] = useState(description);
+  let [urlFile, setUrlFile] = useState(url);
+  const [typeOfMedia, setTypeOfMedia] = useState(type);
+  const [uploaded_fileMedia, setploaded_fileMedia] = useState(uploaded_file);
+ const [member_id, setMemberId] = useState(0);
+  /* const [type, setType] = useState(type); */
+ /*  const [member_id, setMemberId] = useState(0);
+  
+  const [url, setUrl] = useState(""); */
   
   /* const [member_id, setMemberId] = useState(0); */
     
@@ -21,13 +32,13 @@ console.log(author);
       event.preventDefault();
 
       const formData = new FormData();
-      formData.append = ("author",author);
-      formData.append("uploaded_file", uploaded_file);
+      formData.append("author",author);
+    formData.append("uploaded_file", uploaded_file);
       formData.append("description", description);
-      formData.append("url", imageUrl);
+      formData.append("url", url);
       formData.append("type", type);
-     /*  formData.append("member_id", member_id); */
-     
+     formData.append("member_id", member_id);
+      
   
    
     try{ 
@@ -51,7 +62,7 @@ const handleInputChange = (event) => {
   /* Fonction d'upload */
 
   const handleFileInput = (event) => {
-    setImageUrl(URL.createObjectURL(event.target.files[0]));
+    setUrlFile(URL.createObjectURL(event.target.files[0]));
     console.log(event.target.files[0]);
   };
 /* 
@@ -75,11 +86,19 @@ Modifier la  description */
   
       <div className="edition__image__container">
       {type==="video" ?  (
-        <video controls> 
+        /* <video controls> 
           <source src={`http://localhost:5000/${url}`}/>
-          </video>
+          </video> */
+          <EditionVideo 
+          url={`http://localhost:5000/${urlFile}`
+          }
+            className="edition_video"
+          />
+       
+          
       ) : (  
-        <img src={`http://localhost:5000/${url}`}
+        
+           <img src={urlFile!==url ? urlFile : `http://localhost:5000/${urlFile}`}
         type={type}
          className="edition__image" type="file" />
          )}

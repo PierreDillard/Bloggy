@@ -28,6 +28,11 @@ export default function ArtGallery() {
   const [isShowModale, setIsShowModale] = useState(false);
   const [loading, setLoading] = useState(false);
   const [data, setData] = useState([]);
+  const closeModale = () => {
+    setIsShowModale(false);
+  };
+  
+
 
   useEffect(() => {
 
@@ -54,6 +59,7 @@ export default function ArtGallery() {
 
   
   console.log(data)
+
 
   // ouverture de la modale d'ajout de Card au clique
   const handleAddCard = () => {
@@ -91,7 +97,8 @@ export default function ArtGallery() {
 
               {/* Modale d'ajout de Card */}
               {isShowModale &&
-                <ModaleCreateCard>
+                <ModaleCreateCard
+                >
                   <CreateCard />
                 </ModaleCreateCard>
               }
