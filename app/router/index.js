@@ -3,7 +3,7 @@
 /* Fichier de configuration de mes routes */
 /*******************************************/
 const express = require("express");
-
+const paperRouter = require("./paperRouter");
 const loginRouter = require("./loginRouter");
 const memberRouter = require("./memberRouter");
 const cardRouter = require("./cardRouter");
@@ -14,7 +14,7 @@ const organizationRouter = require("./organizationRouter");
 
 
 const router = express.Router();
-
+router.use("/paper",paperRouter);
 router.use("/login",loginRouter);
 router.use("/member",memberRouter);
 router.use("/card",cardRouter);

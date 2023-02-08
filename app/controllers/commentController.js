@@ -8,7 +8,7 @@ const commentController = {
     },
     async addComment(req, res) {
        
-        const {  member_id, card_id, content } = req.body;
+        const {  author, member_id, card_id, content } = req.body;
         console.log(req.body);
         const comment = await commentModel.findByContent(content);
     console.log("Is findByContent problem ? ");
@@ -19,6 +19,7 @@ const commentController = {
         //return res.status(500).json;
         }
     const newComment = {
+         author : author,
          member_id : member_id,
          card_id : card_id,
          content : content
