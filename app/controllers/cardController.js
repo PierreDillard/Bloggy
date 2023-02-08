@@ -9,7 +9,7 @@ const cardController = {
     },
     async addCard(req, res) {
         //On déconstruit l'objet req.body contenant les info du formulaire.
-        const { description, url, type, member_id } = req.body;
+        const { author, description, url, type, member_id } = req.body;
         console.log(req.body);
         //On vérifie la présence éventuelle d'une carte ayant la même description
         const card = await cardModel.findByDescription(description);
@@ -21,6 +21,7 @@ const cardController = {
         //Si ce n'est pas une news, req.file contient les infos de l'upload de l'image ou de la video.
         //  Ternary operator : test ? si oui : si non 
         const newCard = {
+            author: author,
             description: description,
             //Si type est égal a news on met l'url recu dans le form sinon on met le filename du média uploadé
             url: type === "news" ? url : req.file.filename,

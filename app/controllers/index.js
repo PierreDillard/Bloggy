@@ -1,7 +1,7 @@
 /***********************************************/
 /* Fichier de configuration de mes controllers */
 /***********************************************/
-
+const paperController = require("./paperController.js");
 const cardController = require("./cardController.js");
 const commentController = require("./commentController.js");
 const labelController = require("./labelController.js");
@@ -12,4 +12,4 @@ const organizationController = require("./organizationContoller.js");
 
 
 
-module.exports = { cardController,commentController,labelController,mediaController,memberController, labelController, loginController,organizationController };
+module.exports = { paperController, cardController,commentController,labelController,mediaController,memberController, labelController, loginController,organizationController };
