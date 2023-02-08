@@ -81,53 +81,52 @@ export default function ArtGallery() {
 
           <Header />
 
-          <div className="art-gallery__card-container">
-
-            <div className='art-gallery__add-acrd'>
+            <div className='art-gallery__add-card'>
                 {/* l'utilisateur clique sur le bouton 'Ajouter un journal' */}
                 <button className='art-gallery__add-card-button' onClick={handleAddCard}>+</button>
                 <span className='art-gallery__add-card-content'>Ajouter un journal</span>
             </div>
 
-            {/* Modale d'ajout de Card */}
-            <ModaleCreateCard>
-              <CreateCard />
-            </ModaleCreateCard>
+            <div className="art-gallery__card-container">
 
-            {/* On affiche les Card (en partant du 1er élément, 
-            puis on coupe en fonction de cardNumbers
-            si cardNumber = 3 on affiche 3 Card) */}
-            {data.slice(0, cardNumbers).map((item) => (
-            
-            <Card key={item.id} 
-               id= {item.id} 
-               description={item.description}
-               url={item.url}
-               type={item.type}
-             
+              {/* Modale d'ajout de Card */}
+              {isShowModale &&
+                <ModaleCreateCard>
+                  <CreateCard />
+                </ModaleCreateCard>
+              }
+              
+              {/* On affiche les Card (en partant du 1er élément, 
+              puis on coupe en fonction de cardNumbers
+              si cardNumber = 3 on affiche 3 Card) */}
+              {data.slice(0, cardNumbers).map((item) => (
+                <Card key={item.id} 
+                  id= {item.id} 
+                  description={item.description}
+                  url={item.url}
+                  type={item.type}
+                />
+              ))}
 
-            />
-            ))}
+            </div>
 
-          </div>
+            <div className="art-gallery__button-container">
 
-          <div className="art-gallery__button-container">
+              {/* Si on a plus de 3 Card à afficher, on affiche le bouton "Afficher plus" */}
+              {cardNumbers < data.length && (
+                <button className="art-gallery__button art-gallery__button--more" onClick={handleShowMore}>
+                  Afficher plus
+                </button>
+              )}
 
-            {/* Si on a plus de 3 Card à afficher, on affiche le bouton "Afficher plus" */}
-            {cardNumbers < data.length && (
-              <button className="art-gallery__button art-gallery__button--more" onClick={handleShowMore}>
-                Afficher plus
-              </button>
-            )}
+              {/* Si on a au moins 6 cartes à afficher, on affiche le bouton "Afficher moins" */}
+              {cardNumbers >= 6 && (
+                <button className="art-gallery__button art-gallery__button--less" onClick={handleShowLess}>
+                  Afficher moins
+                </button>
+              )}
 
-            {/* Si on a au moins 6 cartes à afficher, on affiche le bouton "Afficher moins" */}
-            {cardNumbers >= 6 && (
-              <button className="art-gallery__button art-gallery__button--less" onClick={handleShowLess}>
-                Afficher moins
-              </button>
-            )}
-
-          </div>
+            </div>
 
         </div>
 

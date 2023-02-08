@@ -1,42 +1,44 @@
 import React, { useState } from 'react';
 
 import PropTypes from 'prop-types';
-import api from '../../api'
-
+import api from '../../api';
+import EditionVideo from '../EditionVideo/EditionVideo';
 import './EditionImage.css';
-import { NavItem } from 'react-bootstrap';
+
 
 export default function EditionImage({ id,url,description,type,uploaded_file, showFileInput , setShowFileInput,showModifyButton,data }) {
  /*  State */
-
- console.log(url);
-  const [imageUrl, setImageUrl] = useState("");
-  const [ediDescription, setEditDescription] = useState("");
+console.log(id);
+/*  console.log(data); */
+  const [imageUrl, setImageUrl] = useState(url);
+  const [editDescription, setEditDescription] = useState(description);
+  
+  const [member_id, setMemberId] = useState(0);
     
    
 
-    const handleSubmit = (event) => {
+    const handleSubmit = async (event) => {
       event.preventDefault();
-      for( let key in event.target){
-        console.log(event.target[key].value);
-        
-      }
+
+      const formData = new FormData();
+      
+      formData.append("uploaded_file", uploaded_file);
+      formData.append("description", description);
+      formData.append("url", imageUrl);
+      formData.append("type", type);
+      formData.append("member_id", member_id);
+     
+  
+   
+    try{ 
+      const response = await api.patch(`http://localhost:5000/api/card/${id}`, formData,  { withCredentials: true });
+      console.log(response.data);
+    } catch (error) {
+      console.error(error);
     }
+  };
     
-/*       const data = {
-        imageUrl,
-        description,
-      };
-    
-      api.patch('/card/addCard', data)
-        .then((res) => {
-          console.log(res.data);
-        })
-        .catch((err) => {
-          console.error(err);
-        });
-    };
-     */
+
 
     const [inputValue, setInputValue] = useState("");
 
@@ -50,6 +52,7 @@ const handleInputChange = (event) => {
 
   const handleFileInput = (event) => {
     setImageUrl(URL.createObjectURL(event.target.files[0]));
+    console.log(event.target.files[0]);
   };
 /* 
 Modifier la  description */
@@ -63,7 +66,7 @@ Modifier la  description */
 }
 
 
-  return (
+ return (
     <React.Fragment>
 
     <form className="edition__form"
@@ -71,16 +74,16 @@ Modifier la  description */
     type={type} >
   
       <div className="edition__image__container">
+      {type==="video" ?  (
+        <video controls> 
+          <source src={`http://localhost:5000/${url}`}/>
+          </video>
+      ) : (  
         <img src={`http://localhost:5000/${url}`}
-        type="type"
+        type={type}
          className="edition__image" type="file" />
-          {type === "video" && (
-        <video width="320" height="240" controls>
-          <source src={url} type="video/mp4"/>
-          <p>Your browser does not support the video tag.</p>
-        </video>
-      )}
-
+         )}
+      
         <span className="image__author">
           Par Sam
         </span>
@@ -103,7 +106,7 @@ Modifier la  description */
       </button>
       )}
       <p className="description">
-              {description}
+              {editDescription}
       </p>
 
       {showModifyButton && (
@@ -141,7 +144,8 @@ Modifier la  description */
       )}
       {showModifyButton && (
       <button type="submit" value="Envoyer"
-      className='edition__submit' > Envoyer
+      className='edition__submit'
+     > Envoyer
       </button>
       )}
 </form>
@@ -149,7 +153,8 @@ Modifier la  description */
 
     </React.Fragment>
   );
-};
+      }
+
 
 
 
