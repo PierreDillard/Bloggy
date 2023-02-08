@@ -105,6 +105,7 @@ export default function ArtGallery() {
                   description={item.description}
                   url={item.url}
                   type={item.type}
+                  author={item.author}
                 />
               ))}
 

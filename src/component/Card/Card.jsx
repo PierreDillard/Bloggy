@@ -40,9 +40,13 @@ console.log(data);
           url={data.url}
            type ={data.type}
             id={id}
+            author={data.author}
+
           />
           <Comment 
-          key={id}>
+          key={id}
+          
+          author={data.author}>
 
             
           </Comment> 

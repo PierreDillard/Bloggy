@@ -14,11 +14,12 @@ export default function  CreateCard() {
 
 
   
-  
+  const [author, setAuthor] = useState("");
   const [description, setDescription] = useState("");
   const [uploaded_file, setUploaded_file] = useState(null);
   const [type, setType] = useState("");
   const [member_id, setMemberId] = useState(0);
+  
   const [url, setUrl] = useState("");
 
   const handleSubmit = async (event) => {
@@ -28,9 +29,11 @@ export default function  CreateCard() {
     const formData = new FormData();
     formData.append("uploaded_file", uploaded_file);
     formData.append("description", description);
+   
     formData.append("type", type);
     formData.append("member_id", member_id);
     formData.append("url", url);
+    formData.append("author", author);
 
     try {
       const response = await axios.post("http://localhost:5000/api/card/addCard", formData,  { withCredentials: true });
@@ -53,6 +56,17 @@ export default function  CreateCard() {
           onChange={(event) => setDescription(event.target.value)}
           name="description"
         />
+      </label>
+      <br />
+      <label>
+        Auteur :
+        <input
+          type="text"
+          value={author}
+          onChange={(event) => {    console.log(event.target.value);setAuthor(event.target.value);}}
+          name="author"
+        />
+     
       </label>
       <br />
       <label>

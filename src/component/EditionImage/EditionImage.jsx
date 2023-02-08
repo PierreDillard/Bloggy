@@ -6,9 +6,9 @@ import EditionVideo from '../EditionVideo/EditionVideo';
 import './EditionImage.css';
 
 
-export default function EditionImage({ id,url,description,type,uploaded_file, showFileInput , setShowFileInput,showModifyButton,data }) {
+export default function EditionImage({author, id,url,description,type,uploaded_file, showFileInput , setShowFileInput,showModifyButton,data }) {
  /*  State */
-console.log(id);
+console.log(author);
 /*  console.log(data); */
   const [imageUrl, setImageUrl] = useState(url);
   const [editDescription, setEditDescription] = useState(description);
@@ -21,7 +21,7 @@ console.log(id);
       event.preventDefault();
 
       const formData = new FormData();
-      
+      formData.append = ("author",author);
       formData.append("uploaded_file", uploaded_file);
       formData.append("description", description);
       formData.append("url", imageUrl);
@@ -85,7 +85,7 @@ Modifier la  description */
          )}
       
         <span className="image__author">
-          Par Sam
+          {author}
         </span>
       </div>
 
