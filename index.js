@@ -15,7 +15,7 @@ const bodyParser = require("body-parser");
 const app = express();
 app.use(session({
   secret: 'keyboard cat',
-  resave: false,
+  resave: true, //sauvegarde la session à chaque changement
   saveUninitialized: true,
   // à voir combien je mets
   cookie: {

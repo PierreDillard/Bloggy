@@ -70,7 +70,7 @@ const cardModel = {
             let counter = 1;
             
             for(const key in card){                     // "FOR IN" on lui envoi un objet "card" puis  parcourt toutes les propriétés de member (author, description, url, type, member_id, id)
-
+console.log(key);
             if(key!="id"){                              // La propriété "id" permet de faire le WHERE id= (en ligne 82) et qui contient aussi ttes les propriétés qui viennent de req.body
                                                         // (key!="id") veut dire que ttes les proprietes qui sont differents de id...on les enregistres la valeur à l'interieur de values et les
                                                         // les requetes SQL (ex: $1=peudo) dans parametre.
@@ -89,7 +89,8 @@ const cardModel = {
             const sqlQuery = `UPDATE card SET ${parameters.join()} WHERE id=$${counter} RETURNING *;`;
             // "RETURNING avec * ": permet de retourner tout les champs qui t'interessent de la ligne qui ont été modifié.
             // il retourne un objet qui represente tout les cards.
-
+console.log(sqlQuery);
+console.log(values);
             const result = await client.query(sqlQuery,values);
             cardDB = result.rows[0];
         }
