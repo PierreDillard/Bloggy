@@ -90,8 +90,7 @@ Modifier la  description */
           <source src={`http://localhost:5000/${url}`}/>
           </video> */
           <EditionVideo 
-          url={`http://localhost:5000/${urlFile}`
-          }
+          url={urlFile!==url ? urlFile : `http://localhost:5000/${urlFile}`}
             className="edition_video"
           />
        

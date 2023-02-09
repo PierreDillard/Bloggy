@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { useSelector } from "react-redux";
 import axios from 'axios';
 import api from "../../api";
@@ -41,8 +41,10 @@ export default function  CreateCard() {
       console.log(response.data);
     } catch (error) {
       console.error(error);
-    }
+    } 
   };
+ 
+
 
   return (
     <div className="form__container">
