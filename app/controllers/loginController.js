@@ -31,6 +31,7 @@ const loginController = {
 
 // enregistre en memoire grace à session=cookie
         req.session.user=member;
+        console.log(`req: ${req.session}`);
         //On génére un token/* 
      /*    const token = generateAccessToken(member); */ 
         //On l'envoi vers l'extérieur

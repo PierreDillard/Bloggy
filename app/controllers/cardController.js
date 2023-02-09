@@ -4,7 +4,7 @@ const { cardModel } = require("../models");
 const cardController = {
     async getAllCards(req, res) {
         const cards = await cardModel.findAll();
-        console.log(req.body);
+        console.log(req.session);
         return res.status(200).json(cards);
     },
     async addCard(req, res) {
@@ -49,7 +49,7 @@ const cardController = {
             console.log(update);
         }
 
-        const cardDb = await cardModel.update(card);
+        const cardDb = await cardModel.update(update); //il faut envoyer update au lieu de card (pourquoi?)
 
         res.json(cardDb);
     },

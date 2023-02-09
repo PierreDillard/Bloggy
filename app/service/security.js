@@ -8,6 +8,7 @@
 //Double attribution des droits pour le PRO.. "||"="et" pour l'admin car il a des droits sur le Pro...voir utilisation sur les differents routers!!
 const security = {
     checkPro(req, res, next) {
+        console.log(req.session.user);
         if (req.session.user){
             if (req.session.user.role == 'pro' || req.session.user.role == 'admin') {
                 next();
@@ -18,6 +19,7 @@ const security = {
 
         }
         console.log('checkPro');
+        
 
         return res.status(401).json('vous n\'etes pas authentifié');
     },

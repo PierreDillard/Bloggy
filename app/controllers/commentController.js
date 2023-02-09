@@ -46,7 +46,7 @@ res.status(200).json(commentDb);
             console.log(update);
         }
 
-        const commentDb = await commentModel.update(comment);
+        const commentDb = await commentModel.update(update); //renvoyer update au lieu de comment
 
         res.json(commentDb);
     },
