@@ -7,6 +7,7 @@ import api from '../../api';
 import { useNavigate } from "react-router-dom";
 import ModaleCode from '../Modale/ModaleCode';
 import "./Home.css";
+import { findAllByRole } from "@testing-library/react";
 
 export default function Home() {
 
@@ -17,14 +18,17 @@ export default function Home() {
   const [code, setCode] = useState("");
   const [error, setError] = useState("");
   const navigate = useNavigate();
+ /*  const isUser = useSelector((state) => state.user.role); */
+ 
   
 /* On vérifie si un utilisateur est connecté en consultant les données stockées localement via le localStorage, si on trouve un token et un email, on envoie une action de connexion via "dispatch(actionlogin..." */
 
   useEffect(() => {
     const email = localStorage.getItem("email");
-    const token = localStorage.getItem("token");
-    if (email && token) {
-      dispatch(actionlogin(email, token));
+    const role = localStorage.getItem("role");
+
+    if (email&& findAllByRole ) {
+      dispatch(actionlogin(email,  role));
     }
   }, [dispatch]);
 
@@ -154,6 +158,7 @@ export default function Home() {
         <React.Fragment>
 
           <Header /> 
+        
 
             <p className='home__presentation'>
               C'est quoi BloGGy ?<br />

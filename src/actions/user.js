@@ -13,24 +13,24 @@ export const actionlogin = (email,role,token) => {
           email,
           role,
          /*  pseudo, */
-          token
+         
         
       
         }
       });
-   localStorage.setItem("email", email);
-      localStorage.setItem("role",role); console.log(role)
-     localStorage.setItem("token",token );  
+      sessionStorage.setItem("email", email);
+      sessionStorage.setItem("role",role); console.log(role)
+     
     }
 };
 
-export const actionregister = (pseudo, email,token) => {
+export const actionregister = (pseudo, email/* ,token */) => {
   return {
       type: REGISTER,
       payload: {
           pseudo,
           email,
-          token,
+     
         
       }
   }
@@ -41,7 +41,7 @@ export const actionlogout = () => {
       dispatch({
         type: LOGOUT
       });
-    localStorage.removeItem("email");
+    sessionStorage.clear();
  /*      localStorage.removeItem("token");  */
     /*   localStorage.removeItem("pseudo");  */
     };

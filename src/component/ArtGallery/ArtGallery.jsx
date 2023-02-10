@@ -3,6 +3,7 @@ import Header from "../Header/Header";
 import Card from "../Card/Card";
 import ModaleCreateCard from '../Modale/ModaleCreateCard';
 import api from "../../api";
+import { useSelector } from "react-redux";
 
 import "./ArtGallery.css";
 import CreateCard from "../CreateCard/CreateCard";
@@ -77,6 +78,8 @@ export default function ArtGallery() {
     setCardNumbers(cardNumbers -3);
     setShowMore(true)
   };
+  const isUser =useSelector((state) => state.user.role);
+  console.log(isUser);
 
 
     return (
@@ -85,13 +88,15 @@ export default function ArtGallery() {
 
         <div className="art-gallery__container">
 
-          <Header />
-
+          <Header />{/* 
+          Si User est un "visiteur" on n'ajoute pas "Ajouter un média" */}
+          {isUser === "visiteur" ? null : (
             <div className='art-gallery__add-card'>
                 {/* l'utilisateur clique sur le bouton 'Ajouter un journal' */}
                 <button className='art-gallery__add-card-button' onClick={handleAddCard}>+</button>
-                <span className='art-gallery__add-card-content'>Ajouter un journal</span>
+                <span className='art-gallery__add-card-content'>Ajouter un média</span>
             </div>
+            )}
 
             <div className="art-gallery__card-container">
 

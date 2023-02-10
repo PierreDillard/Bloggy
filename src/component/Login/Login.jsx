@@ -28,7 +28,8 @@ function Login() {
 const handleSubmit = async (event) => {
   event.preventDefault();
   try {
-    const response = await api.post('/login', { pseudo, email, password },  { withCredentials: true });
+    const response = await api.post('/login', { pseudo, email, password });
+    console.log(response);
     const role = response.data.member.role;
  
     dispatch(actionlogin(email, role));
