@@ -8,7 +8,7 @@ import "./Card.css";
 import { Card } from "react-bootstrap";
 
 export default memo(function Card({ id,author, description, type,  url}) {
-  console.log(id,author, description, type, url)
+console.log(id);
   const [showFileInput, setShowFileInput] = useState(false);
   /*  Le bouton "afficher" de EditionImage doit être caché par défault */
   const [showModifyButton, setShowModifyButton] = useState(false);
@@ -23,30 +23,22 @@ export default memo(function Card({ id,author, description, type,  url}) {
   const [member_id, setMemberId] = useState(0);
 
 
+  const handleDescriptionChange = (event) => {
+    setEditDescription(event.target.value);
+  }
 
-  const handleSubmit = async (event) => {
+  const handleSubmit =async(event) => {
     event.preventDefault();
-
     const formData = new FormData();
-    formData.append("author", author);
-    formData.append("uploaded_file", uploaded_fileMedia);
+    console.log(editDescription);
     formData.append("description", editDescription);
-    formData.append("url", url);
-    formData.append("type", typeOfMedia);
-    formData.append("member_id", member_id);
+    api.patch(`card/${id}`,formData)
+    .then((response) => {
+      console.log(response.data)
+    });
+  }
+ 
 
-    try {
-      const response = await api.patch(
-        `http://localhost:5000/api/card/${id}`,
-        formData
-      );
-      setAuthorName(response.data.author);
-      setEditDescription(response.data.description);
-      setUrlFile(response.data.url);
-    } catch (error) {
-      console.error(error);
-    }
-  };
 
   return (
     <React.Fragment>
@@ -73,7 +65,9 @@ export default memo(function Card({ id,author, description, type,  url}) {
           )}
         </div>
         <div className="card__content">
-          <form className="edition__form" onSubmit={handleSubmit} type={type}>
+          <form className="edition__form" onSubmit={handleSubmit} 
+          type={type}
+          id={id}>
             <div className="edition__image__container">
               {type === "video" ? (
                 <EditionVideo
@@ -104,7 +98,7 @@ export default memo(function Card({ id,author, description, type,  url}) {
                 name="file"
                 className="edition__image__upload"
                 type="file"
-                onChange={(e) => setUrlFile(e.target.value)}
+                onChange={(e) => setploaded_fileMedia(e.target.files[0])}
               />
             )}
 
@@ -114,23 +108,20 @@ export default memo(function Card({ id,author, description, type,  url}) {
                 className="edition__button__image--modify"
               ></button>
             )}
-            <p className="description">{editDescription}</p>
+            <p className="description">{editDescription}
+            </p>
 
         {showModifyButton && (
           <div className="edition__button__container">
             <button
+            type="submit"
            
               className="edition__description__button"
             >
               Modifier description
             </button>
 
-            <button
-            
-              className="edition__description__validate"
-            >
-              Valider
-            </button>
+          
 
             {/*   On clique sur "MOdifier la description", on affiche l'input de saisie en dessous de  la description */}
         
@@ -139,6 +130,9 @@ export default memo(function Card({ id,author, description, type,  url}) {
             
                 className="edition__input__description"
                 name="description"
+                value={editDescription}
+                onChange={handleDescriptionChange}
+                id={id}
               />
           
           </div>
@@ -147,12 +141,12 @@ export default memo(function Card({ id,author, description, type,  url}) {
         )}
       </form>
 
-      {showModifyButton && (
+  {/*     {showModifyButton && (
         <button type="submit" value="Envoyer" className="edition__submit">
-            {" "}
+          
             Envoyer
           </button>
-      )}
+      )} */}
 
           
           <Comment key={id} author={author}></Comment>
