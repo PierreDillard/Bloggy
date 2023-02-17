@@ -45,6 +45,7 @@ const cardModel = {
     async findById(id){
         let card;
         try{
+          
             const sqlQuery = "SELECT * FROM card WHERE id=$1;";
             const values = [id];
             const result = await client.query(sqlQuery,values);
@@ -59,6 +60,7 @@ const cardModel = {
     async update(card){
         let cardDB;
         try{
+         
             //***1ere façon la plus courte pour faire la requete modify/update***
             //const values = [card.description, card.url, card.type, card.member_id, card.id];
             //const sqlQuery = `UPDATE card SET author= $1, description=$2, url=$3, type = $4, member_id = $5 WHERE id=$6 RETURNING *;`;
@@ -70,8 +72,8 @@ const cardModel = {
             let counter = 1;
             
             for(const key in card){                     // "FOR IN" on lui envoi un objet "card" puis  parcourt toutes les propriétés de member (author, description, url, type, member_id, id)
-console.log(key);
-            if(key!="id"){                              // La propriété "id" permet de faire le WHERE id= (en ligne 82) et qui contient aussi ttes les propriétés qui viennent de req.body
+
+            if(key!="id"){                             // La propriété "id" permet de faire le WHERE id= (en ligne 82) et qui contient aussi ttes les propriétés qui viennent de req.body
                                                         // (key!="id") veut dire que ttes les proprietes qui sont differents de id...on les enregistres la valeur à l'interieur de values et les
                                                         // les requetes SQL (ex: $1=peudo) dans parametre.
 
@@ -97,8 +99,9 @@ console.log(values);
         catch(err){
             console.log(err);
         }
-
-        return cardDB;     
+        console.log(cardDB);  
+        return cardDB;  
+         
     },
     async delete(id){
        

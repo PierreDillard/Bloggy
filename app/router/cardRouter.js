@@ -53,7 +53,7 @@ router.post("/addCard", security.checkPro, upload.single('uploaded_file'), cardC
 router.get("/:id", cardController.getCard);
 
 // "/api/card/ -> {numero de son id}...modifier et mettre à jour une CARD grâce a son numero  id avec autorisation pour l'Admin et le Pro. -> PATCH"....OK
-router.patch("/:id",security.checkPro, cardController.modifyCard);
+router.patch("/:id",security.checkPro,  upload.single('uploaded_file'),cardController.modifyCard);
 
 // "/api/card/ -> {numero de son id}...effacer une CARD grâce a son numero id avec autorisation pour l'Admin et le Pro. -> DELETE"....OK
 router.delete("/:id", security.checkPro, cardController.deleteCard);

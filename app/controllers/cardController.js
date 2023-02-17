@@ -41,12 +41,15 @@ const cardController = {
     },
 
     async modifyCard(req, res) {
-        const card = req.body; // les modifications apportées à card
+        const card = req.params;
+        console.log("La nouvelle carte", card);
+       
         card.id = req.params.id;
-        const update = await cardModel.findById(req.params.id);
+        console.log( "*******le card id est : ",card.id)
+        const update = await cardModel.findById(card.id);
         for (const key in req.body) {
-            update[key] = req.body[key]
-            console.log(update);
+            update[key] = req.body[key]; console.log("=============req.body key:=====", req.body[key]);
+            /* console.log(update); */
         }
 
         const cardDb = await cardModel.update(update); //il faut envoyer update au lieu de card (pourquoi?)
