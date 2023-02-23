@@ -4,7 +4,7 @@ export const LOGIN = "LOGIN";
 export const LOGOUT = "LOGOUT";
 export const REGISTER = "REGISTER";
 
-export const actionlogin = (email,role,token) => {
+export const actionlogin = (email,role) => {
  
     return dispatch => {
       dispatch({

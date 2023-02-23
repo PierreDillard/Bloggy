@@ -6,8 +6,9 @@
     transform: translate(-50%, -50%);
     width: 20rem;
     height: 10rem;
-    text-align: center;
+    text-align: left;
     background: #84D0E1;
     padding: 1rem;
     box-shadow: 0 0 10px rgb(0 0 0 / 30%);
+    border-radius: 1rem;
 } 

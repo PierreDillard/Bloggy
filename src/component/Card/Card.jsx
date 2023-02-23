@@ -1,4 +1,4 @@
-import React, { memo, useState } from "react";
+import  { React, memo, useState, useEffect } from "react";
 import EditionVideo from '../EditionVideo/EditionVideo';
 import api from '../../api'
 import PropTypes from "prop-types";
@@ -7,21 +7,40 @@ import Comment from "../Comment/Comment";
 import "./Card.css";
 import { Card } from "react-bootstrap";
 
-export default memo(function Card({ id,author, description, type,  url}) {
-console.log(id);
+export default memo(function Card({ id,author, description, type,  url, memberId}) {
+
   const [showFileInput, setShowFileInput] = useState(false);
   /*  Le bouton "afficher" de EditionImage doit être caché par défault */
   const [showModifyButton, setShowModifyButton] = useState(false);
 
   // utilisé pour l'affichage conditionnel selon le role
   const isUser = useSelector((state) => state.user.role);
-  const [authorName, setAuthorName] = useState(author);
-  const [editDescription, setEditDescription] = useState(description);
-  let [urlFile, setUrlFile] = useState(url);
-  const [typeOfMedia, setTypeOfMedia] = useState(type);
-  const [uploaded_fileMedia, setploaded_fileMedia] = useState("");
-  const [member_id, setMemberId] = useState(0);
 
+ 
+  
+  const [authorName, setAuthorName] = useState(author)
+  const [editDescription, setEditDescription] = useState(description);
+  const [uploaded_file, setUploaded_file] = useState("");
+  const [typeMedia, setTypeMedia] = useState(type);
+  const [urlMedia, setUrlMedia] = useState(url);
+
+ const cardId = id;
+ const membId = memberId;
+
+ useEffect(() => {
+  // Effectue une action lorsque urlMedia ou editDescription change
+  // Ici, on met à jour la card avec les nouvelles valeurs
+  console.log("Card mise à jour avec urlMedia et editDescription:", urlMedia, editDescription);
+}, [urlMedia, editDescription]);
+
+ 
+  
+  
+
+  const handleFileInput = (event) => {
+    setUrlMedia(URL.createObjectURL(event.target.files[0]));
+    setUploaded_file(event.target.files[0]);
+  };
 
   const handleDescriptionChange = (event) => {
     setEditDescription(event.target.value);
@@ -29,19 +48,43 @@ console.log(id);
 
   const handleSubmit =async(event) => {
     event.preventDefault();
-    const formData = new FormData();
-    console.log(editDescription);
-    formData.append("description", editDescription);
-    api.patch(`card/${id}`,formData)
-    .then((response) => {
-      console.log(response.data)
-    });
+   
+  const formData = new FormData();
+  
+     
+      formData.append("author", authorName); 
+      formData.append("uploaded_file", uploaded_file)                          
+      formData.append("description", editDescription);
+      formData.append("url", urlMedia);
+      formData.append("type", typeMedia);
+    
+      formData.append("member_id", membId); 
+  
+
+     /*  On log les entrées du formData pour vérifier ce que l'on envoie au back */
+
+      for (const [key, value] of formData.entries()) {
+        console.log(`${key}: ${value}`);
+      } 
+ 
+   
+    try {
+      const response = await api.patch(`/card/${id}`,formData);
+      console.log(response.data);
+     
+
+    }catch(error) {
+      console.log("l'erreur est :",error)
+
+    }
+
+  
   }
  
 
 
   return (
-    <React.Fragment>
+    <>
       <div className="card__container">
         <div className="card__header">
           {isUser === "visiteur" ? null : (
@@ -69,23 +112,27 @@ console.log(id);
           type={type}
           id={id}>
             <div className="edition__image__container">
+           {/*  Modifier la vidéo ou image*/}
               {type === "video" ? (
                 <EditionVideo
                   url={
-                    urlFile !== url
-                      ? urlFile
-                      : `http://localhost:5000/${urlFile}`
+                   urlMedia !== url
+                      ? urlMedia
+                      : `http://localhost:5000/${urlMedia}`
                   }
                   className="edition_video"
                 />
               ) : (
+            
                 <img
                   src={
-                    urlFile !== url
-                      ? urlFile
-                      : `http://localhost:5000/${urlFile}`
+                    urlMedia !== url
+                      ? urlMedia
+                      : `http://localhost:5000/${urlMedia}`
                   }
-                  type={type}
+                  media ={type}
+                  type="file"
+                 
                   className="edition__image"
                 />
               )}
@@ -98,7 +145,7 @@ console.log(id);
                 name="file"
                 className="edition__image__upload"
                 type="file"
-                onChange={(e) => setploaded_fileMedia(e.target.files[0])}
+                onChange={handleFileInput}
               />
             )}
 
@@ -116,9 +163,10 @@ console.log(id);
             <button
             type="submit"
            
+           
               className="edition__description__button"
             >
-              Modifier description
+              Valider les modifications
             </button>
 
           
@@ -153,7 +201,13 @@ console.log(id);
         </div>
         </div>
     
-    </React.Fragment>
+    </>
   );
 });
 
+Card.propTypes = {
+  author: PropTypes.string.isRequired,
+  description: PropTypes.string.isRequired,
+  type: PropTypes.string.isRequired,
+  url: PropTypes.string.isRequired
+};

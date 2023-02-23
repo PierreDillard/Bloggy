@@ -8,19 +8,7 @@ import { useSelector } from "react-redux";
 import "./ArtGallery.css";
 import CreateCard from "../CreateCard/CreateCard";
 
-/* 
-const data = [
-  { id: 1, title: "Actualités" },
-  { id: 2, title: "Sport" },
-  { id: 3, title: "Théatre" },
-  { id: 4, title: "Actualités" },
-  { id: 5, title: "Sport" },
-  { id: 6, title: "Théatre" },
-  { id: 7, title: "Actualités" },
-  { id: 8, title: "Sport" },
-  { id: 9, title: "Théatre" },
 
-] */
 
 export default function ArtGallery() {
 
@@ -58,8 +46,6 @@ export default function ArtGallery() {
 
   }, []);
 
-  
-  console.log(data)
 
 
   // ouverture de la modale d'ajout de Card au clique
@@ -79,7 +65,7 @@ export default function ArtGallery() {
     setShowMore(true)
   };
   const isUser =useSelector((state) => state.user.role);
-  console.log(isUser);
+  
 
 
     return (
@@ -118,6 +104,8 @@ export default function ArtGallery() {
                   url={item.url}
                   type={item.type}
                   author={item.author}
+                  memberId={item.member_id}
+                 
                 />
               ))}
 

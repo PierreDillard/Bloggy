@@ -17,6 +17,10 @@
     width: 1rem;
     padding: 0;
 }
+.comment__add-button:hover {
+   cursor:pointer
+}
+
 
 .comment__add-content {
     padding: 0.5rem;
