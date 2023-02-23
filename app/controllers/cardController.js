@@ -1,4 +1,5 @@
 const { cardModel } = require("../models");
+const path = require('path');
 
 
 const cardController = {
@@ -41,21 +42,28 @@ const cardController = {
     },
 
     async modifyCard(req, res) {
-        const card = req.params;
-        console.log("La nouvelle carte", card);
-       
-        card.id = req.params.id;
-        console.log( "*******le card id est : ",card.id)
-        const update = await cardModel.findById(card.id);
-        for (const key in req.body) {
-            update[key] = req.body[key]; console.log("=============req.body key:=====", req.body[key]);
-            /* console.log(update); */
-        }
+      const card = req.body; // les modifications apportées à card
+      card.id = req.params.id;
+      const update = await cardModel.findById(req.params.id);
+      for (const key in card) {
+          update[key] = card[key]
+          console.log(update);
+      }
+      if (req.file) {
+        update.url = req.file.filename; // utiliser le nom de fichier de la nouvelle image
+      }
+    
 
-        const cardDb = await cardModel.update(update); //il faut envoyer update au lieu de card (pourquoi?)
 
-        res.json(cardDb);
-    },
+      const cardDb = await cardModel.update(update); //il faut envoyer update au lieu de card
+
+
+      res.json(cardDb);
+  },
+
+     
+  
+    
     async deleteCard(req, res) {
 
         const result = await cardModel.delete(req.params.id);
