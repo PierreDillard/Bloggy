@@ -1,4 +1,4 @@
-import  { React, memo, useState, useEffect } from "react";
+import  { memo, useState, useEffect } from "react";
 import EditionVideo from '../EditionVideo/EditionVideo';
 import api from '../../api'
 import PropTypes from "prop-types";
@@ -7,7 +7,8 @@ import Comment from "../Comment/Comment";
 import "./Card.css";
 import { Card } from "react-bootstrap";
 
-export default memo(function Card({ id,author, description, type,  url, memberId}) {
+
+export default memo(function Card({ id,author, description, type,  url, memberId, onDelete}) {
 
   const [showFileInput, setShowFileInput] = useState(false);
   /*  Le bouton "afficher" de EditionImage doit être caché par défault */
@@ -16,7 +17,7 @@ export default memo(function Card({ id,author, description, type,  url, memberId
   // utilisé pour l'affichage conditionnel selon le role
   const isUser = useSelector((state) => state.user.role);
 
- 
+ /* State */
   
   const [authorName, setAuthorName] = useState(author)
   const [editDescription, setEditDescription] = useState(description);
@@ -24,13 +25,13 @@ export default memo(function Card({ id,author, description, type,  url, memberId
   const [typeMedia, setTypeMedia] = useState(type);
   const [urlMedia, setUrlMedia] = useState(url);
 
+
+
  const cardId = id;
  const membId = memberId;
 
  useEffect(() => {
-  // Effectue une action lorsque urlMedia ou editDescription change
-  // Ici, on met à jour la card avec les nouvelles valeurs
-  console.log("Card mise à jour avec urlMedia et editDescription:", urlMedia, editDescription);
+
 }, [urlMedia, editDescription]);
 
  
@@ -80,6 +81,16 @@ export default memo(function Card({ id,author, description, type,  url, memberId
 
   
   }
+  const handleDelete = async () => {
+    try {
+      await api.delete(`/card/${id}`);
+      // Rechargez la page pour mettre à jour l'affichage des cartes
+      onDelete(id);
+    } catch (error) {
+      console.log("l'erreur est :", error);
+    }
+  };
+  
  
 
 
@@ -101,7 +112,8 @@ export default memo(function Card({ id,author, description, type,  url, memberId
                 {showModifyButton ? "Valider" : "Modifier"}
               </button>
 
-              <button className="card__button card__button--cancel">
+              <button className="card__button card__button--cancel"
+               onClick={handleDelete}>
                 Supprimer
               </button>
             </div>

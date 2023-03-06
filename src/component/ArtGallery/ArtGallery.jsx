@@ -16,11 +16,13 @@ export default function ArtGallery() {
   const [showMore, setShowMore] = useState(true);
   const [isShowModale, setIsShowModale] = useState(false);
   const [loading, setLoading] = useState(false);
-  const [data, setData] = useState([]);
+  const [cards, setCards] = useState([]);
   const closeModale = () => {
     setIsShowModale(false);
   };
-  
+ /*  Fonction pour supprimer les cartes */
+
+
 
 
   useEffect(() => {
@@ -32,7 +34,7 @@ export default function ArtGallery() {
       try {
         const response = await api.get("/card");
         console.log(response.data)
-        setData(response.data);
+        setCards(response.data);
         setLoading(false);
 
       } catch (err) {
@@ -64,6 +66,18 @@ export default function ArtGallery() {
     setCardNumbers(cardNumbers -3);
     setShowMore(true)
   };
+
+/*   Supprimer les cartes */
+
+  const onDelete = (id) => {
+    try {
+      // Supprime la carte ayant l'id spécifié de la liste de cartes
+      setCards(cards.filter((card) => card.id !== id));
+    } catch (error) {
+      console.log("l'erreur est :", error);
+    }
+  };
+  
   const isUser =useSelector((state) => state.user.role);
   
 
@@ -97,7 +111,7 @@ export default function ArtGallery() {
               {/* On affiche les Card (en partant du 1er élément, 
               puis on coupe en fonction de cardNumbers
               si cardNumber = 3 on affiche 3 Card) */}
-              {data.slice(0, cardNumbers).map((item) => (
+              {cards.slice(0, cardNumbers).map((item) => (
                 <Card key={item.id} 
                   id= {item.id} 
                   description={item.description}
@@ -105,6 +119,7 @@ export default function ArtGallery() {
                   type={item.type}
                   author={item.author}
                   memberId={item.member_id}
+                  onDelete={onDelete}
                  
                 />
               ))}
@@ -114,7 +129,7 @@ export default function ArtGallery() {
             <div className="art-gallery__button-container">
 
               {/* Si on a plus de 3 Card à afficher, on affiche le bouton "Afficher plus" */}
-              {cardNumbers < data.length && (
+              {cardNumbers < cards.length && (
                 <button className="art-gallery__button art-gallery__button--more" onClick={handleShowMore}>
                   Afficher plus
                 </button>
