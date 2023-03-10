@@ -8,6 +8,7 @@ import "./Card.css";
 import { Card } from "react-bootstrap";
 
 
+
 export default memo(function Card({ id,author, description, type,  url, memberId, onDelete}) {
 
   const [showFileInput, setShowFileInput] = useState(false);
@@ -16,6 +17,8 @@ export default memo(function Card({ id,author, description, type,  url, memberId
 
   // utilisé pour l'affichage conditionnel selon le role
   const isUser = useSelector((state) => state.user.role);
+  console.log(isUser);
+
 
  /* State */
   
@@ -29,6 +32,8 @@ export default memo(function Card({ id,author, description, type,  url, memberId
 
  const cardId = id;
  const membId = memberId;
+
+ const [showDeleteModal, setShowDeleteModal] = useState(false)
 
  useEffect(() => {
 
@@ -81,11 +86,24 @@ export default memo(function Card({ id,author, description, type,  url, memberId
 
   
   }
+  // Modale de confirmation à la suppression de la carte
+
+ 
+
   const handleDelete = async () => {
     try {
-      await api.delete(`/card/${id}`);
+
+      setShowDeleteModal(true);
+      // On attends une seconde avant de supprimer la carte
+      setTimeout(async() => {
+        await api.delete(`/card/${id}`);
+  setShowDeleteModal(false);
+  onDelete(id);
+      }, 1000);
+    
+     
       // Rechargez la page pour mettre à jour l'affichage des cartes
-      onDelete(id);
+    
     } catch (error) {
       console.log("l'erreur est :", error);
     }
@@ -96,7 +114,11 @@ export default memo(function Card({ id,author, description, type,  url, memberId
 
   return (
     <>
+
+
+
       <div className="card__container">
+  
         <div className="card__header">
           {isUser === "visiteur" ? null : (
             <div className="card__bouton-container">
@@ -196,6 +218,7 @@ export default memo(function Card({ id,author, description, type,  url, memberId
               />
           
           </div>
+          
         
 
         )}
@@ -212,6 +235,7 @@ export default memo(function Card({ id,author, description, type,  url, memberId
           <Comment key={id} author={author}></Comment>
         </div>
         </div>
+     
     
     </>
   );

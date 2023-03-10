@@ -80,6 +80,7 @@ export default function ArtGallery() {
   
   const isUser =useSelector((state) => state.user.role);
   
+  
 
 
     return (

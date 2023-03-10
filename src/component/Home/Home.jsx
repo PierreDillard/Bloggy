@@ -7,7 +7,7 @@ import api from '../../api';
 import { useNavigate } from "react-router-dom";
 import ModaleCode from '../Modale/ModaleCode';
 import "./Home.css";
-import { findAllByRole } from "@testing-library/react";
+
 
 export default function Home() {
 
@@ -21,16 +21,16 @@ export default function Home() {
  /*  const isUser = useSelector((state) => state.user.role); */
  
   
-/* On vérifie si un utilisateur est connecté en consultant les données stockées localement via le localStorage, si on trouve un token et un email, on envoie une action de connexion via "dispatch(actionlogin..." */
+/* On vérifie si un utilisateur est connecté en consultant les données stockées via le sessionStorage, si on trouve un token et un email, on envoie une action de connexion via "dispatch(actionlogin..." */
+useEffect(() => {
+  const email = sessionStorage.getItem("email");
+  const role = sessionStorage.getItem("role");
+  console.log(role)
 
-  useEffect(() => {
-    const email = localStorage.getItem("email");
-    const role = localStorage.getItem("role");
-
-    if (email&& findAllByRole ) {
-      dispatch(actionlogin(email,  role));
-    }
-  }, [dispatch]);
+  if (email && role) {
+    dispatch(actionlogin(email, role));
+  }
+}, [dispatch]);
 
 
   // action au clique sur le bouton "Espace Pro"
