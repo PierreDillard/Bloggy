@@ -17,7 +17,7 @@ export default memo(function Card({ id,author, description, type,  url, memberId
 
   // utilisé pour l'affichage conditionnel selon le role
   const isUser = useSelector((state) => state.user.role);
-  console.log(isUser);
+  
 
 
  /* State */

@@ -4,35 +4,24 @@ import Card from "../Card/Card";
 import ModaleCreateCard from '../Modale/ModaleCreateCard';
 import api from "../../api";
 import { useSelector } from "react-redux";
-import ArtGallery from "../ArtGallery/ArtGallery";
-/* import "./ArtGallery.css"; */
 import CreateCard from "../CreateCard/CreateCard";
+import "./Videos.css";
 
-/* 
-const data = [
-  { id: 1, title: "Actualités" },
-  { id: 2, title: "Sport" },
-  { id: 3, title: "Théatre" },
-  { id: 4, title: "Actualités" },
-  { id: 5, title: "Sport" },
-  { id: 6, title: "Théatre" },
-  { id: 7, title: "Actualités" },
-  { id: 8, title: "Sport" },
-  { id: 9, title: "Théatre" },
-
-] */
 
 export default function Video() {
+
 
   const [cardNumbers, setCardNumbers] = useState(3);
   const [showMore, setShowMore] = useState(true);
   const [isShowModale, setIsShowModale] = useState(false);
   const [loading, setLoading] = useState(false);
-  const [data, setData] = useState([]);
+  const [cards, setCards] = useState([]);
   const closeModale = () => {
     setIsShowModale(false);
   };
-  
+ /*  Fonction pour supprimer les cartes */
+
+
 
 
   useEffect(() => {
@@ -44,7 +33,7 @@ export default function Video() {
       try {
         const response = await api.get("/card");
         console.log(response.data)
-        setData(response.data);
+        setCards(response.data);
         setLoading(false);
 
       } catch (err) {
@@ -58,8 +47,6 @@ export default function Video() {
 
   }, []);
 
-  
-  console.log(data)
 
 
   // ouverture de la modale d'ajout de Card au clique
@@ -78,72 +65,88 @@ export default function Video() {
     setCardNumbers(cardNumbers -3);
     setShowMore(true)
   };
+
+/*   Supprimer les cartes */
+
+  const onDelete = (id) => {
+    try {
+      // Supprime la carte ayant l'id spécifié de la liste de cartes
+      setCards(cards.filter((card) => card.id !== id));
+    } catch (error) {
+      console.log("l'erreur est :", error);
+    }
+  };
+  
   const isUser =useSelector((state) => state.user.role);
-  console.log(isUser);
 
+  return (
 
-    return (
+    <React.Fragment>
 
-      <React.Fragment>
+      <div className="videos__container">
 
-        <div className="art-gallery__container">
+        <Header />{/* 
+        Si User est un "visiteur" on n'ajoute pas "Ajouter un média" */}
+        {isUser === "visiteur" ? null : (
+          <div className='art-gallery__add-card'>
+              {/* l'utilisateur clique sur le bouton 'Ajouter un journal' */}
+              <button className='art-gallery__add-card-button' onClick={handleAddCard}>+</button>
+              <span className='art-gallery__add-card-content'>Ajouter un média</span>
+          </div>
+          )}
 
-          <Header />{/* 
-          Si User est un "visiteur" on n'ajoute pas "Ajouter un média" */}
-          {isUser === "visiteur" ? null : (
-            <div className='art-gallery__add-card'>
-                {/* l'utilisateur clique sur le bouton 'Ajouter un journal' */}
-                <button className='art-gallery__add-card-button' onClick={handleAddCard}>+</button>
-                <span className='art-gallery__add-card-content'>Ajouter un média</span>
-            </div>
+          <div className="videos-card__container">
+
+            {/* Modale d'ajout de Card */}
+            {isShowModale &&
+              <ModaleCreateCard
+              >
+                <CreateCard />
+              </ModaleCreateCard>
+            }
+            
+            {/* On affiche les Card (en partant du 1er élément, 
+            puis on coupe en fonction de cardNumbers
+            si cardNumber = 3 on affiche 3 Card) */}
+            {cards.slice(0, cardNumbers).map((item) => (
+              <Card key={item.id} 
+                id= {item.id} 
+                description={item.description}
+                url={item.url}
+                type={item.type}
+                author={item.author}
+              />
+            ))}
+
+          </div>
+
+          <div className="art-gallery__button-container">
+
+            {/* Si on a plus de 3 Card à afficher, on affiche le bouton "Afficher plus" */}
+            {cardNumbers < cards.length && (
+              <button className="art-gallery__button art-gallery__button--more" onClick={handleShowMore}>
+                Afficher plus
+              </button>
             )}
 
-            <div className="art-gallery__card-container">
+            {/* Si on a au moins 6 cartes à afficher, on affiche le bouton "Afficher moins" */}
+            {cardNumbers >= 6 && (
+              <button className="art-gallery__button art-gallery__button--less" onClick={handleShowLess}>
+                Afficher moins
+              </button>
+            )}
 
-              {/* Modale d'ajout de Card */}
-              {isShowModale &&
-                <ModaleCreateCard
-                >
-                  <CreateCard />
-                </ModaleCreateCard>
-              }
-              
-              {/* On affiche les Card (en partant du 1er élément, 
-              puis on coupe en fonction de cardNumbers
-              si cardNumber = 3 on affiche 3 Card) */}
-              {data.slice(0, cardNumbers).map((item) => (
-                <Card key={item.id} 
-                  id= {item.id} 
-                  description={item.description}
-                  url={item.url}
-                  type={item.type}
-                  author={item.author}
-                />
-              ))}
+          </div>
 
-            </div>
+      </div>
 
-            <div className="art-gallery__button-container">
-
-              {/* Si on a plus de 3 Card à afficher, on affiche le bouton "Afficher plus" */}
-              {cardNumbers < data.length && (
-                <button className="art-gallery__button art-gallery__button--more" onClick={handleShowMore}>
-                  Afficher plus
-                </button>
-              )}
-
-              {/* Si on a au moins 6 cartes à afficher, on affiche le bouton "Afficher moins" */}
-              {cardNumbers >= 6 && (
-                <button className="art-gallery__button art-gallery__button--less" onClick={handleShowLess}>
-                  Afficher moins
-                </button>
-              )}
-
-            </div>
-
-        </div>
-
-      </React.Fragment> 
-       
-    )
+    </React.Fragment> 
+     
+  )
 }
+  
+  
+
+
+
+    

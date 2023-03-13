@@ -1,16 +1,68 @@
-import React, {useState} from 'react'
-import { Link } from 'react-router-dom';
+import React, { useState , useEffect} from "react";
 import Header from "../Header/Header";
 import Card from "../Card/Card";
+import ModaleCreateCard from '../Modale/ModaleCreateCard';
+import api from "../../api";
+import { useSelector } from "react-redux";
+import { Link } from "react-router-dom";
+
 import "./Internship.css";
+import CreateCard from "../CreateCard/CreateCard";
+
+
 
 export default function Internship() {
 
-  // State
-  // Card à afficher 3 par 3
   const [cardNumbers, setCardNumbers] = useState(3);
-  // afficher ou non plus de 3 Card
   const [showMore, setShowMore] = useState(true);
+  const [isShowModale, setIsShowModale] = useState(false);
+  const [loading, setLoading] = useState(false);
+  const [cards, setCards] = useState([]);
+  const [filteredCards, setFilteredCards] = useState([]);
+  const closeModale = () => {
+    setIsShowModale(false);
+  };
+
+  const urlToFilter = "1678717155203.jpg";
+  const cardFilter = cards.filter(card => card.url === urlToFilter);
+
+
+
+
+
+  useEffect(() => {
+
+    const fetchData = async () => {
+
+      setLoading(true);
+
+      try {
+        const response = await api.get("/card");
+        console.log(response.data)
+        setCards(response.data);
+        setLoading(false);
+
+      } catch (err) {
+        console.log(err);
+        setLoading(false);
+      }
+
+    };
+
+    fetchData();
+
+  }, []);
+
+  useEffect(() => {
+    setFilteredCards(cardFilter);
+  }, [cardFilter],console.log(cardFilter));
+
+
+
+  // ouverture de la modale d'ajout de Card au clique
+  const handleAddCard = () => {
+    setIsShowModale(true);
+  };
 
   /* fonction qui ajoute 3 Card au clique */
   const handleShowMore = () => {
@@ -24,13 +76,21 @@ export default function Internship() {
     setShowMore(true)
   };
 
-  const data = [
-    { id: 1,},
-    { id: 2,},
-    { id: 3,},
-    { id: 4,},
-    { id: 5,}
-  ];
+/*   Supprimer les cartes */
+
+  const onDelete = (id) => {
+    try {
+      // Supprime la carte ayant l'id spécifié de la liste de cartes
+      setCards(cards.filter((card) => card.id !== id));
+    } catch (error) {
+      console.log("l'erreur est :", error);
+    }
+  };
+  
+  const isUser =useSelector((state) => state.user.role);
+  console.log(isUser);
+  
+  
 
   return (
 
@@ -76,24 +136,52 @@ export default function Internship() {
         <p className='internship__title-testimony'>
           Ils et elles racontent leurs stages ! Lis leurs témoignages !
         </p>
+      {/* Si User est un "visiteur" on n'ajoute pas "Ajouter un média"  */}
+          {isUser === "visiteur" ? null : (
+            <div className='art-gallery__add-card'>
+                {/* l'utilisateur clique sur le bouton 'Ajouter un journal' */}
+                <button className='art-gallery__add-card-button' onClick={handleAddCard}>+</button>
+                <span className='art-gallery__add-card-content'>Ajouter un média</span>
+            </div>
+            )}
+
 
 
         {/* Card */}
         
         <div className="internship__card-container">
-
-          {/* On affiche les Card */}
-          {/* si cardNumber = 3 -> on affiche 3 Card  */}
-          {data.slice(0, cardNumbers).map((item) => (
-            <Card key={item.id} title={item.title} id= {item.id} />
-          ))}
+        {/* Modale ajout de Card */}
+        {isShowModale &&
+                <ModaleCreateCard
+                >
+                  <CreateCard />
+                </ModaleCreateCard>
+              }
+              
+       
+         {/* On affiche les Card (en partant du 1er élément, 
+              puis on coupe en fonction de cardNumbers
+              si cardNumber = 3 on affiche 3 Card) */}
+              {cardFilter.slice(0, cardNumbers).map((item) => (
+                <Card key={item.id} 
+                  id= {item.id} 
+                  description={item.description}
+                  url={item.url}
+                  type={item.type}
+                  author={item.author}
+                  memberId={item.member_id}
+                  onDelete={onDelete}
+                  className="card__internship"
+                 
+                />
+              ))}
 
         </div>
 
         <div className="internship__button-container">
 
           {/* Si on a plus de 3 Card à afficher, on affiche le bouton "Afficher plus" */}
-          {cardNumbers < data.length && (
+          {cardNumbers < cards.length && (
             <button className="internship__button internship__button--more" onClick={handleShowMore}>
               Afficher plus
             </button>
