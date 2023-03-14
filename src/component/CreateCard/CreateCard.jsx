@@ -96,6 +96,7 @@ export default function  CreateCard() {
     <option value="news">News</option>
     <option value="art">Art</option>
     <option value="video">Vidéo</option>
+    <option value="internship">Stage</option>
   </select>
 </label>
 <br />

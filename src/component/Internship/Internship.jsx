@@ -5,6 +5,7 @@ import ModaleCreateCard from '../Modale/ModaleCreateCard';
 import api from "../../api";
 import { useSelector } from "react-redux";
 import { Link } from "react-router-dom";
+import useCardFilter from "../../customHook/useCardFilter";
 
 import "./Internship.css";
 import CreateCard from "../CreateCard/CreateCard";
@@ -12,84 +13,61 @@ import CreateCard from "../CreateCard/CreateCard";
 
 
 export default function Internship() {
-
   const [cardNumbers, setCardNumbers] = useState(3);
   const [showMore, setShowMore] = useState(true);
   const [isShowModale, setIsShowModale] = useState(false);
   const [loading, setLoading] = useState(false);
   const [cards, setCards] = useState([]);
-  const [filteredCards, setFilteredCards] = useState([]);
+  const filteredCards = useCardFilter(cards,"internship")
   const closeModale = () => {
     setIsShowModale(false);
   };
 
-  const urlToFilter = "1678717155203.jpg";
-  const cardFilter = cards.filter(card => card.url === urlToFilter);
-
-
-
-
-
   useEffect(() => {
-
     const fetchData = async () => {
-
       setLoading(true);
 
       try {
         const response = await api.get("/card");
-        console.log(response.data)
+        console.log(response.data);
         setCards(response.data);
         setLoading(false);
-
       } catch (err) {
         console.log(err);
         setLoading(false);
       }
-
     };
 
     fetchData();
-
   }, []);
 
-  useEffect(() => {
-    setFilteredCards(cardFilter);
-  }, [cardFilter],console.log(cardFilter));
+ 
 
-
-
-  // ouverture de la modale d'ajout de Card au clique
   const handleAddCard = () => {
     setIsShowModale(true);
   };
 
-  /* fonction qui ajoute 3 Card au clique */
   const handleShowMore = () => {
     setCardNumbers(cardNumbers + 3);
-    setShowMore(false)
+    setShowMore(false);
   };
 
-  /* fonction qui enlève 3 Card au clique */
   const handleShowLess = () => {
-    setCardNumbers(cardNumbers -3);
-    setShowMore(true)
+    setCardNumbers(cardNumbers - 3);
+    setShowMore(true);
   };
-
-/*   Supprimer les cartes */
 
   const onDelete = (id) => {
     try {
-      // Supprime la carte ayant l'id spécifié de la liste de cartes
       setCards(cards.filter((card) => card.id !== id));
     } catch (error) {
       console.log("l'erreur est :", error);
     }
   };
-  
-  const isUser =useSelector((state) => state.user.role);
+
+  const isUser = useSelector((state) => state.user.role);
   console.log(isUser);
-  
+
   
 
   return (
@@ -162,7 +140,7 @@ export default function Internship() {
          {/* On affiche les Card (en partant du 1er élément, 
               puis on coupe en fonction de cardNumbers
               si cardNumber = 3 on affiche 3 Card) */}
-              {cardFilter.slice(0, cardNumbers).map((item) => (
+              {filteredCards.slice(0, cardNumbers).map((item) => (
                 <Card key={item.id} 
                   id= {item.id} 
                   description={item.description}
