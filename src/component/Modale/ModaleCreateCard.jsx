@@ -2,6 +2,7 @@ import React from 'react';
 import './ModaleCreateCard.css';
 
 export default function ModaleCreateCard({ children, closeModale}) {
+  
 
   return (
 

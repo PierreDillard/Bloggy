@@ -4,6 +4,8 @@ import Card from "../Card/Card";
 import ModaleCreateCard from '../Modale/ModaleCreateCard';
 import api from "../../api";
 import { useSelector } from "react-redux";
+import useCardFilter from "../../customHook/useCardFilter";
+
 
 import "./ArtGallery.css";
 import CreateCard from "../CreateCard/CreateCard";
@@ -17,13 +19,10 @@ export default function ArtGallery() {
   const [isShowModale, setIsShowModale] = useState(false);
   const [loading, setLoading] = useState(false);
   const [cards, setCards] = useState([]);
-  const closeModale = () => {
-    setIsShowModale(false);
+  const filteredCards = useCardFilter(cards,"art");
+  const modalToggle = () => {
+    setIsShowModale(!isShowModale);
   };
- /*  Fonction pour supprimer les cartes */
-
-
-
 
   useEffect(() => {
 
@@ -47,27 +46,21 @@ export default function ArtGallery() {
     fetchData();
 
   }, []);
+ 
 
-
-
-  // ouverture de la modale d'ajout de Card au clique
-  const handleAddCard = () => {
-    setIsShowModale(true);
-  };
-
-  /* fonction qui ajoute 3 Card au clique */
+  /* fonction qui ajoute 3 Card  */
   const handleShowMore = () => {
     setCardNumbers(cardNumbers + 3);
     setShowMore(false)
   };
 
-  /* fonction qui enlève 3 Card au clique */
+  /* fonction qui enlève 3 Card */
   const handleShowLess = () => {
     setCardNumbers(cardNumbers -3);
     setShowMore(true)
   };
 
-/*   Supprimer les cartes */
+/*   Fonction de supression de la Card*/
 
   const onDelete = (id) => {
     try {
@@ -80,8 +73,6 @@ export default function ArtGallery() {
   
   const isUser =useSelector((state) => state.user.role);
   
-  
-
 
     return (
 
@@ -94,7 +85,7 @@ export default function ArtGallery() {
           {isUser === "visiteur" ? null : (
             <div className='art-gallery__add-card'>
                 {/* l'utilisateur clique sur le bouton 'Ajouter un journal' */}
-                <button className='art-gallery__add-card-button' onClick={handleAddCard}>+</button>
+                <button className='art-gallery__add-card-button' onClick={modalToggle}>+</button>
                 <span className='art-gallery__add-card-content'>Ajouter un média</span>
             </div>
             )}
@@ -108,11 +99,11 @@ export default function ArtGallery() {
                   <CreateCard />
                 </ModaleCreateCard>
               }
-              
+            
               {/* On affiche les Card (en partant du 1er élément, 
               puis on coupe en fonction de cardNumbers
               si cardNumber = 3 on affiche 3 Card) */}
-              {cards.slice(0, cardNumbers).map((item) => (
+              {filteredCards.slice(0, cardNumbers).map((item) => (
                 <Card key={item.id} 
                   id= {item.id} 
                   description={item.description}

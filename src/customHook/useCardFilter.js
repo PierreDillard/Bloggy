@@ -1,5 +1,7 @@
 import { useState, useEffect } from "react";
 
+// custom Hook  pour trier les cartes selon le type
+
 function useCardFilter(cards, type) {
   const [filteredCards, setFilteredCards] = useState([]);
 

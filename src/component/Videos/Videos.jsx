@@ -5,6 +5,7 @@ import ModaleCreateCard from '../Modale/ModaleCreateCard';
 import api from "../../api";
 import { useSelector } from "react-redux";
 import CreateCard from "../CreateCard/CreateCard";
+import useCardFilter from "../../customHook/useCardFilter";
 
 import "./Videos.css";
 
@@ -17,8 +18,9 @@ export default function Video() {
   const [isShowModale, setIsShowModale] = useState(false);
   const [loading, setLoading] = useState(false);
   const [cards, setCards] = useState([]);
-  const closeModale = () => {
-    setIsShowModale(false);
+  const filteredCards = useCardFilter(cards,"video")
+  const modalToggle = () => {
+    setIsShowModale(!isShowModale);
   };
  /*  Fonction pour supprimer les cartes */
 
@@ -91,7 +93,7 @@ export default function Video() {
         {isUser === "visiteur" ? null : (
           <div className='art-gallery__add-card'>
               {/* l'utilisateur clique sur le bouton 'Ajouter un journal' */}
-              <button className='art-gallery__add-card-button' onClick={handleAddCard}>+</button>
+              <button className='art-gallery__add-card-button' onClick={modalToggle}>+</button>
               <span className='art-gallery__add-card-content'>Ajouter un média</span>
           </div>
           )}
@@ -109,7 +111,7 @@ export default function Video() {
             {/* On affiche les Card (en partant du 1er élément, 
             puis on coupe en fonction de cardNumbers
             si cardNumber = 3 on affiche 3 Card) */}
-            {cards.slice(0, cardNumbers).map((item) => (
+            {filteredCards.slice(0, cardNumbers).map((item) => (
               <Card key={item.id} 
                 id= {item.id} 
                 description={item.description}
