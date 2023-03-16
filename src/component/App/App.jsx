@@ -12,16 +12,7 @@ import Organization from '../Organization/Organization';
 import Contact from '../Contact/Contact';
 import Dico from '../Dico/Dico';
 import CreateCard from '../CreateCard/CreateCard';
-
-// branchement Back
-// PGUSER=bloggy
-// PGPASSWORD=bloggy
-// PGDATABASE=bloggy
-// HOST=http://localhost/
-// url pour inscription d'un membre : http://localhost:5000/api/member/addMember
-// PORT=5000
-// ACCESS_TOKEN_SECRET=4242XX
-// REFRESH_TOKEN_SECRET=424200000X1
+import { useDispatch } from 'react-redux';
 
 
 

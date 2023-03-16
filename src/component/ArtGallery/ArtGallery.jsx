@@ -12,6 +12,7 @@ import CreateCard from "../CreateCard/CreateCard";
 
 
 
+
 export default function ArtGallery() {
 
   const [cardNumbers, setCardNumbers] = useState(3);
@@ -20,6 +21,12 @@ export default function ArtGallery() {
   const [loading, setLoading] = useState(false);
   const [cards, setCards] = useState([]);
   const filteredCards = useCardFilter(cards,"art");
+
+  // Fonction qui ajoute la nouvelle Card crée, à cards
+  const handleAddCard = ( newCard) => {
+    setCards((oldCards)=> [...oldCards,newCard]) ;
+  };
+
   const modalToggle = () => {
     setIsShowModale(!isShowModale);
   };
@@ -94,9 +101,9 @@ export default function ArtGallery() {
 
               {/* Modale d'ajout de Card */}
               {isShowModale &&
-                <ModaleCreateCard
+                <ModaleCreateCard 
                 >
-                  <CreateCard />
+                  <CreateCard onAddCard = { handleAddCard } />
                 </ModaleCreateCard>
               }
             

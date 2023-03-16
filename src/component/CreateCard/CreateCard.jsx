@@ -8,10 +8,10 @@ import './CreateCard.css';
 
 
 
-export default function  CreateCard() {
+export default function  CreateCard({onAddCard}) {
 
   
-  const [showPopup, setShowPopup] = useState(false);
+  
 
   
   const [author, setAuthor] = useState("");
@@ -38,7 +38,11 @@ export default function  CreateCard() {
 
     try {
       const response = await axios.post("http://localhost:5000/api/card/addCard", formData,  { withCredentials: true });
-      console.log(response.data);
+    
+      const newCard = response.data;
+
+      onAddCard(newCard)
+      
     
     } catch (error) {
       console.error(error);
