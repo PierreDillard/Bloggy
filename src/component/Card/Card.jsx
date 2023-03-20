@@ -15,16 +15,16 @@ const Card = function Card({
   type,
   url,
   memberId,
-  onDelete,
+ 
 }) {
   const dispatch = useDispatch() ;
   const cards = useSelector ((state) => state.cards);
+  const isUser = useSelector((state) => state.user.role);
   const [showFileInput, setShowFileInput] = useState(false);
   /*  Le bouton "afficher" de EditionImage doit être caché par défault */
   const [showModifyButton, setShowModifyButton] = useState(false);
 
   // utilisé pour l'affichage conditionnel selon le role
-  const isUser = useSelector((state) => state.user.role);
 
   /* State */
 
@@ -82,21 +82,17 @@ const Card = function Card({
     try {
 
   await api.delete(`/card/${id}`);
-  dispatch(deleteCard(id));
-      
+  dispatch(deleteCard(id));     
 
-      
-
-      // Rechargez la page pour mettre à jour l'affichage des cartes
     } catch (error) {
       console.log("l'erreur est :", error);
     }
   };
+
   useEffect(() => {
    
-    console.log("Cards deleted:", cards);
+   
   }, [cards]);
-
   return (
     <>
       <div className="card__container">
@@ -194,13 +190,6 @@ const Card = function Card({
               </div>
             )}
           </form>
-
-          {/*     {showModifyButton && (
-        <button type="submit" value="Envoyer" className="edition__submit">
-          
-            Envoyer
-          </button>
-      )} */}
 
           <Comment key={id} author={author}></Comment>
         </div>
