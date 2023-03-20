@@ -2,8 +2,9 @@ import { memo, useState, useEffect } from "react";
 import EditionVideo from "../EditionVideo/EditionVideo";
 import api from "../../api";
 import PropTypes from "prop-types";
-import { useSelector } from "react-redux";
+import { useSelector, useDispatch } from "react-redux";
 import Comment from "../Comment/Comment";
+import { deleteCard } from "../../actions/card";
 import "./Card.css";
 
 
@@ -16,6 +17,8 @@ const Card = function Card({
   memberId,
   onDelete,
 }) {
+  const dispatch = useDispatch() ;
+  const cards = useSelector ((state) => state.cards);
   const [showFileInput, setShowFileInput] = useState(false);
   /*  Le bouton "afficher" de EditionImage doit être caché par défault */
   const [showModifyButton, setShowModifyButton] = useState(false);
@@ -77,19 +80,22 @@ const Card = function Card({
 
   const handleDelete = async () => {
     try {
-      setShowDeleteModal(true);
-      // On attends une seconde avant de supprimer la carte
-      setTimeout(async () => {
-        await api.delete(`/card/${id}`);
-        setShowDeleteModal(false);
-        onDelete(id);
-      }, 1000);
+
+  await api.delete(`/card/${id}`);
+  dispatch(deleteCard(id));
+      
+
+      
 
       // Rechargez la page pour mettre à jour l'affichage des cartes
     } catch (error) {
       console.log("l'erreur est :", error);
     }
   };
+  useEffect(() => {
+   
+    console.log("Cards deleted:", cards);
+  }, [cards]);
 
   return (
     <>

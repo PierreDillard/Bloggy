@@ -1,16 +1,20 @@
 import React, { useState, useEffect } from "react";
-import { useSelector } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import axios from 'axios';
 import api from "../../api";
+import { addCard } from "../../actions/card";
 
 import './CreateCard.css';
 
 
 
 
-export default function  CreateCard({onAddCard}) {
+export default function  CreateCard() {
 
-  
+  const dispatch = useDispatch();
+  const cards = useSelector((state) => state.cards);
+  console.log(cards, "Les cards du STORE!!!!!")
+
   
 
   
@@ -41,7 +45,7 @@ export default function  CreateCard({onAddCard}) {
     
       const newCard = response.data;
 
-      onAddCard(newCard)
+     dispatch(addCard(newCard));
       
     
     } catch (error) {
@@ -49,7 +53,10 @@ export default function  CreateCard({onAddCard}) {
     } 
   };
  
-
+  useEffect(() => {
+   
+    console.log("Cards updated:", cards);
+  }, [cards]);
 
   return (
     <div className="form__container">
