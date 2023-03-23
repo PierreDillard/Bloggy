@@ -4,9 +4,9 @@ import Card from "../Card/Card";
 import ModaleCreateCard from "../Modale/ModaleCreateCard";
 import { useSelector } from "react-redux";
 import useCardFilter from "../../customHook/useCardFilter";
-
-import "./ArtGallery.css";
 import CreateCard from "../CreateCard/CreateCard";
+import "./ArtGallery.css";
+
 
 export default function ArtGallery() {
   const cards = useSelector((state) => state.cards.cards);
@@ -34,7 +34,7 @@ export default function ArtGallery() {
 
   return (
     <React.Fragment>
-      <div className="art-gallery__container">
+      <div className="art-gallery__container" >
         <Header />
         {/* 
           Si User est un "visiteur" on n'ajoute pas "Ajouter un média" */}
