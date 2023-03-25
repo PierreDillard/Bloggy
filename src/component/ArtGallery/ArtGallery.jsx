@@ -10,6 +10,8 @@ import "./ArtGallery.css";
 
 export default function ArtGallery() {
   const cards = useSelector((state) => state.cards.cards);
+
+
   const [cardNumbers, setCardNumbers] = useState(3);
   const [showMore, setShowMore] = useState(true);
   const [isShowModale, setIsShowModale] = useState(false);
@@ -74,6 +76,7 @@ export default function ArtGallery() {
               type={item.type}
               author={item.author}
               memberId={item.member_id}
+             
             />
           ))}
         </div>

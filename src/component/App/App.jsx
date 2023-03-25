@@ -14,6 +14,7 @@ import Dico from '../Dico/Dico';
 import CreateCard from '../CreateCard/CreateCard';
 import { useDispatch } from 'react-redux';
 import { fetchCards} from '../../actions/card';
+import { fetchComments} from '../../actions/comment';
 import { useEffect } from 'react';
 
 
@@ -24,6 +25,7 @@ function App() {
 
   useEffect(() => {
     dispatch(fetchCards());
+    dispatch(fetchComments());
   }, []);
   return (
 
