@@ -11,7 +11,9 @@ import Internship from '../Internship/Internship';
 import Organization from '../Organization/Organization';
 import Contact from '../Contact/Contact';
 import Dico from '../Dico/Dico';
+import Error404 from '../Error/Error404';
 import CreateCard from '../CreateCard/CreateCard';
+
 import { useDispatch } from 'react-redux';
 import { fetchCards} from '../../actions/card';
 import { fetchComments} from '../../actions/comment';
@@ -44,7 +46,10 @@ function App() {
           <Route path='/createCard' element ={(<CreateCard /> )} />
           <Route path='/contact' element={(<Contact />)} />
           <Route path='/dico' element={(<Dico />)} />
+          <Route path='*' element={(<Error404 />)} />
+        
         </Routes>
+        
       </div>
   )
 }
