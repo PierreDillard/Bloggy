@@ -83,7 +83,7 @@ export default function ArtGallery() {
 
         <div className="art-gallery__button-container">
           {/* Si on a plus de 3 Card à afficher, on affiche le bouton "Afficher plus" */}
-          {cardNumbers < cards.length && (
+          {cardNumbers < filteredCards.length && (
             <button
               className="art-gallery__button art-gallery__button--more"
               onClick={handleShowMore}
@@ -92,8 +92,8 @@ export default function ArtGallery() {
             </button>
           )}
 
-          {/* Si on a au moins 6 cartes à afficher, on affiche le bouton "Afficher moins" */}
-          {cardNumbers >= 6 && (
+          {/* Si le nombre de Carte filtrés par page est supérieur à 4, on affiche, le bouton "afficher moins" */}
+          {cardNumbers>= 4 &&  filteredCards.lenght >=4 &&(
             <button
               className="art-gallery__button art-gallery__button--less"
               onClick={handleShowLess}

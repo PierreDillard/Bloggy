@@ -13,7 +13,7 @@ export default function Comment({ card_id}) {
   const dispatch = useDispatch();
   const comments = useSelector((state) => state.comments.comments);
   const user = useSelector((state) => state.user);
-  console.log(user);
+  const role = user.role;
   const cardComments = comments.filter((comment) => comment.card_id === card_id);
   const member_id = user.userId;console.log(member_id);
   const author = user.pseudo;
@@ -110,15 +110,17 @@ if (editingCommentIndex === -1) {
 
   return (
     <React.Fragment>
+    
       <div className="comment__container">
+      {user.role === "visiteur" ? null : (
         <div className="comment__add">
-          {/* l'utilisateur clique sur le bouton 'Ajouter un commentaire' */}
+   
           <button className={"comment__add-button"} onClick={handleAddComment}>
             +
           </button>
-          {/* <button className={`comment__add-button ${isActive ? 'active' : ''}`} onClick={handleAddComment}>+</button> */}
           <span className="comment__add-content">Ajouter un commentaire</span>
         </div>
+        )}
 
         {/* on affiche le formulaire de champ de saisie et les boutons 'Valider' et 'Annuler*/}
         {isCommentFormVisible && (
@@ -163,7 +165,8 @@ if (editingCommentIndex === -1) {
         {cardComments.map((item) => (
           <div key={item.id} className="comment__list" id={item.id}>
             <div className="comment__content">{item.content}</div>
-
+            {user.role === "visiteur" ? null : (
+  <>
             <button
               className="comment__list-button comment__list-button--modify"
               onClick={() => handleEditComment(item.id)}
@@ -177,6 +180,8 @@ if (editingCommentIndex === -1) {
             >
               Supprimer
             </button>
+            </>
+            )}
           </div>
         ))}
       </div>
