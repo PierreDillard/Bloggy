@@ -10,7 +10,8 @@ const store = configureStore({
       user: userReducer,
       cards : cardsReducer,
       comments : commentsReducer
-    }
+    },
+    middleware :(getDefaultMiddleware) => getDefaultMiddleware(),
 });
 
 export default store;

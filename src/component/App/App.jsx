@@ -26,8 +26,13 @@ function App() {
   const dispatch = useDispatch();
 
   useEffect(() => {
-    dispatch(fetchCards());
-    dispatch(fetchComments());
+    const fetchData = async () => {
+       await dispatch(fetchCards());
+       await dispatch(fetchComments());
+
+    };
+    fetchData();
+ 
   }, []);
   return (
 
