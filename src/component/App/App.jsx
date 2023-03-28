@@ -15,6 +15,7 @@ import Error404 from '../Error/Error404';
 import CreateCard from '../CreateCard/CreateCard';
 
 import { useDispatch } from 'react-redux';
+import { actionlogin } from "../../actions/user";
 import { fetchCards} from '../../actions/card';
 import { fetchComments} from '../../actions/comment';
 import { useEffect } from 'react';
@@ -32,11 +33,19 @@ function App() {
 
     };
     fetchData();
+
+    const email = sessionStorage.getItem("email");
+    const role = sessionStorage.getItem("role");
+    const pseudo = sessionStorage.getItem("pseudo");
+    const  userId= sessionStorage.getItem("id");
+
+    if(email && role && pseudo && userId) {
+      dispatch(actionlogin(email,role,pseudo,userId))
+      console.log(pseudo);
+    }
  
   }, []);
   return (
-
-   
 
       <div>
         <Routes>
