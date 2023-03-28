@@ -24,6 +24,7 @@ const commentController = {
          card_id : card_id,
          content : content
     }
+    console.log(newComment);
 //Finalement on l'envoi en base de données
 const commentDb = await commentModel.insert(newComment);
 res.status(200).json(commentDb);

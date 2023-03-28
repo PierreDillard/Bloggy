@@ -19,7 +19,7 @@ app.use(session({
   saveUninitialized: true,
   // à voir combien je mets
   cookie: {
-    maxAge: 1000605,
+    maxAge: 100060500,
     sameSite: false,
     httpOnly: false
   }

@@ -55,7 +55,7 @@ const cardController = {
     
 
 
-      const cardDb = await cardModel.update(update); //il faut envoyer update au lieu de card
+      const cardDb = await cardModel.update(update); 
 
 
       res.json(cardDb);

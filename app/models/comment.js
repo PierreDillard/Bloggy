@@ -28,7 +28,7 @@ const commentModel = {
     async insert(comment){
                
         try{
-            const sqlQuery = "INSERT INTO comment(member_id, card_id, content) VALUES ($1, $2, $3) RETURNING *;";
+            const sqlQuery = "INSERT INTO comment(author,member_id, card_id, content) VALUES ($1, $2, $3,$4) RETURNING *;";
             const values = [comment.author, comment.member_id, comment.card_id, comment.content];
             
             const result = await client.query(sqlQuery,values);
