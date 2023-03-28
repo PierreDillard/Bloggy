@@ -41,7 +41,7 @@ const security = require ('../service/security');
 
 
 // /api/comment/ -> voir les COMMENTS avec autorisation pour l'Admin et le Pro...-> GET...OK
-router.get("/",security.checkPro, commentController.getAllComments);
+router.get("/", commentController.getAllComments);
 
 
 // "/api/comment/ -> ajouter un COMMENT avec autorisation pour l'Admin et le Pro. -> POST"....OK
